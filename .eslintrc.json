@@ -3,7 +3,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "settings": {
     "react": {
@@ -20,7 +21,12 @@
     "sourceType": "module"
   },
   "ignorePatterns": ["*.config.js", "jest.setup.js"],
-  "plugins": ["@typescript-eslint", "@next/eslint-plugin-next"],
+  "plugins": [
+    "@typescript-eslint",
+    "@next/eslint-plugin-next",
+    "jest",
+    "testing-library"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -31,12 +37,20 @@
     "next/core-web-vitals",
     "prettier"
   ],
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/no-array-index-key": "off",
     "react-hooks/rules-of-hooks": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off"
   }
