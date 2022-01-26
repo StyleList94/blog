@@ -22,6 +22,7 @@ const customJestConfig = {
   ],
 
   modulePaths: ['<rootDir>'],
+  moduleDirectories: ['node_modules', 'src'],
 };
 
 module.exports = createJestConfig(customJestConfig);
