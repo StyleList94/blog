@@ -11,7 +11,7 @@ const HeaderBlock = styled.header`
   width: 100%;
   height: 6rem;
   padding: 1rem 2rem;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.background};
   border-bottom: 1px solid #f1f3f5;
 `;
 
@@ -26,12 +26,13 @@ const Brand = styled.div`
 const BrandTitle = styled.a`
   font-family: 'Comfortaa', cursive;
   font-size: 1.5rem;
+  color: ${({ theme }) => theme.text};
 `;
 
 const BrandSubTitle = styled.span`
   font-family: 'Comfortaa', cursive;
   font-size: 0.875rem;
-  color: #adb5bd;
+  color: ${({ theme }) => theme.subText};
 `;
 
 const HeaderSpacing = styled.div`
