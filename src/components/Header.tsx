@@ -12,7 +12,9 @@ const HeaderBlock = styled.header`
   height: 6rem;
   padding: 1rem 2rem;
   background-color: ${({ theme }) => theme.background};
-  border-bottom: 1px solid #f1f3f5;
+  border-bottom: 1px solid ${({ theme }) => theme.lightBorder};
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
 `;
 
 const Brand = styled.div`
