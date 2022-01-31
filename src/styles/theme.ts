@@ -5,6 +5,7 @@ export type Theme = {
   subText: string;
   lightBorder: string;
   background: string;
+  horizontalRule: string;
 };
 
 export const lightTheme: Theme = {
@@ -12,6 +13,7 @@ export const lightTheme: Theme = {
   subText: palette.gray[5],
   lightBorder: palette.gray[1],
   background: palette.white,
+  horizontalRule: palette.gray[4],
 };
 
 export const darkTheme: Theme = {
@@ -19,4 +21,5 @@ export const darkTheme: Theme = {
   subText: palette.gray[4],
   lightBorder: palette.gray[8],
   background: palette.gray[9],
+  horizontalRule: palette.gray[7],
 };

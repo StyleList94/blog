@@ -38,7 +38,7 @@ const BrandSubTitle = styled.span`
 `;
 
 const HeaderSpacing = styled.div`
-  margin-top: 6rem;
+  height: 6rem;
 `;
 
 const Header = () => {

@@ -41,7 +41,7 @@ function reducer(state: State, action: Action): State {
 }
 
 const initialState: State = {
-  isDarkTheme: true,
+  isDarkTheme: false,
 };
 
 const ThemeStateContext = createContext<State>(initialState);

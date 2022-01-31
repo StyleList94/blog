@@ -1,8 +1,9 @@
-import Footer from 'components/Footer';
-import Header from 'components/Header';
-import MainSection from 'components/MainSection';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+
+import Header from 'components/Header';
+import MainSection from 'components/MainSection';
+import Footer from 'components/Footer';
 
 const IndexPage: NextPage = () => {
   return (
@@ -13,7 +14,7 @@ const IndexPage: NextPage = () => {
 
       <Header />
 
-      <MainSection>Content</MainSection>
+      <MainSection>content</MainSection>
 
       <Footer />
     </div>
