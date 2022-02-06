@@ -1,9 +1,9 @@
+import { memo } from 'react';
 import type { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { memo } from 'react';
 
 type SyntaxHighlighterStyle = {
   [key: string]: { [key: string]: string };
@@ -47,6 +47,10 @@ const H6 = styled.h6`
 const Text = styled.p`
   ${commonStyle}
   color: ${({ theme }) => theme.text};
+
+  code {
+    font-family: 'Source Code Pro', monospace;
+  }
 `;
 
 const ListItem = styled.li`
@@ -71,7 +75,7 @@ const HR = styled.hr`
   border: 1px solid ${({ theme }) => theme.horizontalRule};
 `;
 
-const Code = memo(function MemoizationCode({
+const Code = memo(function Code({
   inline,
   className,
   children,

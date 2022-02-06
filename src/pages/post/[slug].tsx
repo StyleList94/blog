@@ -34,9 +34,7 @@ const PostPage: NextPage<Props> = ({
 };
 
 export const getStaticProps: GetStaticProps<Props> = (context) => {
-  const { data, content } = getPostBySlug(context?.params?.slug as string);
-
-  const post: Omit<Post, 'slug'> = { data, content };
+  const post: Post = getPostBySlug(context?.params?.slug as string);
 
   return {
     props: { post },

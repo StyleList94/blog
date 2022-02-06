@@ -1,6 +1,9 @@
 ---
 title: Introduce
 description: introduce for post
+date: '2022-02-06T12:00:00.000Z'
+coverImage: /assets/images/cover.png
+ogImage: /assets/images/cover.png
 ---
 
 # 안녕하세요

@@ -1,7 +1,9 @@
 export type Post = {
   slug: string;
-  data: {
-    [key: string]: string;
-  };
+  title: string;
+  description: string;
+  date: string;
+  coverImage: string;
+  ogImage: string;
   content: string;
 };
