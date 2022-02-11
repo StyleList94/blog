@@ -1,12 +1,14 @@
 import palette from './palette';
 
-export type Theme = {
-  text: string;
-  subText: string;
-  lightBorder: string;
-  background: string;
-  horizontalRule: string;
-};
+type ThemeKey =
+  | 'text'
+  | 'subText'
+  | 'lightBorder'
+  | 'background'
+  | 'horizontalRule'
+  | 'date';
+
+export type Theme = Record<ThemeKey, string>;
 
 export const lightTheme: Theme = {
   text: palette.gray[9],
@@ -14,6 +16,7 @@ export const lightTheme: Theme = {
   lightBorder: palette.gray[1],
   background: palette.white,
   horizontalRule: palette.gray[4],
+  date: palette.gray[7],
 };
 
 export const darkTheme: Theme = {
@@ -22,4 +25,5 @@ export const darkTheme: Theme = {
   lightBorder: palette.gray[8],
   background: palette.gray[9],
   horizontalRule: palette.gray[7],
+  date: palette.gray[4],
 };
