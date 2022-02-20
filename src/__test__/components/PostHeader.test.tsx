@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import format from 'date-fns/format';
 
 import PostHeader from 'components/PostHeader';
 
@@ -11,6 +12,8 @@ describe('PostHeader', () => {
   it('should be render', () => {
     render(<PostHeader {...props} />);
     expect(screen.getByText('SO Lovely CODE!')).toBeInTheDocument();
-    expect(screen.getByText('2022-02-11')).toBeInTheDocument();
+    expect(
+      screen.getByText(format(new Date('2022-02-11'), 'yyyy-MM-dd')),
+    ).toBeInTheDocument();
   });
 });
