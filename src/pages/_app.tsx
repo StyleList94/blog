@@ -4,10 +4,12 @@ import { Global } from '@emotion/react';
 import styles from 'styles';
 
 import ThemeProvider from 'components/ThemeContext';
+import RouteProgress from 'components/RouteProgress';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
+      <RouteProgress />
       <Global styles={styles} />
       <Component {...pageProps} />
     </ThemeProvider>
