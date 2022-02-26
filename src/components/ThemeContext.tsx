@@ -4,6 +4,7 @@ import {
   ReactNode,
   useCallback,
   useContext,
+  useEffect,
   useReducer,
 } from 'react';
 import {
@@ -49,6 +50,14 @@ const ThemeDispatchContext = createContext<Dispatch<Action> | null>(null);
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      dispatch({ type: 'SET_DARK_THEME' });
+    } else {
+      dispatch({ type: 'SET_LIGHT_THEME' });
+    }
+  }, []);
 
   return (
     <ThemeStateContext.Provider value={state}>
