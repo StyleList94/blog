@@ -103,7 +103,7 @@ yarn add -D prettier
 다음 패키지를 설치합니다.
 
 ```bash
- yarn add -D @next/eslint-plugin-next @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier
+ yarn add -D @next/eslint-plugin-next @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-jest eslint-plugin-testing-library
 ```
 
 `.eslintrc.json` 파일을 업데이트 합니다.
@@ -222,6 +222,17 @@ yarn lint-staged
     "baseUrl": "src"
   }
 }
+```
+
+jest config의 `moduleNameMapper`를 업데이트 합니다
+
+```javascript
+// jest.config.js
+moduleNameMapper: {
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '\\.(css|sass|scss)$': 'identity-obj-proxy',
+  },
 ```
 
 ## Emotion
