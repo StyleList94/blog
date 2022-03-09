@@ -9,11 +9,11 @@ import Head from 'next/head';
 import { getAllPosts, getPostBySlug } from 'lib/api/post';
 import { Post } from 'types/post';
 
-import Header from 'components/Header';
-import MainSection from 'components/MainSection';
-import PostBody from 'components/PostBody';
-import Footer from 'components/Footer';
-import PostHeader from 'components/PostHeader';
+import Header from '@/components/Header';
+import MainSection from '@/components/MainSection';
+import PostBody from '@/components/PostBody';
+import Footer from '@/components/Footer';
+import PostHeader from '@/components/PostHeader';
 
 type Props = {
   post: Omit<Post, 'slug'>;

@@ -2,7 +2,7 @@ import Router from 'next/router';
 import { render, screen } from '@testing-library/react';
 import format from 'date-fns/format';
 
-import PostItem from 'components/PostItem';
+import PostItem from '@/components/PostItem';
 
 const props = {
   slug: 'so-lovely-code',

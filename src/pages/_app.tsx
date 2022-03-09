@@ -1,10 +1,10 @@
 import type { AppProps } from 'next/app';
 import { Global } from '@emotion/react';
 
-import styles from 'styles';
+import styles from '@/styles/index';
 
-import ThemeProvider from 'components/ThemeContext';
-import RouteProgress from 'components/RouteProgress';
+import ThemeProvider from '@/components/ThemeContext';
+import RouteProgress from '@/components/RouteProgress';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

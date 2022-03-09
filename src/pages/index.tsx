@@ -5,10 +5,10 @@ import styled from '@emotion/styled';
 import { getAllPosts } from 'lib/api/post';
 import { Post } from 'types/post';
 
-import Header from 'components/Header';
-import MainSection from 'components/MainSection';
-import Footer from 'components/Footer';
-import PostItem from 'components/PostItem';
+import Header from '@/components/Header';
+import MainSection from '@/components/MainSection';
+import Footer from '@/components/Footer';
+import PostItem from '@/components/PostItem';
 
 type Props = {
   postList: Omit<Post, 'content'>[];

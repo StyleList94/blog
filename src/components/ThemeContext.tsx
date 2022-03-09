@@ -12,7 +12,7 @@ import {
   useTheme as useEmotionTheme,
 } from '@emotion/react';
 
-import { darkTheme, lightTheme } from 'styles/theme';
+import { darkTheme, lightTheme } from '@/styles/theme';
 
 type State = {
   isDarkTheme: boolean;

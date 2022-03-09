@@ -4,7 +4,7 @@ import { css, Global } from '@emotion/react';
 import Router from 'next/router';
 import nProgress from 'nprogress';
 
-import palette from 'styles/palette';
+import palette from '@/styles/palette';
 
 import 'nprogress/nprogress.css';
 

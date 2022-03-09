@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import format from 'date-fns/format';
 
-import PostHeader from 'components/PostHeader';
+import PostHeader from '@/components/PostHeader';
 
 const props = {
   title: 'SO Lovely CODE!',
