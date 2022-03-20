@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import IndexPage from '../../pages';
-import ThemeProvider from '../../components/ThemeContext';
+import ThemeProvider from '../../contexts/ThemeContext';
 
 describe('test', () => {
   Object.defineProperty(window, 'matchMedia', {
