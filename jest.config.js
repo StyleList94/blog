@@ -9,6 +9,7 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/contexts/(.*)$': '<rootDir>/src/contexts/$1',
     '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
     '\\.(css|sass|scss)$': 'identity-obj-proxy',

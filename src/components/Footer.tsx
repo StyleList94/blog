@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const FooterBlock = styled.footer`
   display: flex;
