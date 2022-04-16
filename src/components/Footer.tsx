@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 import { useTheme } from '@/contexts/ThemeContext';
+import Image from 'next/image';
 
 const FooterBlock = styled.footer`
   display: flex;
@@ -10,7 +11,9 @@ const FooterBlock = styled.footer`
   margin: 2rem auto;
 `;
 
-const TitleBlock = styled.div``;
+const TitleBlock = styled.div`
+  margin-top: 0.75rem;
+`;
 
 const ToggleThemeButton = styled.button`
   outline: none;
@@ -38,6 +41,18 @@ const Footer = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
   return (
     <FooterBlock>
+      <a
+        href="https://github.com/StyleList94"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src="/images/icon-github.png"
+          alt="github"
+          width={24}
+          height={24}
+        />
+      </a>
       <TitleBlock>
         <ToggleThemeButton onClick={() => toggleTheme()}>
           {isDarkTheme ? 'Light Theme' : 'Dark Theme'}
