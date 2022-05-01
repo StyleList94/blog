@@ -47,7 +47,7 @@ const Footer = () => {
         rel="noopener noreferrer"
       >
         <Image
-          src="/images/icon-github.png"
+          src={`/images/icon-github${isDarkTheme ? '-light' : ''}.png`}
           alt="github"
           width={24}
           height={24}

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 import format from 'date-fns/format';
 
-import { Post } from 'types/post';
+import type { Post } from 'types/post';
 
 type Props = Pick<Post, 'slug' | 'title' | 'description' | 'date'>;
 

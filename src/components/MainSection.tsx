@@ -8,6 +8,7 @@ type Props = {
 const MainBlock = styled.main`
   max-width: 1440px;
   margin: 0 auto;
+  padding: 1.5rem;
 `;
 
 const BodyBlock = styled.div`
