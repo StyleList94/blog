@@ -1,13 +1,13 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import type { ReactElement } from 'react';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import styled from '@emotion/styled';
 
 import { getAllPosts } from 'lib/api/post';
+import type { NextPageWithLayout } from 'types/page';
 import type { Post } from 'types/post';
 
-import Header from '@/components/Header';
-import MainSection from '@/components/MainSection';
-import Footer from '@/components/Footer';
+import Layout from '@/components/Layout';
 import PostItem from '@/components/PostItem';
 
 type Props = {
@@ -26,7 +26,7 @@ const PostList = styled.div`
   }
 `;
 
-const IndexPage: NextPage<Props> = ({
+const IndexPage: NextPageWithLayout<Props> = ({
   postList,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -35,26 +35,22 @@ const IndexPage: NextPage<Props> = ({
         <title>StyleList94</title>
       </Head>
 
-      <Header />
-
-      <MainSection>
-        <PostList>
-          {postList.map((post) => (
-            <PostItem
-              key={post.slug}
-              slug={post.slug}
-              title={post.title}
-              description={post.description}
-              date={post.date}
-            />
-          ))}
-        </PostList>
-      </MainSection>
-
-      <Footer />
+      <PostList>
+        {postList.map((post) => (
+          <PostItem
+            key={post.slug}
+            slug={post.slug}
+            title={post.title}
+            description={post.description}
+            date={post.date}
+          />
+        ))}
+      </PostList>
     </div>
   );
 };
+
+IndexPage.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
 
 export const getStaticProps: GetStaticProps<Props> = () => {
   const postList: Omit<Post, 'content'>[] = getAllPosts();

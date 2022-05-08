@@ -1,5 +1,5 @@
+import type { ReactElement } from 'react';
 import type {
-  NextPage,
   GetStaticProps,
   InferGetStaticPropsType,
   GetStaticPaths,
@@ -7,19 +7,18 @@ import type {
 import Head from 'next/head';
 
 import { getAllPosts, getPostBySlug } from 'lib/api/post';
+import type { NextPageWithLayout } from 'types/page';
 import type { Post } from 'types/post';
 
-import Header from '@/components/Header';
-import MainSection from '@/components/MainSection';
+import Layout from '@/components/Layout';
 import PostBody from '@/components/PostBody';
-import Footer from '@/components/Footer';
 import PostHeader from '@/components/PostHeader';
 
 type Props = {
   post: Omit<Post, 'slug'>;
 };
 
-const PostPage: NextPage<Props> = ({
+const PostPage: NextPageWithLayout<Props> = ({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -31,14 +30,9 @@ const PostPage: NextPage<Props> = ({
         <meta property="og:description" content={post.description} />
         <meta property="og:type" content="website" />
       </Head>
-      <Header />
 
-      <MainSection>
-        <PostHeader title={post.title} date={post.date} />
-        <PostBody content={post.content} />
-      </MainSection>
-
-      <Footer />
+      <PostHeader title={post.title} date={post.date} />
+      <PostBody content={post.content} />
     </>
   );
 };
@@ -50,6 +44,8 @@ export const getStaticProps: GetStaticProps<Props> = (context) => {
     props: { post },
   };
 };
+
+PostPage.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
 
 export const getStaticPaths: GetStaticPaths = () => {
   const posts = getAllPosts();
