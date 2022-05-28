@@ -6,7 +6,10 @@ import type { Post } from 'types/post';
 const postDirectory = join(process.cwd(), 'src/posts');
 
 export function getPostSlugs() {
-  return fs.readdirSync(postDirectory);
+  const list = fs.readdirSync(postDirectory);
+  const filteredList = list.filter((filename) => filename.endsWith('.md'));
+
+  return filteredList;
 }
 
 export function getPostBySlug(slug: string) {
