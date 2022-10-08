@@ -7,9 +7,9 @@ import Document, {
 } from 'next/document';
 
 class MyDocument extends Document {
-  static async getIntialProps(ctx: DocumentContext) {
-    const initialPorps = await Document.getInitialProps(ctx);
-    return { ...initialPorps };
+  static async getInitialProps(ctx: DocumentContext) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
   }
 
   render() {
