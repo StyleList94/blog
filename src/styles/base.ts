@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
 
+import palette from '@/styles/palette';
+
 const base = css`
   html,
   body {
@@ -16,6 +18,22 @@ const base = css`
 
   * {
     box-sizing: border-box;
+  }
+
+  pre > div {
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 10px;
+      height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      width: 4px;
+      height: 4px;
+      background-color: ${palette.gray[6]};
+    }
   }
 `;
 
