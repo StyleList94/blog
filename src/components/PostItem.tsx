@@ -26,7 +26,7 @@ const ContentInfo = styled.div`
   }
 `;
 
-const Title = styled.a`
+const Title = styled.span`
   font-family: 'Nanum Gothic', sans-serif;
   font-weight: 500;
   font-size: 2rem;

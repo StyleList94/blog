@@ -25,7 +25,7 @@ const Brand = styled.div`
   line-height: 1.2;
 `;
 
-const BrandTitle = styled.a`
+const BrandTitle = styled.span`
   font-family: 'Comfortaa', cursive;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.text};

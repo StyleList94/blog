@@ -5,47 +5,43 @@ import styled from '@emotion/styled';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-type SyntaxHighlighterStyle = {
-  [key: string]: { [key: string]: string };
-};
-
 const commonStyle = css`
   font-family: 'Nanum Gothic', sans-serif;
   transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 `;
 
 const H1 = styled.h1`
-  ${commonStyle}
+  ${commonStyle};
   color: ${({ theme }) => theme.text};
 `;
 
 const H2 = styled.h2`
-  ${commonStyle}
+  ${commonStyle};
   color: ${({ theme }) => theme.text};
 `;
 
 const H3 = styled.h3`
-  ${commonStyle}
+  ${commonStyle};
   color: ${({ theme }) => theme.text};
 `;
 
 const H4 = styled.h4`
-  ${commonStyle}
+  ${commonStyle};
   color: ${({ theme }) => theme.text};
 `;
 
 const H5 = styled.h5`
-  ${commonStyle}
+  ${commonStyle};
   color: ${({ theme }) => theme.text};
 `;
 
 const H6 = styled.h6`
-  ${commonStyle}
+  ${commonStyle};
   color: ${({ theme }) => theme.text};
 `;
 
 const Text = styled.p`
-  ${commonStyle}
+  ${commonStyle};
   color: ${({ theme }) => theme.text};
 
   code {
@@ -54,12 +50,12 @@ const Text = styled.p`
 `;
 
 const ListItem = styled.li`
-  ${commonStyle}
+  ${commonStyle};
   color: ${({ theme }) => theme.text};
 `;
 
 const Table = styled.table`
-  ${commonStyle}
+  ${commonStyle};
   color: ${({ theme }) => theme.text};
   border-collapse: collapse;
 
@@ -71,7 +67,7 @@ const Table = styled.table`
 `;
 
 const HR = styled.hr`
-  ${commonStyle}
+  ${commonStyle};
   border: 1px solid ${({ theme }) => theme.horizontalRule};
 `;
 
@@ -83,13 +79,8 @@ const Code = memo(function Code({
 }: CodeProps) {
   const match = /language-(\w+)/.exec(className || '');
   return !inline && match ? (
-    <SyntaxHighlighter
-      style={a11yDark as SyntaxHighlighterStyle}
-      language={match[1]}
-      PreTag="div"
-      {...props}
-    >
-      {children}
+    <SyntaxHighlighter style={a11yDark} language={match[1]} PreTag="div">
+      {children as string | string[]}
     </SyntaxHighlighter>
   ) : (
     <code className={className} {...props}>
