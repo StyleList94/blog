@@ -24,7 +24,7 @@ const PostPage: NextPageWithLayout<Props> = ({
   return (
     <>
       <Head>
-        <title>{post.title} :: StyleList94</title>
+        <title>{`${post.title} :: StyleList94`}</title>
         <meta name="description" content={post.description} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
