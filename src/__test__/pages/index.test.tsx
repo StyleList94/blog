@@ -40,7 +40,7 @@ describe('test', () => {
     expect(screen.getByText('StyleList94')).toBeInTheDocument();
     expect(screen.getByText('just a test')).toBeInTheDocument();
     expect(screen.getByText('2022-05-08')).toBeInTheDocument();
-    expect(screen.getByText('StyleList94')).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'StyleList94' })).toHaveAttribute(
       'href',
       '/post/test-post',
     );
