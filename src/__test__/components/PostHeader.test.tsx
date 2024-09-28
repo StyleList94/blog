@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 
 import PostHeader from '@/components/PostHeader';
 

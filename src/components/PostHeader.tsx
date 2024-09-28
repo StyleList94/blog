@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 
 type Props = {
   title: string;

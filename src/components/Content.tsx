@@ -1,5 +1,5 @@
-import { memo } from 'react';
-import type { CodeProps } from 'react-markdown/lib/ast-to-react';
+import type { ClassAttributes, HTMLAttributes } from 'react';
+import type { ExtraProps } from 'react-markdown';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -7,7 +7,9 @@ import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 const commonStyle = css`
   font-family: 'Nanum Gothic', sans-serif;
-  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition:
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
 `;
 
 const H1 = styled.h1`
@@ -71,23 +73,25 @@ const HR = styled.hr`
   border: 1px solid ${({ theme }) => theme.horizontalRule};
 `;
 
-const Code = memo(function Code({
-  inline,
-  className,
-  children,
-  ...props
-}: CodeProps) {
+function Code(
+  props: ClassAttributes<HTMLElement> &
+    HTMLAttributes<HTMLElement> &
+    ExtraProps,
+) {
+  const { children, className, ...rest } = props;
   const match = /language-(\w+)/.exec(className || '');
-  return !inline && match ? (
-    <SyntaxHighlighter style={a11yDark} language={match[1]} PreTag="div">
-      {children as string | string[]}
+  return match ? (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    <SyntaxHighlighter PreTag="div" language={match[1]} style={a11yDark}>
+      {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
   ) : (
-    <code className={className} {...props}>
+    <code {...rest} className={className}>
       {children}
     </code>
   );
-});
+}
 
 const Content = {
   H1,
