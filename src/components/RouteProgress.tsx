@@ -36,8 +36,6 @@ Router.events.on('routeChangeStart', startProgress);
 Router.events.on('routeChangeComplete', doneProgress);
 Router.events.on('routeChangeError', doneProgress);
 
-const RouteProgress = () => {
-  return <Global styles={progressStyle} />;
-};
+const RouteProgress = () => <Global styles={progressStyle} />;
 
 export default RouteProgress;

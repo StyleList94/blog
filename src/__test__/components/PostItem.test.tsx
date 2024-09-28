@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 import Router from 'next/router';
 import { render, screen } from '@testing-library/react';
 import { format } from 'date-fns';
@@ -11,7 +13,7 @@ const props = {
   date: '2022-02-20T10:00:00.000Z',
 };
 
-const routerChangeStart = jest.fn();
+const routerChangeStart = vi.fn();
 
 beforeEach(() => {
   Router.events.on('routeChangeStart', routerChangeStart);

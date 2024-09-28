@@ -26,13 +26,11 @@ const PostDate = styled.p`
   color: ${({ theme }) => theme.date};
 `;
 
-const PostHeader = ({ title, date }: Props) => {
-  return (
+const PostHeader = ({ title, date }: Props) => (
     <PostHeaderBlock>
       <PostTitle>{title}</PostTitle>
       <PostDate>{format(new Date(date), 'yyyy-MM-dd')}</PostDate>
     </PostHeaderBlock>
   );
-};
 
 export default PostHeader;

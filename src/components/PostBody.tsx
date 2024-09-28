@@ -22,8 +22,7 @@ const components = {
   code: Content.Code,
 };
 
-const PostBody = ({ content }: Props) => {
-  return (
+const PostBody = ({ content }: Props) => (
     <ReactMarkdown
       components={components}
       remarkPlugins={[remarkGfm]}
@@ -32,6 +31,5 @@ const PostBody = ({ content }: Props) => {
       {content}
     </ReactMarkdown>
   );
-};
 
 export default PostBody;

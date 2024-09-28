@@ -41,8 +41,7 @@ const HeaderSpacing = styled.div`
   height: 6rem;
 `;
 
-const Header = () => {
-  return (
+const Header = () => (
     <>
       <HeaderBlock>
         <Brand>
@@ -55,6 +54,5 @@ const Header = () => {
       <HeaderSpacing />
     </>
   );
-};
 
 export default Header;

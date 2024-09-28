@@ -20,8 +20,7 @@ type Props = {
 
 const PostPage: NextPageWithLayout<Props> = ({
   post,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return (
+}: InferGetStaticPropsType<typeof getStaticProps>) => (
     <>
       <Head>
         <title>{`${post.title} :: StyleList94`}</title>
@@ -35,7 +34,6 @@ const PostPage: NextPageWithLayout<Props> = ({
       <PostBody content={post.content} />
     </>
   );
-};
 
 export const getStaticProps: GetStaticProps<Props> = (context) => {
   const post: Post = getPostBySlug(context?.params?.slug as string);

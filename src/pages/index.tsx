@@ -28,8 +28,7 @@ const PostList = styled.div`
 
 const IndexPage: NextPageWithLayout<Props> = ({
   postList,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return (
+}: InferGetStaticPropsType<typeof getStaticProps>) => (
     <div>
       <Head>
         <title>StyleList94</title>
@@ -48,7 +47,6 @@ const IndexPage: NextPageWithLayout<Props> = ({
       </PostList>
     </div>
   );
-};
 
 IndexPage.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
 

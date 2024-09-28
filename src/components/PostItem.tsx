@@ -46,8 +46,7 @@ const ContentDate = styled.div`
   }
 `;
 
-const PostItem = ({ slug, title, description, date }: Props) => {
-  return (
+const PostItem = ({ slug, title, description, date }: Props) => (
     <PostItemBlock>
       <div>
         <div />
@@ -65,6 +64,5 @@ const PostItem = ({ slug, title, description, date }: Props) => {
       </Content>
     </PostItemBlock>
   );
-};
 
 export default PostItem;

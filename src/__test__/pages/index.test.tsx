@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 import { render, screen } from '@testing-library/react';
 
 import IndexPage from '../../pages';
@@ -11,22 +13,22 @@ const postList = [
     date: '2022-05-08T12:25:00.000Z',
     coverImage: '/assets/images/cover.png',
     ogImage: '/assets/images/cover.png',
-    content: '\n' + 'content',
+    content: `${'\n'}${'content'}`,
   },
 ];
 
 describe('test', () => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
-    value: jest.fn().mockImplementation((query: string) => ({
+    value: vi.fn().mockImplementation((query: string) => ({
       matches: false,
       media: query,
       onchange: null,
-      addListener: jest.fn(), // Deprecated
-      removeListener: jest.fn(), // Deprecated
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
+      addListener: vi.fn(), // Deprecated
+      removeListener: vi.fn(), // Deprecated
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
     })),
   });
 

@@ -22,13 +22,11 @@ const BodyBlock = styled.div`
   transition: background-color 0.2s ease-in-out;
 `;
 
-const MainSection = ({ children }: Props) => {
-  return (
+const MainSection = ({ children }: Props) => (
     <>
       <BodyBlock />
       <MainBlock>{children}</MainBlock>
     </>
   );
-};
 
 export default MainSection;
