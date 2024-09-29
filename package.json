@@ -12,21 +12,21 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
+    "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
     "next": "^14.2.13",
+    "next-themes": "^0.3.0",
     "nprogress": "^0.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.10.5",
     "@next/eslint-plugin-next": "^14.2.13",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.5.0",
@@ -43,6 +43,7 @@
     "@vitest/coverage-v8": "1.6.0",
     "@vitest/eslint-plugin": "^1.1.4",
     "@vitest/ui": "1.6.0",
+    "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -57,9 +58,12 @@
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^25.0.1",
     "lint-staged": "^15.2.10",
+    "postcss": "^8.4.47",
     "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.13",
     "typescript": "5.3.3",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^1.6.0"
-  }
+  },
+  "packageManager": "pnpm@9.11.0+sha256.1c0e33f70e5df9eede84a357bdfa0b1f9dba6e58194628d48a1055756f553754"
 }

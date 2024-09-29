@@ -13,11 +13,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "src",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/contexts/*": ["contexts/*"],
-      "@/styles/*": ["styles/*"]
+      "@/*": ["./src/*"]
     },
     "plugins": [
       {
@@ -25,7 +22,6 @@
       }
     ],
     "types": ["vitest/globals"],
-    "jsxImportSource": "@emotion/react"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

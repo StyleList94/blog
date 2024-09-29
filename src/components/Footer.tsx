@@ -1,46 +1,25 @@
-import styled from '@emotion/styled';
-
-import { useTheme } from '@/contexts/ThemeContext';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
-const FooterBlock = styled.footer`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem auto;
-`;
-
-const TitleBlock = styled.div`
-  margin-top: 0.75rem;
-`;
-
-const ToggleThemeButton = styled.button`
-  outline: none;
-  border: 0;
-  background-color: transparent;
-  color: ${({ theme }) => theme.text};
-  font-size: 12px;
-  cursor: pointer;
-
-  &:hover,
-  &:active {
-    text-decoration: underline;
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    opacity: 0.7;
-  }
-`;
+import { cn } from '@/lib/utils';
 
 const Footer = () => {
-  const { isDarkTheme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
+
+  const isDarkTheme = resolvedTheme === 'dark';
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <FooterBlock>
+    <footer className="flex flex-col justify-center items-center mx-auto my-8">
       <a
         href="https://github.com/StyleList94"
         target="_blank"
@@ -53,12 +32,21 @@ const Footer = () => {
           height={24}
         />
       </a>
-      <TitleBlock>
-        <ToggleThemeButton onClick={() => toggleTheme()}>
+      <div className="mt-3">
+        <button
+          type="button"
+          className={cn(
+            'outline-none border-0 bg-transparent text-xs cursor-pointer',
+            'hover:opacity-80 hover:underline',
+          )}
+          onClick={() => {
+            setTheme(isDarkTheme ? 'light' : 'dark');
+          }}
+        >
           {isDarkTheme ? 'Light Theme' : 'Dark Theme'}
-        </ToggleThemeButton>
-      </TitleBlock>
-    </FooterBlock>
+        </button>
+      </div>
+    </footer>
   );
 };
 

@@ -56,7 +56,7 @@ _Lorem ipsum dolor sit amet, consectetur adipiscing elit._
 - [ ] This is a list item
 
 | Tables   |      Are      |  Cool |
-| -------- | :-----------: | ----: |
+|----------|:-------------:|------:|
 | col 3 is | right-aligned | $1600 |
 
 [This is a link](https://stylelist94.blog)

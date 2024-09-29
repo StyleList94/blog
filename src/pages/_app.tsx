@@ -1,11 +1,9 @@
+import { ThemeProvider } from 'next-themes';
+
 import type { AppProps } from 'next/app';
-import { Global } from '@emotion/react';
+import type { NextPageWithLayout } from '@/types/page';
 
-import styles from '@/styles/index';
-import type { NextPageWithLayout } from 'types/page';
-
-import ThemeProvider from '@/contexts/ThemeContext';
-import RouteProgress from '@/components/RouteProgress';
+import '@/styles/global.css';
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
@@ -15,9 +13,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <ThemeProvider>
-      <RouteProgress />
-      <Global styles={styles} />
+    <ThemeProvider attribute="class">
       {getLayout(<Component {...pageProps} />)}
     </ThemeProvider>
   );

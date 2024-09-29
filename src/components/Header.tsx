@@ -1,58 +1,26 @@
-import styled from '@emotion/styled';
 import Link from 'next/link';
 
-const HeaderBlock = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 6rem;
-  padding: 1rem 2rem;
-  background-color: ${({ theme }) => theme.background};
-  border-bottom: 1px solid ${({ theme }) => theme.lightBorder};
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
-    border-color 0.2s ease-in-out;
-`;
-
-const Brand = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 1.2;
-`;
-
-const BrandTitle = styled.span`
-  font-family: 'Comfortaa', cursive;
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.text};
-`;
-
-const BrandSubTitle = styled.span`
-  font-family: 'Comfortaa', cursive;
-  font-size: 0.875rem;
-  color: ${({ theme }) => theme.subText};
-`;
-
-const HeaderSpacing = styled.div`
-  height: 6rem;
-`;
+import { cn } from '@/lib/utils';
 
 const Header = () => (
-    <>
-      <HeaderBlock>
-        <Brand>
-          <Link href="/" passHref>
-            <BrandTitle>StyleList94</BrandTitle>
-          </Link>
-          <BrandSubTitle>Stylish Diary</BrandSubTitle>
-        </Brand>
-      </HeaderBlock>
-      <HeaderSpacing />
-    </>
-  );
+  <>
+    <header
+      className={cn(
+        'fixed top-0 left-0 flex justify-center items-center w-full h-24 px-8 py-4',
+        'border-b border-b-gray-200/80 dark:border-b-gray-700/80',
+        'transition ease-in-out duration-200',
+        'bg-white dark:bg-gray-900',
+      )}
+    >
+      <div className="flex flex-col justify-center items-center leading-tight">
+        <Link href="/" passHref>
+          <span className="text-2xl">StyleList94</span>
+        </Link>
+        <span className="text-sm">Stylish Diary</span>
+      </div>
+    </header>
+    <div className="h-24" />
+  </>
+);
 
 export default Header;

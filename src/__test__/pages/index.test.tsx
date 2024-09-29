@@ -3,7 +3,6 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
 import IndexPage from '../../pages';
-import ThemeProvider from '../../contexts/ThemeContext';
 
 const postList = [
   {
@@ -33,11 +32,7 @@ describe('test', () => {
   });
 
   it('should be render', () => {
-    render(
-      <ThemeProvider>
-        <IndexPage postList={postList} />
-      </ThemeProvider>,
-    );
+    render(<IndexPage postList={postList} />);
 
     expect(screen.getByText('StyleList94')).toBeInTheDocument();
     expect(screen.getByText('just a test')).toBeInTheDocument();
