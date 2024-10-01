@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { format } from 'date-fns';
 
-import PostHeader from '@/components/PostHeader';
+import PostHeader from './post-header';
 
 const props = {
   title: 'SO Lovely CODE!',

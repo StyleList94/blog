@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { render, screen } from '@testing-library/react';
 import { format } from 'date-fns';
 
-import PostItem from '@/components/PostItem';
+import PostItem from './post-item';
 
 const props = {
   slug: 'so-lovely-code',

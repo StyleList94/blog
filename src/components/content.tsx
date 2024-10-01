@@ -1,8 +1,10 @@
-import type { ClassAttributes, HTMLAttributes, PropsWithChildren } from 'react';
-import type { ExtraProps } from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+
 import { cn } from '@/lib/utils';
+
+import type { ClassAttributes, HTMLAttributes, PropsWithChildren } from 'react';
+import type { ExtraProps } from 'react-markdown';
 
 const commonStyle = 'transition ease-in-out duration-200 leading-normal';
 

@@ -3,7 +3,8 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
 import { cn } from '@/lib/utils';
-import Content from './Content';
+
+import Content from './content';
 
 type Props = {
   content: string;

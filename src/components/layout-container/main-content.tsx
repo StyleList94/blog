@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
 };
 
-const MainSection = ({ children }: Props) => (
+const MainContent = ({ children }: Props) => (
   <>
     <div
       className={cn(
@@ -15,10 +15,10 @@ const MainSection = ({ children }: Props) => (
         'bg-white dark:bg-gray-900',
       )}
     />
-    <div className="max-w-[1440px] mx-auto my-0 p-6 text-gray-950 dark:text-white">
+    <main className="max-w-[1440px] mx-auto my-0 p-6 text-gray-950 dark:text-white">
       {children}
-    </div>
+    </main>
   </>
 );
 
-export default MainSection;
+export default MainContent;
