@@ -35,7 +35,6 @@ const H6 = ({ children }: PropsWithChildren) => (
 );
 
 const Text = ({ children }: PropsWithChildren) => (
-  // TODO: CODE Font 추가
   <p className={cn(commonStyle)}>{children}</p>
 );
 
@@ -92,7 +91,7 @@ function Code(
       {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
   ) : (
-    <code {...rest} className={className}>
+    <code {...rest} className={cn(className, 'font-mono')}>
       {children}
     </code>
   );

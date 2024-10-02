@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next';
 import AppProvider from '@/components/providers';
 
 import '@/styles/global.css';
+import { notoSerif, pretendard, robotoMono } from '@/assets/fonts';
 
 export const metadata: Metadata = {
   title: 'StyleList94',
@@ -19,7 +20,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ko">
+    <html
+      lang="ko"
+      className={`${pretendard.variable} ${robotoMono.variable} ${notoSerif.variable}`}
+    >
       <body>
         <AppProvider>{children}</AppProvider>
       </body>

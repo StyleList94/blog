@@ -19,7 +19,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "ignorePatterns": ["*.config.js", "*.config.ts"],
+  "ignorePatterns": ["*.config.[jt]s"],
   "plugins": ["@typescript-eslint", "testing-library"],
   "extends": [
     "eslint:recommended",
