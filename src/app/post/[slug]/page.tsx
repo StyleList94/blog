@@ -1,3 +1,4 @@
+import metadataContext from '@/lib/metadata-context';
 import { getAllPosts, getPostBySlug } from '@/lib/services/api/post';
 
 import type { Metadata } from 'next';
@@ -14,7 +15,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post: Post = getPostBySlug(params.slug);
 
-  const title = `${post.title} :: StyleList94`;
+  const title = `${post.title} :: ${metadataContext.title}`;
   const { description } = post;
 
   return {
@@ -23,7 +24,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      type: 'website',
     },
   };
 }
@@ -40,7 +40,11 @@ export default async function PostContentPage({ params }: Props) {
 
   return (
     <LayoutContainer>
-      <PostHeader title={post.title} date={post.date} />
+      <PostHeader
+        title={post.title}
+        description={post.description}
+        date={post.date}
+      />
       <PostBody content={post.content} />
     </LayoutContainer>
   );

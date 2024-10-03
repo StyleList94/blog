@@ -12,10 +12,15 @@ const MainContent = ({ children }: Props) => (
       className={cn(
         'fixed inset-0 z-[-1]',
         'transition ease-in-out duration-200',
-        'bg-white dark:bg-gray-900',
+        'bg-white dark:bg-neutral-900',
       )}
     />
-    <main className="max-w-[1440px] mx-auto my-0 p-6 text-gray-950 dark:text-white">
+    <main
+      className={cn(
+        'max-w-[96rem] min-h-[calc(100vh-4rem-10rem)] mx-auto my-0 p-6 text-gray-950 text-black dark:text-white',
+        'sm:min-h-[calc(100vh-4rem-8rem)]',
+      )}
+    >
       {children}
     </main>
   </>

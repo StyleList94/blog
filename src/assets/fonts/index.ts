@@ -1,4 +1,4 @@
-import { Noto_Serif_KR, Roboto_Mono } from 'next/font/google';
+import { Noto_Serif_KR, Roboto_Mono, Titillium_Web } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const pretendard = localFont({
@@ -29,5 +29,13 @@ export const robotoMono = Roboto_Mono({
   display: 'swap',
   variable: '--font-roboto-mono',
   style: ['normal', 'italic'],
+  weight: ['400', '700'],
+});
+
+export const titilliumWeb = Titillium_Web({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-titillium-web',
+  style: ['normal'],
   weight: ['400'],
 });

@@ -10,6 +10,7 @@ const config = {
         sans: ['var(--font-pretendard)'],
         serif: ['var(--font-noto-serif)'],
         mono: ['var(--font-roboto-mono)'],
+        display: ['var(--font-titillium-web)'],
       },
       colors: colors,
     },

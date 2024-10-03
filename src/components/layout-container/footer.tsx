@@ -1,53 +1,43 @@
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { useTheme } from 'next-themes';
-
 import { cn } from '@/lib/utils';
 
-const Footer = () => {
-  const [mounted, setMounted] = useState(false);
-  const { setTheme, resolvedTheme } = useTheme();
+import ThemeControlButton from '@/components/theme-control-button';
 
-  const isDarkTheme = resolvedTheme === 'dark';
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  return (
-    <footer className="flex flex-col justify-center items-center mx-auto my-8">
-      <a
-        href="https://github.com/StyleList94"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src={`/images/icon-github${isDarkTheme ? '-light' : ''}.png`}
-          alt="github"
-          width={24}
-          height={24}
-        />
-      </a>
-      <div className="mt-3">
-        <button
-          type="button"
-          className={cn(
-            'outline-none border-0 bg-transparent text-xs cursor-pointer',
-            'hover:opacity-80 hover:underline',
-          )}
-          onClick={() => {
-            setTheme(isDarkTheme ? 'light' : 'dark');
-          }}
+const Footer = () => (
+  <footer className="flex flex-col gap-6 w-full max-w-[96rem] mx-auto px-6 py-8">
+    <div
+      className={cn(
+        'flex flex-col gap-3',
+        'sm:flex-row sm:justify-between sm:gap-4',
+      )}
+    >
+      <div className="flex items-center gap-4">
+        <a
+          href="https://github.com/StyleList94/blog"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm"
         >
-          {isDarkTheme ? 'Light Theme' : 'Dark Theme'}
-        </button>
+          Github
+        </a>
       </div>
-    </footer>
-  );
-};
+      <div>
+        <ThemeControlButton />
+      </div>
+    </div>
+    <div>
+      <p className="text-xs text-neutral-500 dark:text-neutral-400">
+        © 2024.{' '}
+        <a
+          href="https://github.com/StyleList94"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          StyleList94
+        </a>{' '}
+        All rights reserved
+      </p>
+    </div>
+  </footer>
+);
 
 export default Footer;

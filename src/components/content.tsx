@@ -9,33 +9,31 @@ import type { ExtraProps } from 'react-markdown';
 const commonStyle = 'transition ease-in-out duration-200 leading-normal';
 
 const H1 = ({ children }: PropsWithChildren) => (
-  <h1 className={cn(commonStyle, 'text-3xl my-5 font-bold')}>{children}</h1>
+  <h1 className={cn(commonStyle, 'text-3xl py-6 font-bold')}>{children}</h1>
 );
 
 const H2 = ({ children }: PropsWithChildren) => (
-  <h2 className={cn(commonStyle, 'text-2xl my-[1.125rem] font-bold')}>
-    {children}
-  </h2>
+  <h2 className={cn(commonStyle, 'text-2xl py-5 font-bold')}>{children}</h2>
 );
 
 const H3 = ({ children }: PropsWithChildren) => (
-  <h3 className={cn(commonStyle, 'text-xl my-4 font-bold')}>{children}</h3>
+  <h3 className={cn(commonStyle, 'text-xl py-4 font-bold')}>{children}</h3>
 );
 
 const H4 = ({ children }: PropsWithChildren) => (
-  <h4 className={cn(commonStyle, 'my-3.5 font-bold')}>{children}</h4>
+  <h4 className={cn(commonStyle, 'py-3.5 font-bold')}>{children}</h4>
 );
 
 const H5 = ({ children }: PropsWithChildren) => (
-  <h5 className={cn(commonStyle, 'text-sm my-3 font-bold')}>{children}</h5>
+  <h5 className={cn(commonStyle, 'text-sm py-3 font-bold')}>{children}</h5>
 );
 
 const H6 = ({ children }: PropsWithChildren) => (
-  <h6 className={cn(commonStyle, 'text-xs my-2.5 font-bold')}>{children}</h6>
+  <h6 className={cn(commonStyle, 'text-xs py-2.5 font-bold')}>{children}</h6>
 );
 
 const Text = ({ children }: PropsWithChildren) => (
-  <p className={cn(commonStyle)}>{children}</p>
+  <p className={cn(commonStyle, 'py-4')}>{children}</p>
 );
 
 const ListItem = ({ children }: PropsWithChildren) => (
@@ -46,7 +44,7 @@ const HR = () => (
   <hr
     className={cn(
       commonStyle,
-      'border border-gray-200 dark:border-gray-600 my-5 ',
+      'border-0 rounded-md w-full h-px py-5 bg-neutral-600/10 dark:bg-neutral-400/20',
     )}
   />
 );

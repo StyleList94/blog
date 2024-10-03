@@ -41,13 +41,15 @@ const components: Partial<Components> = {
 };
 
 const PostBody = ({ content }: Props) => (
-  <ReactMarkdown
-    components={components}
-    remarkPlugins={[remarkGfm]}
-    rehypePlugins={[rehypeRaw]}
-  >
-    {content}
-  </ReactMarkdown>
+  <div className="p-4">
+    <ReactMarkdown
+      components={components}
+      remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
+    >
+      {content}
+    </ReactMarkdown>
+  </div>
 );
 
 export default PostBody;

@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { render, screen } from '@testing-library/react';
 import { format } from 'date-fns';
 
-import PostItem from './post-item';
+import PostCard from '@/components/post-card';
 
 const props = {
   slug: 'so-lovely-code',
@@ -23,9 +23,9 @@ afterEach(() => {
   Router.events.off('routeChangeStart', routerChangeStart);
 });
 
-describe('PostItem', () => {
+describe('PostCard', () => {
   it('should be render', () => {
-    render(<PostItem {...props} />);
+    render(<PostCard {...props} />);
 
     expect(
       screen.getByRole('link', { name: /SO Lovely CODE!/ }),

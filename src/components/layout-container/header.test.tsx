@@ -8,7 +8,7 @@ describe('Header', () => {
   it('should be render', () => {
     render(<Header />);
 
-    expect(screen.getByText('StyleList94')).toBeInTheDocument();
-    expect(screen.getByText('Stylish Diary')).toBeInTheDocument();
+    expect(screen.getByText('STYLISH')).toBeInTheDocument();
+    expect(screen.getByText('.LOG')).toBeInTheDocument();
   });
 });
