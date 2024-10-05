@@ -12,7 +12,7 @@ const config = {
         mono: ['var(--font-roboto-mono)'],
         display: ['var(--font-titillium-web)'],
       },
-      colors: colors,
+      colors,
     },
   },
   darkMode: 'class',
