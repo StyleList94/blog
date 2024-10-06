@@ -1,5 +1,8 @@
 import type { MetadataRoute } from 'next';
-import { getAllPosts } from '@/lib/services/api/post';
+
+import { postList } from '@/lib/post';
+
+export const runtime = 'edge';
 
 export async function generateSitemaps() {
   return [{ id: 0 }];
@@ -13,13 +16,11 @@ export default async function sitemap({
   const start = id * 50000;
   const end = start + 50000;
 
-  const posts = getAllPosts();
-
   return new Promise((resolve) => {
     resolve(
-      posts.slice(start, end).map((post) => ({
+      postList.slice(start, end).map((post) => ({
         url: `https://blog.stylelist94.dev/post/${post.slug}`,
-        lastModified: post.date,
+        lastModified: new Date(post.date),
       })),
     );
   });
