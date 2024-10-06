@@ -9,9 +9,13 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
-    "prepare": "husky"
+    "prepare": "husky",
+    "pages:build": "@cloudflare/next-on-pages",
+    "preview": "pnpm exec pages:build && wrangler pages dev",
+    "deploy": "pnpm exec pages:build && wrangler pages deploy"
   },
   "dependencies": {
+    "@cloudflare/next-on-pages": "^1.13.5",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
