@@ -10,9 +10,9 @@
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
     "prepare": "husky",
-    "pages:build": "@cloudflare/next-on-pages",
-    "preview": "pages:build && wrangler pages dev",
-    "deploy": "pages:build && wrangler pages deploy"
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "pnpm exec pages:build && wrangler pages dev",
+    "deploy": "pnpm exec pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "clsx": "^2.1.1",
