@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@cloudflare/next-on-pages':
-        specifier: ^1.13.5
-        version: 1.13.5(vercel@37.6.1)(wrangler@3.80.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -51,6 +48,9 @@ importers:
         specifier: ^2.5.2
         version: 2.5.2
     devDependencies:
+      '@cloudflare/next-on-pages':
+        specifier: ^1.13.5
+        version: 1.13.5(vercel@37.6.1)(wrangler@3.80.0)
       '@next/eslint-plugin-next':
         specifier: ^14.2.13
         version: 14.2.13

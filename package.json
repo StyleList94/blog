@@ -11,11 +11,10 @@
     "test:ui": "vitest --ui",
     "prepare": "husky",
     "pages:build": "@cloudflare/next-on-pages",
-    "preview": "pnpm exec pages:build && wrangler pages dev",
-    "deploy": "pnpm exec pages:build && wrangler pages deploy"
+    "preview": "pages:build && wrangler pages dev",
+    "deploy": "pages:build && wrangler pages deploy"
   },
   "dependencies": {
-    "@cloudflare/next-on-pages": "^1.13.5",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
@@ -31,6 +30,7 @@
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.5",
     "@next/eslint-plugin-next": "^14.2.13",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.5.0",
