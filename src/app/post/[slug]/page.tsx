@@ -1,4 +1,7 @@
-import metadataContext from '@/lib/metadata-context';
+import { redirect } from 'next/navigation';
+import { BlogPosting, WithContext } from 'schema-dts';
+
+import { metadataContext } from '@/lib/metadata';
 import { getAllPosts, getPostBySlug } from '@/lib/services/api/post';
 
 import type { Metadata } from 'next';
@@ -38,8 +41,25 @@ export async function generateStaticParams() {
 export default async function PostContentPage({ params }: Props) {
   const post: Post = getPostBySlug(params.slug);
 
+  if (post.slug === '404') {
+    redirect(`/404`);
+  }
+
+  const jsonLd: WithContext<BlogPosting> = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    dateCreated: post.date,
+    description: post.description,
+  };
+
   return (
     <LayoutContainer>
+      <script
+        type="application/ld+json"
+        /* eslint-disable-next-line react/no-danger */
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PostHeader
         title={post.title}
         description={post.description}

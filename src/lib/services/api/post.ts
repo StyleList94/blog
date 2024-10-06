@@ -15,23 +15,37 @@ export function getPostSlugs() {
 export function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, '');
   const path = join(postDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(path, 'utf8');
+  try {
+    const fileContents = fs.readFileSync(path, 'utf8');
 
-  const { data, content } = matter(fileContents);
+    const { data, content } = matter(fileContents);
 
-  const { title, description, date, coverImage, ogImage } = data as Post;
+    const { title, description, date, coverImage, ogImage } = data as Post;
 
-  const items: Post = {
-    slug: realSlug,
-    title,
-    description,
-    date,
-    coverImage,
-    ogImage,
-    content,
-  };
+    const items: Post = {
+      slug: realSlug,
+      title,
+      description,
+      date,
+      coverImage,
+      ogImage,
+      content,
+    };
 
-  return items;
+    return items;
+  } catch {
+    const notFound: Post = {
+      slug: '404',
+      title: '404',
+      description: '404',
+      date: new Date().toISOString(),
+      coverImage: '404',
+      ogImage: '404',
+      content: '404',
+    };
+
+    return notFound;
+  }
 }
 
 export function getAllPosts() {
