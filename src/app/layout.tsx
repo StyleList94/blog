@@ -12,6 +12,7 @@ import type { Metadata, Viewport } from 'next';
 import AppProvider from '@/components/providers';
 
 import '@/styles/global.css';
+import RouteProgressBar from '@/components/route-progress-bar';
 
 export const metadata: Metadata = {
   title: metadataContext.title,
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body>
         <AppProvider>{children}</AppProvider>
+        <RouteProgressBar />
       </body>
     </html>
   );
