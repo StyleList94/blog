@@ -17,7 +17,7 @@ const MainContent = ({ children }: Props) => (
     />
     <main
       className={cn(
-        'max-w-[96rem] min-h-[calc(100vh-4rem-10rem)] mx-auto my-0 p-6 text-gray-950 text-black dark:text-white',
+        'max-w-[96rem] min-h-[calc(100vh-4rem-10rem)] mx-auto my-0 p-6 text-black dark:text-white',
         'sm:min-h-[calc(100vh-4rem-8rem)]',
       )}
     >
