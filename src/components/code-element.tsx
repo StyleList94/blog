@@ -26,11 +26,24 @@ const CodeElement = (
 
   const highlighterStyle = resolvedTheme === 'dark' ? oneDark : oneLight;
 
-  if (!mounted) {
-    return null;
+  if (!match) {
+    return (
+      <code
+        {...rest}
+        className={cn(
+          className,
+          'px-1 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800',
+          'font-mono',
+        )}
+      >
+        {children}
+      </code>
+    );
   }
 
-  return match ? (
+  return !mounted ? (
+    <div className="animate-pulse w-full h-48 my-2 bg-neutral-100 dark:bg-gray-700/50 rounded-lg" />
+  ) : (
     <SyntaxHighlighter
       PreTag="div"
       language={match[1]}
@@ -39,17 +52,6 @@ const CodeElement = (
     >
       {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
-  ) : (
-    <code
-      {...rest}
-      className={cn(
-        className,
-        'px-1 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800',
-        'font-mono',
-      )}
-    >
-      {children}
-    </code>
   );
 };
 
