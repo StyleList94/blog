@@ -44,6 +44,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html
       lang="ko"
       className={`${pretendard.variable} ${robotoMono.variable} ${notoSerif.variable} ${titilliumWeb.variable}`}
+      suppressHydrationWarning
     >
       <body>
         <AppProvider>{children}</AppProvider>

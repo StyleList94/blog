@@ -1,0 +1,11 @@
+.contains-task-list {
+    @apply py-4
+}
+
+.contains-task-list > li + li {
+    @apply py-2
+}
+
+.contains-task-list > li  {
+    @apply flex gap-2;
+}
