@@ -1,22 +1,13 @@
 'use client';
 
-import { useTheme } from 'next-themes';
-
 import useMounted from '@/hooks/use-mounted';
+import useThemeControl from '@/hooks/use-theme-control';
 import { cn } from '@/lib/utils';
 
 const ThemeControlSwitch = () => {
   const mounted = useMounted();
 
-  const { theme, setTheme, resolvedTheme, systemTheme } = useTheme();
-
-  const isDarkTheme = resolvedTheme === 'dark';
-
-  const toggleTheme = () => {
-    const targetTheme = systemTheme === 'dark' ? 'light' : 'dark';
-
-    setTheme(theme === 'system' ? targetTheme : 'system');
-  };
+  const { isDarkTheme, toggleTheme } = useThemeControl();
 
   if (!mounted) {
     return null;
