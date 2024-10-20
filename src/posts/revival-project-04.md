@@ -1,7 +1,7 @@
 ---
 title: 남은 건 이제 의지뿐...
 description: 블로그 리바이벌 프로젝트 - 4장
-date: '2024-10-20T03:11:00.000Z'
+date: '2024-10-20T05:30:00.000Z'
 coverImage: /assets/images/cover.png
 ogImage: /assets/images/cover.png
 ---
@@ -114,6 +114,34 @@ SyntaxHighlighter.registerLanguage('jsx', bash);
 ```
 
 나중에 다른 코드 하이라이터가 필요하면 여기서 확장하면 될 것 같다.
+
+이렇게하면 페이지 사이즈도 확실하게 줄어드는 것을 확인했다!
+```bash
+# Next.js build Logs
+
+# before
+...
+Route (app)                              Size     First Load JS
+┌ ○ /                                    1.14 kB         104 kB
+├ ○ /_not-found                          138 B          87.5 kB
+├ ○ /apple-icon.png                      0 B                0 B
+├ ○ /icon.png                            0 B                0 B
+├ ○ /opengraph-image.png                 0 B                0 B
+├ ● /post/[slug]                         244 kB          347 kB
+...
+
+# after
+...
+Route (app)                              Size     First Load JS
+┌ ○ /                                    1.17 kB         104 kB
+├ ○ /_not-found                          138 B          87.3 kB
+├ ○ /apple-icon.png                      0 B                0 B
+├ ○ /icon.png                            0 B                0 B
+├ ○ /opengraph-image.png                 0 B                0 B
+├ ● /post/[slug]                         24.9 kB         128 kB
+...
+```
+##### `/post/[slug]` 페이지 사이즈가 거의 90% 줄었음을 확인할 수 있었다!
 
 ## 준비는 모두 끝난듯
 
