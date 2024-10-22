@@ -4,6 +4,8 @@ export const postList = [
   { slug: 'revival-project-01', date: '2024-10-01T14:25:00.000Z' },
   { slug: 'revival-project-02', date: '2024-10-05T15:40:00.000Z' },
   { slug: 'revival-project-03', date: '2024-10-11T15:11:00.000Z' },
+  { slug: 'revival-project-04', date: '2024-10-20T05:30:00.000Z' },
+  { slug: 'revival-project-epilogue', date: '2024-10-22T13:08:00.000Z' },
 ];
 
 // eslint-disable-next-line import/no-anonymous-default-export
