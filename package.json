@@ -9,10 +9,7 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
-    "prepare": "husky",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "pnpm exec pages:build && wrangler pages dev",
-    "deploy": "pnpm exec pages:build && wrangler pages deploy"
+    "prepare": "husky"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -31,7 +28,6 @@
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.5",
     "@next/eslint-plugin-next": "^14.2.13",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.5.0",
