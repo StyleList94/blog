@@ -1,22 +1,21 @@
-import fs from 'fs';
-import { join } from 'path';
+import fs from 'node:fs/promises';
+import { join } from 'node:path';
 import matter from 'gray-matter';
+
 import type { Post } from '@/types/post';
 
 const postDirectory = join(process.cwd(), 'src/posts');
 
-export function getPostSlugs() {
-  const list = fs.readdirSync(postDirectory);
-  const filteredList = list.filter((filename) => filename.endsWith('.md'));
-
-  return filteredList;
+export async function getPostSlugs() {
+  const list = await fs.readdir(postDirectory);
+  return list.filter((filename) => filename.endsWith('.md'));
 }
 
-export function getPostBySlug(slug: string) {
+export async function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, '');
   const path = join(postDirectory, `${realSlug}.md`);
   try {
-    const fileContents = fs.readFileSync(path, 'utf8');
+    const fileContents = await fs.readFile(path, 'utf8');
 
     const { data, content } = matter(fileContents);
 
@@ -48,10 +47,9 @@ export function getPostBySlug(slug: string) {
   }
 }
 
-export function getAllPosts() {
-  const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-  return posts;
+export async function getAllPosts() {
+  const slugs = await getPostSlugs();
+  const posts = await Promise.all(slugs.map((slug) => getPostBySlug(slug)));
+
+  return posts.sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 }

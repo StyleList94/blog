@@ -16,7 +16,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post: Post = getPostBySlug(params.slug);
+  const post: Post = await getPostBySlug(params.slug);
 
   const title = `${post.title} :: ${metadataContext.title}`;
   const { description } = post;
@@ -32,14 +32,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
 export default async function PostContentPage({ params }: Props) {
-  const post: Post = getPostBySlug(params.slug);
+  const post: Post = await getPostBySlug(params.slug);
 
   if (post.slug === '404') {
     redirect(`/404`);

@@ -7,7 +7,7 @@ import PostCard from '@/components/post-card';
 import LayoutContainer from '@/components/layout-container';
 
 export default async function MainPage() {
-  const postList: Omit<Post, 'content'>[] = getAllPosts();
+  const postList: Omit<Post, 'content'>[] = await getAllPosts();
 
   return (
     <LayoutContainer>
