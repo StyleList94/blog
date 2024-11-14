@@ -6,6 +6,7 @@ export const postList = [
   { slug: 'revival-project-03', date: '2024-10-11T15:11:00.000Z' },
   { slug: 'revival-project-04', date: '2024-10-20T05:30:00.000Z' },
   { slug: 'revival-project-epilogue', date: '2024-10-22T13:08:00.000Z' },
+  { slug: 'nextjs-15-changelog', date: '2024-11-14T11:45:00.000Z' },
 ];
 
 // eslint-disable-next-line import/no-anonymous-default-export
