@@ -12,11 +12,12 @@ import PostHeader from '@/components/post-header';
 import PostBody from '@/components/post-body';
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post: Post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post: Post = await getPostBySlug(slug);
 
   const title = `${post.title} :: ${metadataContext.title}`;
   const { description } = post;
@@ -39,7 +40,8 @@ export async function generateStaticParams() {
 }
 
 export default async function PostContentPage({ params }: Props) {
-  const post: Post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post: Post = await getPostBySlug(slug);
 
   if (post.slug === '404') {
     redirect(`/404`);

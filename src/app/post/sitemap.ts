@@ -2,8 +2,6 @@ import type { MetadataRoute } from 'next';
 
 import { postList } from '@/lib/post';
 
-export const runtime = 'edge';
-
 export async function generateSitemaps() {
   return [{ id: 0 }];
 }

@@ -8,6 +8,9 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {}
     }
   },
   "parser": "@typescript-eslint/parser",
@@ -19,7 +22,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "ignorePatterns": ["*.config.[jt]s", "*.config.mjs"],
+  "ignorePatterns": ["*.config.[jt]s", "*.config.m[jt]s"],
   "plugins": ["@typescript-eslint", "testing-library"],
   "extends": [
     "eslint:recommended",
@@ -29,7 +32,7 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
-    "next/core-web-vitals",
+    "plugin:@next/next/recommended",
     "prettier"
   ],
   "overrides": [
@@ -57,6 +60,16 @@
       "error",
       {
         "treatUndefinedAsUnspecified": false
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
       }
     ],
     "import/no-extraneous-dependencies": [

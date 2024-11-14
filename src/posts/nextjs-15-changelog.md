@@ -19,6 +19,16 @@ fetch 요청, GET 라우트 핸들러, 클라이언트 라우터 캐시가 기�
 
 기본값이 `no-store`로 설정, 캐싱이 필요한 경우 `force-cache` 옵션을 사용하면 된다고 한다.
 
+## 동적 API들의 비동기화
+
+pages 컴포넌트, layouts 컴포넌트 metadata API, route handler 의 `params` , `searchParams` props가 이제 비동기로 동작한다.
+
+`next/headers`의 `cookies()`, `draftMode()`, `headers()` 들도 마찬가지로 이제 비동기로 동작한다.
+
+적용 안한다고 동작을 아예 안하는건 아니지만. 터미널에서 바꾸라고 재촉할 것이다.
+
+마이그레이션할 때 애먹겠네...
+
 ## React 19
 
 React 19를 지원한다.
