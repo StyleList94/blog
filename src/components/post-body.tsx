@@ -3,6 +3,8 @@ import ReactMarkdown, {
 } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import rehypeSlug from 'rehype-slug';
+import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 
@@ -23,12 +25,18 @@ const components: Partial<MarkdownElement> = {
     </h1>
   ),
   h2: ({ children, node, ...props }) => (
-    <h2 className={cn(commonStyle, 'text-2xl py-7 font-bold')} {...props}>
+    <h2
+      className={cn(commonStyle, 'text-2xl py-7 font-bold', 'scroll-mt-16')}
+      {...props}
+    >
       {children}
     </h2>
   ),
   h3: ({ children, node, ...props }) => (
-    <h3 className={cn(commonStyle, 'text-xl py-6 font-bold')} {...props}>
+    <h3
+      className={cn(commonStyle, 'text-xl py-6 font-bold', 'scroll-mt-16')}
+      {...props}
+    >
       {children}
     </h3>
   ),
@@ -120,20 +128,37 @@ const components: Partial<MarkdownElement> = {
     </td>
   ),
 
-  a: ({ children, node, ...props }) => (
-    <a
-      className={cn(
-        'transition ease-in-out duration-200 leading-normal',
-        'text-blue-500',
-        'hover:text-blue-600 hover:underline',
-      )}
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    >
-      {children}
-    </a>
-  ),
+  a: ({ href, children, node, ...props }) => {
+    const isInternal =
+      (href as string).startsWith('/') || (href as string).startsWith('#');
+    return isInternal ? (
+      <Link
+        href={href as string}
+        className={cn(
+          'transition ease-in-out duration-200 leading-normal',
+          'text-blue-500',
+          'hover:text-blue-600 hover:underline',
+        )}
+        {...props}
+      >
+        {children}
+      </Link>
+    ) : (
+      <a
+        href={href as string}
+        className={cn(
+          'transition ease-in-out duration-200 leading-normal',
+          'text-blue-500',
+          'hover:text-blue-600 hover:underline',
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  },
   code: CodeElement,
 };
 
@@ -142,7 +167,7 @@ const PostBody = ({ content }: Props) => (
     <ReactMarkdown
       components={components}
       remarkPlugins={[remarkGfm]}
-      rehypePlugins={[rehypeRaw]}
+      rehypePlugins={[rehypeRaw, rehypeSlug]}
     >
       {content}
     </ReactMarkdown>

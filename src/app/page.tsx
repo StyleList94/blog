@@ -4,7 +4,7 @@ import { getAllPosts } from '@/lib/services/api/post';
 import type { Post } from '@/types/post';
 
 import PostCard from '@/components/post-card';
-import LayoutContainer from '@/components/layout-container';
+import LayoutContainer from '@/components/layout/container';
 
 export default async function MainPage() {
   const postList: Omit<Post, 'content'>[] = await getAllPosts();

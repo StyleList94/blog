@@ -7,9 +7,11 @@ import { getAllPosts, getPostBySlug } from '@/lib/services/api/post';
 import type { Metadata } from 'next';
 import type { Post } from '@/types/post';
 
-import LayoutContainer from '@/components/layout-container';
+import LayoutContainer from '@/components/layout/container';
 import PostHeader from '@/components/post-header';
 import PostBody from '@/components/post-body';
+import { generateTOC } from '@/lib/post';
+import PostTableOfContents from '@/components/post-table-of-contents';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -47,6 +49,8 @@ export default async function PostContentPage({ params }: Props) {
     redirect(`/404`);
   }
 
+  const tocList = generateTOC(post.content);
+
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -62,12 +66,19 @@ export default async function PostContentPage({ params }: Props) {
         /* eslint-disable-next-line react/no-danger */
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <PostHeader
-        title={post.title}
-        description={post.description}
-        date={post.date}
-      />
-      <PostBody content={post.content} />
+      <div className="flex items-start">
+        <div className="flex flex-col w-full">
+          <PostHeader
+            title={post.title}
+            description={post.description}
+            date={post.date}
+          />
+          <PostBody content={post.content} />
+        </div>
+        <div className="sticky top-[calc(4rem+1.5rem)] hidden lg:flex flex-grow-0 flex-shrink-0 basis-64 pl-6">
+          <PostTableOfContents items={tocList} />
+        </div>
+      </div>
     </LayoutContainer>
   );
 }

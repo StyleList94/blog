@@ -1,4 +1,4 @@
-import { cn, sleep } from '@/lib/utils';
+import { cn, sleep } from '../utils';
 
 describe('utils', () => {
   describe('cn utility function', () => {

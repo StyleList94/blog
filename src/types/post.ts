@@ -7,3 +7,9 @@ export type Post = {
   ogImage: string;
   content: string;
 };
+
+export type TableOfContents = {
+  content: string;
+  slug: string;
+  children: TableOfContents[];
+};

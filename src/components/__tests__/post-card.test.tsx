@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { render, screen } from '@testing-library/react';
 import { format } from 'date-fns';
 
-import PostCard from '@/components/post-card';
+import PostCard from '../post-card';
 
 const props = {
   slug: 'so-lovely-code',
