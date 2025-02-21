@@ -15,6 +15,7 @@ import '@/styles/global.css';
 import RouteProgressBar from '@/components/route-progress-bar';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://blog.stylelist94.dev'),
   title: metadataContext.title,
   description: metadataContext.description,
   keywords: ['블로그', 'Blog', '기술 블로그', 'Tech Blog'],
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     description: metadataContext.description,
     type: 'website',
     siteName: metadataContext.siteName,
-    url: metadataContext.url,
+    url: '/',
   },
   twitter: {
     card: 'summary_large_image',
