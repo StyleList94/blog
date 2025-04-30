@@ -43,7 +43,7 @@ const CodeElement = (
         {...rest}
         className={cn(
           className,
-          'px-1 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800',
+          'px-1 py-0.5 rounded-sm bg-neutral-100 dark:bg-neutral-800',
           'font-mono',
         )}
       >

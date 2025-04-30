@@ -1,3 +1,5 @@
+@reference "tailwindcss";
+
 .contains-task-list {
     @apply py-4
 }

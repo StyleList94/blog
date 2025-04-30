@@ -12,7 +12,7 @@ const Header = () => {
       <header
         className={cn(
           'fixed top-0 left-0 flex w-full h-14 z-10',
-          'border-b border-b-gray-200/80 dark:border-b-gray-700/80',
+          'border-b border-b-neutral-200/80 dark:border-b-neutral-700/80',
           'bg-white dark:bg-neutral-900',
           'transition ease-in-out duration-200',
         )}

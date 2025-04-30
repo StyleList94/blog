@@ -26,7 +26,7 @@ const components: Partial<MarkdownElement> = {
         'text-4xl font-extrabold',
         'mt-12 mb-8',
         'leading-tight',
-        'bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400',
+        'bg-linear-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400',
         'bg-clip-text text-transparent',
       )}
       {...props}
@@ -139,7 +139,7 @@ const components: Partial<MarkdownElement> = {
           commonStyle,
           'border-collapse w-full',
           'bg-white dark:bg-neutral-900',
-          'shadow-sm rounded-lg overflow-hidden',
+          'shadow-xs rounded-lg overflow-hidden',
         )}
         {...props}
       >

@@ -1,5 +1,13 @@
-@import 'normalize.css';
+@import 'tailwindcss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-pretendard);
+  --font-serif: var(--font-noto-serif);
+  --font-mono: var(--font-roboto-mono);
+  --font-display: var(--font-titillium-web);
+
+  --color-white: #ffffff;
+  --color-black: rgba(10, 10, 10, 100);
+}

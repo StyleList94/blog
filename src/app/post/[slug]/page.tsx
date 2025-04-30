@@ -81,7 +81,7 @@ export default async function PostContentPage({ params }: Props) {
           />
           <PostBody content={post.content} />
         </div>
-        <div className="sticky top-[calc(4rem+1.5rem)] hidden lg:flex flex-grow-0 flex-shrink-0 basis-64 pl-6">
+        <div className="sticky top-[calc(4rem+1.5rem)] hidden lg:flex grow-0 shrink-0 basis-64 pl-6">
           <PostTableOfContents items={tocList} />
         </div>
       </div>

@@ -10,9 +10,9 @@ import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 
 import AppProvider from '@/components/providers';
+import RouteProgressBar from '@/components/route-progress-bar';
 
 import '@/styles/global.css';
-import RouteProgressBar from '@/components/route-progress-bar';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://blog.stylelist94.dev'),
