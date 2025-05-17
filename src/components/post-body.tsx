@@ -12,6 +12,8 @@ import CodeElement from '@/components/code-element';
 
 import '@/styles/post-body.css';
 
+import ScrollLinked from '@/components/scroll-linked';
+
 type Props = {
   content: string;
 };
@@ -225,13 +227,15 @@ const components: Partial<MarkdownElement> = {
 
 const PostBody = ({ content }: Props) => (
   <div className="p-4">
-    <ReactMarkdown
-      components={components}
-      remarkPlugins={[remarkGfm]}
-      rehypePlugins={[rehypeRaw, rehypeSlug]}
-    >
-      {content}
-    </ReactMarkdown>
+    <ScrollLinked>
+      <ReactMarkdown
+        components={components}
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw, rehypeSlug]}
+      >
+        {content}
+      </ReactMarkdown>
+    </ScrollLinked>
   </div>
 );
 
