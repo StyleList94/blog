@@ -9,7 +9,7 @@ import { metadataContext } from '@/lib/metadata';
 import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 
-import AppProvider from '@/components/providers';
+import AppProvider from '@/providers/app-provider';
 import RouteProgressBar from '@/components/route-progress-bar';
 
 import '@/styles/global.css';
