@@ -1,7 +1,8 @@
 import { cn } from '@/lib/utils';
+import { footerContainerStyle } from '@stylelist94/nine-beauty-actress/styles';
 
 const Footer = () => (
-  <footer className="flex flex-col gap-6 w-full max-w-[96rem] mx-auto px-6 py-8">
+  <footer className={cn(footerContainerStyle, 'max-w-[64rem]')}>
     <div
       className={cn(
         'flex flex-col gap-3',

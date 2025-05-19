@@ -25,7 +25,6 @@ export default async function MainPage() {
             ))}
           </div>
         </div>
-        <div className="flex flex-1" />
       </div>
     </LayoutContainer>
   );

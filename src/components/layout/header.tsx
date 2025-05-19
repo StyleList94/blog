@@ -1,4 +1,8 @@
 import Link from 'next/link';
+import {
+  headerContainerStyle,
+  headerContentBoxStyle,
+} from '@stylelist94/nine-beauty-actress/styles';
 
 import { cn } from '@/lib/utils';
 
@@ -9,22 +13,9 @@ const Header = () => {
 
   return (
     <>
-      <header
-        className={cn(
-          'fixed top-0 left-0 flex w-full h-14 z-10',
-          'border-b border-b-neutral-200/80 dark:border-b-neutral-700/80',
-          'bg-white dark:bg-neutral-900',
-          'transition ease-in-out duration-200',
-        )}
-      >
-        <div
-          className={cn(
-            'flex items-center justify-between w-full 2xl:max-w-[96rem]',
-            'px-6 py-3',
-            'mx-auto',
-          )}
-        >
-          <div className="select-none">
+      <header className={headerContainerStyle}>
+        <div className={cn(headerContentBoxStyle, 'lg:max-w-[64rem]')}>
+          <div className="flex justify-between w-full select-none">
             {isHangulDay ? (
               <Link
                 href="/"
@@ -40,7 +31,7 @@ const Header = () => {
                 href="/"
                 className="flex items-end gap-0.5 font-display text-xl tracking-wide"
               >
-                STYLISH
+                Stylish
                 <span className="text-sm leading-relaxed tracking-wider">
                   .LOG
                 </span>
@@ -51,7 +42,7 @@ const Header = () => {
           <ThemeControlSwitch />
         </div>
       </header>
-      <div className="h-14" />
+      <div className="mt-14" />
     </>
   );
 };

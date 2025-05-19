@@ -1,5 +1,6 @@
 @import 'tailwindcss';
-@source '../../node_modules/@stylelist94/nine-beauty-actress/**/*.{ts,tsx}';
+
+@source '../../node_modules/@stylelist94/nine-beauty-actress';
 
 @custom-variant dark (&:is(.dark *));
 

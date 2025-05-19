@@ -1,4 +1,8 @@
 import { type ReactNode } from 'react';
+import {
+  backdropStyle,
+  mainContainerStyle,
+} from '@stylelist94/nine-beauty-actress/styles';
 
 import { cn } from '@/lib/utils';
 
@@ -8,19 +12,8 @@ type Props = {
 
 const BodyContainer = ({ children }: Props) => (
   <>
-    <div
-      className={cn(
-        'fixed inset-0 z-[-1]',
-        'transition ease-in-out duration-200',
-        'bg-white dark:bg-neutral-900',
-      )}
-    />
-    <main
-      className={cn(
-        'relative max-w-[96rem] min-h-[calc(100vh-4rem-10rem)] mx-auto my-0 p-6 text-black dark:text-white',
-        'sm:min-h-[calc(100vh-4rem-8rem)]',
-      )}
-    >
+    <div className={backdropStyle} />
+    <main className={cn(mainContainerStyle, 'relative max-w-[64rem]')}>
       {children}
     </main>
   </>
