@@ -10,7 +10,6 @@ import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 
 import AppProvider from '@/providers/app-provider';
-import RouteProgressBar from '@/components/route-progress-bar';
 
 import '@/styles/global.css';
 
@@ -49,7 +48,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body>
         <AppProvider>{children}</AppProvider>
-        <RouteProgressBar />
       </body>
     </html>
   );
