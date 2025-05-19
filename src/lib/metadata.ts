@@ -1,7 +1,7 @@
 export const metadataContext = {
-  title: 'STYLISH.LOG',
+  title: 'Stylish.LOG',
   description: '첫경험 위주로 끄적여봅니다.',
-  siteName: 'STYLISH.LOG',
+  siteName: 'Stylish.LOG',
   url: 'https://blog.stylelist94.dev',
   ogImage: 'https://blog.stylelist94.dev/og-image.png',
 };
