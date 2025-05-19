@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 
-import Footer from './footer';
 import Header from './header';
-import BodyContainer from './body-container';
+import MainContainer from './main-container';
+import Footer from './footer';
 
 type Props = {
   children: ReactNode;
@@ -11,7 +11,7 @@ type Props = {
 const LayoutContainer = ({ children }: Props) => (
   <>
     <Header />
-    <BodyContainer>{children}</BodyContainer>
+    <MainContainer>{children}</MainContainer>
     <Footer />
   </>
 );

@@ -2,14 +2,14 @@ import '@testing-library/jest-dom';
 
 import { render, screen } from '@testing-library/react';
 
-import BodyContainer from '../body-container';
+import MainContainer from '../main-container';
 
-describe('BodyContainer', () => {
+describe('MainContainer', () => {
   it('should be rendered', () => {
     render(
-      <BodyContainer>
+      <MainContainer>
         <p>Body Shot</p>
-      </BodyContainer>,
+      </MainContainer>,
     );
 
     expect(screen.getByText(/Body Shot/)).toBeInTheDocument();

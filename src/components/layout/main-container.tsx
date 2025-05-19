@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode;
 };
 
-const BodyContainer = ({ children }: Props) => (
+const MainContainer = ({ children }: Props) => (
   <>
     <div className={backdropStyle} />
     <main className={cn(mainContainerStyle, 'relative max-w-[64rem]')}>
@@ -19,4 +19,4 @@ const BodyContainer = ({ children }: Props) => (
   </>
 );
 
-export default BodyContainer;
+export default MainContainer;
