@@ -197,7 +197,7 @@ pnpm add react@^18 react-dom@^18
 }
 ```
 
-### 단위 테스팅 교체
+## 단위 테스팅 교체
 
 Jest도 좋지만 [Vitest는 더 좋다](/post/review-2024#%EC%98%AC%ED%95%B4%EC%9D%98-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%8F%84%EA%B5%AC).
 
@@ -573,7 +573,7 @@ Storybook을 구동시켜서 원하는대로 적용되었는지 확인하면...
 
 `.storybook/preview-head.html`에 웹폰트를 추가하면 스토리에 적용된다.
 
-## 스토리에도 다크모드 적용
+### 스토리에도 다크모드 적용
 
 `@storybook/theming`으로 구성한 라이트/다크 테마는 스토리 컴포넌트에는 적용되지 않는다.
 
