@@ -13,7 +13,7 @@ export default function NotFound() {
 
       <div className="flex flex-col gap-2 select-none">
         <p className="flex items-end gap-0.5 font-display text-xl tracking-wide">
-          STYLISH
+          Stylish
           <span className="text-sm leading-relaxed tracking-wider">.LOG</span>
         </p>
       </div>

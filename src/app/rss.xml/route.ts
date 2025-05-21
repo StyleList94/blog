@@ -15,7 +15,7 @@ export async function GET() {
 <rss version="2.0">
  
 <channel>
-  <title>STYLISH.LOG</title>
+  <title>Stylish.LOG</title>
   <link>https://blog.stylelist94.dev</link>
   <description>첫경험 위주로 끄적여봅니다.</description>
   ${latelyPostList
