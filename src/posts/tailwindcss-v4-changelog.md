@@ -1,5 +1,5 @@
 ---
-title: 이제 tailwindcss를 사옹하지 않을 이유가 없다.
+title: 이제 tailwindcss를 사용하지 않을 이유가 없다.
 description: Tailwind CSS v4 변경점 정리
 date: '2025-05-03T14:00:00.000Z'
 coverImage: /assets/images/cover.png
@@ -8,23 +8,15 @@ ogImage: /assets/images/cover.png
 
 ## 빠른 참고
 
-[Tailwind CSS v4.0](https://tailwindcss.com/blog/tailwindcss-v4)
-
-[`@layer`](https://developer.mozilla.org/ko/docs/Web/CSS/@layer)
-
-[`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix)
-
-[테마 변수 가이드 문서](https://tailwindcss.com/docs/theme)
-
-[oklch](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch)
-
-[컨테이너 쿼리](https://tailwindcss.com/docs/responsive-design#container-queries)
-
-[`@starting-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style)
-
-[`not-*` 가이드 문서](https://tailwindcss.com/docs/hover-focus-and-other-states#not)
-
-[inert](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/inert)
+[Tailwind CSS v4.0](https://tailwindcss.com/blog/tailwindcss-v4),
+[`@layer`](https://developer.mozilla.org/ko/docs/Web/CSS/@layer),
+[`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix),
+[테마 변수 가이드 문서](https://tailwindcss.com/docs/theme),
+[oklch](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch),
+[컨테이너 쿼리](https://tailwindcss.com/docs/responsive-design#container-queries),
+[`@starting-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style),
+[`not-*` 가이드 문서](https://tailwindcss.com/docs/hover-focus-and-other-states#not),
+[inert](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/inert),
 
 ## 서론
 
