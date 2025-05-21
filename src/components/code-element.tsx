@@ -12,11 +12,11 @@ import {
   oneLight,
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+import useThemeControl from '@/hooks/use-theme-control';
 import { cn } from '@/lib/utils';
 
 import type { ExtraProps } from 'react-markdown';
 import useMounted from '@/hooks/use-mounted';
-import useThemeControl from '@/hooks/use-theme-control';
 
 SyntaxHighlighter.registerLanguage('jsx', js);
 SyntaxHighlighter.registerLanguage('jsx', ts);
@@ -29,8 +29,9 @@ const CodeElement = (
     HTMLAttributes<HTMLElement> &
     ExtraProps,
 ) => {
-  const mounted = useMounted();
   const { isDarkTheme } = useThemeControl();
+
+  const isMounted = useMounted();
 
   const { children, className, node, ...rest } = props;
   const match = /language-(\w+)/.exec(className || '');
@@ -52,14 +53,21 @@ const CodeElement = (
     );
   }
 
-  return !mounted ? (
-    <div className="animate-pulse w-full h-48 my-2 bg-neutral-100 dark:bg-gray-700/50 rounded-lg" />
-  ) : (
+  return (
     <SyntaxHighlighter
       PreTag="div"
       language={match[1]}
       style={highlighterStyle}
       showLineNumbers
+      className={
+        !isMounted
+          ? cn(
+              '[&_code]:!bg-neutral-50 dark:[&_code]:!bg-[hsl(220,13%,18%)]',
+              '[&_code]:!text-[hsl(220,13%,18%)] dark:[&_code]:!text-[hsl(220,14%,71%)]',
+              '!bg-neutral-50 dark:!bg-[hsl(220,13%,18%)]',
+            )
+          : undefined
+      }
     >
       {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>

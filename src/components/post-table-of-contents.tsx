@@ -16,16 +16,19 @@ const PostTableOfContents = ({ items }: Props) => {
   const [activeHeading, setActiveHeading] = useState<string | null>(null);
 
   useEffect(() => {
-    const HEADING_POSITION_OFFSET = 72;
+    const HEADER_HEIGHT = 56;
+    const HEADING_POSITION_OFFSET = HEADER_HEIGHT + 8;
 
     const resultHeadingPosition = items
       .flatMap((item) => [item, ...item.children])
       .map((heading) => {
         const scrollTop = window.scrollY;
         const headingElement = document.querySelector(`#${heading.slug}`);
+
         const topPosition = headingElement
           ? headingElement.getBoundingClientRect().top + scrollTop
           : 0;
+
         return { slug: heading.slug, top: topPosition };
       })
       .reverse();
