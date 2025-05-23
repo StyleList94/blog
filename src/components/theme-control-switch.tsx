@@ -19,7 +19,7 @@ const ThemeControlSwitch = () => {
     <AppearanceSwitch
       className={cn(
         'rounded-lg bg-white hover:bg-neutral-100',
-        'dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-300',
+        'dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-300 text-xl',
       )}
       isActive={isDarkTheme}
       onClick={toggleTheme}
