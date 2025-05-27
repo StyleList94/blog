@@ -218,7 +218,7 @@ CSS에서 정의된 [테마 변수](https://tailwindcss.com/docs/theme)는 CSS �
 
 - 새로운 그림자 유형 [`inset-shadow-*`](https://tailwindcss.com/docs/box-shadow#adding-an-inset-shadow), [`inset-ring-*`](https://tailwindcss.com/docs/box-shadow#adding-an-inset-ring)
 
-- [`field-sizing`](https://tailwindcss.com/docs/field-sizing): 자바스크립트 코드 한줄 작성 없이, 텍스트영역 크기 자동 조정
+- [`field-sizing`](https://tailwindcss.com/docs/field-sizing): 자바스크립트 코드 한 줄 작성 없이, 텍스트영역 크기 자동 조정
 
 - [`color-scheme`](https://tailwindcss.com/docs/color-scheme): 이제 다크모드에서 눈치 없게 혼자 빛나는 스크롤바를 없앨 수 있다.
 
