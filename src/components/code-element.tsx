@@ -1,9 +1,7 @@
 'use client';
 
 import { type ClassAttributes, type HTMLAttributes } from 'react';
-import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
 import ts from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
-import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -13,16 +11,14 @@ import {
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { cn } from '@/lib/utils';
-
-import type { ExtraProps } from 'react-markdown';
 import useMounted from '@/hooks/use-mounted';
 import useThemeControl from '@/hooks/use-theme-control';
 
-SyntaxHighlighter.registerLanguage('jsx', js);
-SyntaxHighlighter.registerLanguage('jsx', ts);
-SyntaxHighlighter.registerLanguage('jsx', jsx);
-SyntaxHighlighter.registerLanguage('jsx', tsx);
-SyntaxHighlighter.registerLanguage('jsx', bash);
+import type { ExtraProps } from 'react-markdown';
+
+SyntaxHighlighter.registerLanguage('ts', ts);
+SyntaxHighlighter.registerLanguage('tsx', tsx);
+SyntaxHighlighter.registerLanguage('bash', bash);
 
 const CodeElement = (
   props: ClassAttributes<HTMLElement> &

@@ -9,10 +9,9 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 import CodeElement from '@/components/code-element';
+import ScrollLinked from '@/components/scroll-linked';
 
 import '@/styles/post-body.css';
-
-import ScrollLinked from '@/components/scroll-linked';
 
 type Props = {
   content: string;
