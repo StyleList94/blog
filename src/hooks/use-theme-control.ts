@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useTheme } from 'next-themes';
 
 export default function useThemeControl() {
@@ -11,12 +10,6 @@ export default function useThemeControl() {
 
     setTheme(theme === 'system' ? targetTheme : 'system');
   };
-
-  useEffect(() => {
-    if (theme !== 'system' && systemTheme === resolvedTheme) {
-      setTheme('system');
-    }
-  }, [theme, systemTheme, resolvedTheme, setTheme]);
 
   return { isDarkTheme, toggleTheme };
 }

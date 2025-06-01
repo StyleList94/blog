@@ -14,7 +14,7 @@ export default function Error({
       <h2 className="text-2xl">뭔가 잘못되었습니다!</h2>
 
       {process.env.NEXT_PUBLIC_ENV === 'dev' && (
-        <div className="w-80 h-[200px] overflow-auto p-4 rounded-lg bg-neutral-50">
+        <div className="w-80 h-[200px] overflow-auto p-4 rounded-lg bg-neutral-50 dark:bg-neutral-900">
           <p>{error.stack}</p>
         </div>
       )}
