@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import throttle from 'lodash/throttle';
 
+import useMounted from '@/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 
 import type { TableOfContents } from '@/types/post';
@@ -13,9 +14,14 @@ type Props = {
 };
 
 const PostTableOfContents = ({ items }: Props) => {
+  const mounted = useMounted();
   const [activeHeading, setActiveHeading] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!mounted) {
+      return () => {};
+    }
+
     const HEADER_HEIGHT = 56;
     const HEADING_POSITION_OFFSET = HEADER_HEIGHT + 8;
 
@@ -42,14 +48,17 @@ const PostTableOfContents = ({ items }: Props) => {
       setActiveHeading(currentHeading?.slug ?? null);
     };
 
+    handleScroll();
     window.addEventListener('scroll', throttle(handleScroll, 100));
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [items]);
+  }, [items, mounted]);
 
   return (
     <div
+      key={`toc-${mounted}`}
       className={cn(
         'border-l px-3 border-neutral-600/20',
         'dark:border-neutral-400/30',
