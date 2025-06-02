@@ -8,8 +8,8 @@ import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 
-import CodeElement from '@/components/code-element';
 import ScrollLinked from '@/components/scroll-linked';
+import CodeBlock from '@/components/code-block';
 
 import '@/styles/post-body.css';
 
@@ -221,7 +221,7 @@ const components: Partial<MarkdownElement> = {
       </a>
     );
   },
-  code: CodeElement,
+  code: CodeBlock,
 };
 
 const PostBody = ({ content }: Props) => (

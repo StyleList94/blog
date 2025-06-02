@@ -1,8 +1,7 @@
 'use client';
 
-import { AppearanceSwitch } from '@stylelist94/nine-beauty-actress';
+import { AppearanceSwitch, useMounted } from '@stylelist94/nine-beauty-actress';
 
-import useMounted from '@/hooks/use-mounted';
 import useThemeControl from '@/hooks/use-theme-control';
 import { cn } from '@/lib/utils';
 

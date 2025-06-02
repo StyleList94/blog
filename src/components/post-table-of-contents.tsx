@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import throttle from 'lodash/throttle';
+import throttle from 'lodash-es/throttle';
+import { useMounted } from '@stylelist94/nine-beauty-actress';
 
-import useMounted from '@/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 
 import type { TableOfContents } from '@/types/post';

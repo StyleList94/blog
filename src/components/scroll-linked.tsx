@@ -1,8 +1,9 @@
 'use client';
 
-import { type ReactNode } from 'react';
 import { LazyMotion, domAnimation, useScroll, useSpring } from 'motion/react';
 import * as m from 'motion/react-m';
+
+import type { ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;

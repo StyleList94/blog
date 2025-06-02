@@ -1,13 +1,40 @@
 @reference "tailwindcss";
 
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+pre {
+  padding: 1.25rem 0;
+  border-radius: var(--radius-lg);
+}
+
+pre code {
+  display: grid;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  tab-size: 4;
+  hyphens: none;
+  white-space: pre;
+}
+
+pre .line {
+  padding: 0 1.25rem;
+}
+
 .contains-task-list {
-    @apply py-4
+  @apply py-4;
 }
 
 .contains-task-list > li + li {
-    @apply py-2
+  @apply py-2;
 }
 
-.contains-task-list > li  {
-    @apply flex gap-2;
+.contains-task-list > li {
+  @apply flex gap-2;
 }

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useTheme } from 'next-themes';
-
-import useMounted from '@/hooks/use-mounted';
+import { useMounted } from '@stylelist94/nine-beauty-actress';
 
 export default function useThemeControl() {
   const { theme, setTheme, resolvedTheme, systemTheme } = useTheme();

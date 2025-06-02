@@ -3,6 +3,7 @@ import { BlogPosting, WithContext } from 'schema-dts';
 
 import { metadataContext } from '@/lib/metadata';
 import { getAllPosts, getPostBySlug } from '@/lib/services/api/post';
+import { generateTOC } from '@/lib/post';
 
 import type { Metadata } from 'next';
 import type { Post } from '@/types/post';
@@ -10,7 +11,6 @@ import type { Post } from '@/types/post';
 import LayoutContainer from '@/components/layout/container';
 import PostHeader from '@/components/post-header';
 import PostBody from '@/components/post-body';
-import { generateTOC } from '@/lib/post';
 import PostTableOfContents from '@/components/post-table-of-contents';
 
 type Props = {
@@ -70,7 +70,9 @@ export default async function PostContentPage({ params }: Props) {
       <script
         type="application/ld+json"
         /* eslint-disable-next-line react/no-danger */
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+        }}
       />
       <div className="flex justify-between items-start w-full max-w-[80rem] mx-auto">
         <div className="flex flex-col flex-1 min-w-0 md:max-w-[45rem]">
