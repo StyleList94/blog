@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@stylelist94/nine-beauty-actress':
-        specifier: 0.3.0
-        version: 0.3.0(motion@12.15.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.8)
+        specifier: 0.3.1
+        version: 0.3.1(motion@12.15.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.8)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -777,8 +777,8 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@stylelist94/nine-beauty-actress@0.3.0':
-    resolution: {integrity: sha512-alTnG6Hnk2Q4TKB8QS1gs5LEMg/VJLdCHNJ2OwVlmFPjSEnJsSKv7qb2ZQnd9MS3Sr8DfC+QM2MSUhTgf/NM7w==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/0.3.0/a8a6ec539c630085c619b9640dbde22866c99401}
+  '@stylelist94/nine-beauty-actress@0.3.1':
+    resolution: {integrity: sha512-Q7hlCuwP5KtRSiijvz1KDOY6wOA1aiKXziYRZ4EfRuEduGM6ab5BZ+Ne+qXyp24fAlbYaGEnaZm0q6nwNhrpdA==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/0.3.1/8095c0468b39105b2730fd25b54d0c031ccfedec}
     peerDependencies:
       motion: '>=12'
       react: '>=18'
@@ -3914,7 +3914,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@stylelist94/nine-beauty-actress@0.3.0(motion@12.15.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.8)':
+  '@stylelist94/nine-beauty-actress@0.3.1(motion@12.15.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.8)':
     dependencies:
       clsx: 2.1.1
       motion: 12.15.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
