@@ -58,6 +58,8 @@ _Lorem ipsum dolor sit amet, consectetur adipiscing elit._
 | Tables   |      Are      |  Cool |
 | -------- | :-----------: | ----: |
 | col 3 is | right-aligned | $1600 |
+| col 3 is | right-aligned | $1600 |
+| col 3 is | right-aligned | $1600 |
 
 [This is a link](https://blog.stylelist94.dev)
 

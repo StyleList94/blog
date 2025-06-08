@@ -11,7 +11,9 @@ const PostCard = ({ slug, title, description, date }: Props) => (
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <Link href={`/post/${slug}`} passHref>
-            <span className="text-xl lg:text-2xl hover:underline">{title}</span>
+            <span className="text-xl lg:text-2xl font-medium hover:underline">
+              {title}
+            </span>
           </Link>
           <p className="text-sm lg:text-base text-neutral-500 dark:text-neutral-400">
             {description}

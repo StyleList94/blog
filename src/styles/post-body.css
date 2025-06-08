@@ -21,10 +21,51 @@ pre code {
   tab-size: 4;
   hyphens: none;
   white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
 }
 
 pre .line {
   padding: 0 1.25rem;
+  height: calc(var(--text-sm) * var(--leading-normal));
+}
+
+.code-block__with-line-numbers {
+  counter-reset: line;
+}
+
+.code-block__with-line-numbers .line {
+  counter-increment: line;
+  position: relative;
+  padding: 0 1.25rem;
+}
+
+.code-block__with-line-numbers .line::before {
+  display: inline-block;
+  content: counter(line);
+  width: 1rem;
+  margin-right: 1.25rem;
+  text-align: right;
+  color: var(--color-neutral-700);
+  opacity: 0.6;
+  user-select: none;
+}
+
+.dark .code-block__with-line-numbers .line::before {
+  color: var(--color-neutral-400);
+}
+
+blockquote > p {
+  @apply text-zinc-600 dark:text-zinc-400 my-1;
+}
+
+h2:first-of-type {
+  margin-top: 0;
+}
+
+h2 > code,
+h3 > code {
+  font-size: inherit;
 }
 
 .contains-task-list {

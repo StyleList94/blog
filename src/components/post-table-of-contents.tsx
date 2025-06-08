@@ -23,7 +23,7 @@ const PostTableOfContents = ({ items }: Props) => {
     }
 
     const HEADER_HEIGHT = 56;
-    const HEADING_POSITION_OFFSET = HEADER_HEIGHT + 8;
+    const HEADING_POSITION_OFFSET = HEADER_HEIGHT + 40;
 
     const resultHeadingPosition = items
       .flatMap((item) => [item, ...item.children])
@@ -78,7 +78,7 @@ const PostTableOfContents = ({ items }: Props) => {
                   'text-neutral-800 dark:text-neutral-200 scale-105',
               )}
             >
-              {item.content}
+              {item.content.replace(/`/g, '')}
             </Link>
 
             <ul aria-label="toc-level-2" className="pl-2">
@@ -95,7 +95,7 @@ const PostTableOfContents = ({ items }: Props) => {
                         'text-neutral-800 dark:text-neutral-200 scale-105',
                     )}
                   >
-                    {childItem.content}
+                    {childItem.content.replace(/`/g, '')}
                   </Link>
                 </li>
               ))}

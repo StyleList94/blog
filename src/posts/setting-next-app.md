@@ -24,14 +24,14 @@ yarn add -D jest @testing-library/react @testing-library/jest-dom @testing-libra
 
 DOM Testing을 위한 setup 파일을 생성합니다
 
-```javascript
+```js
 // jest.setup.js
 import '@testing-library/jest-dom/extend-expect';
 ```
 
 jest config 파일을 생성합니다
 
-```javascript
+```js
 // jest.config.js
 const nextJest = require('next/jest');
 
@@ -179,7 +179,7 @@ yarn add -D lint-staged
 
 `.lintstagedrc.js` 파일을 생성합니다.
 
-```javascript
+```js
 // .lintstagedrc.js
 const path = require('path');
 
@@ -226,7 +226,7 @@ yarn lint-staged
 
 jest config의 `moduleNameMapper`를 업데이트 합니다
 
-```javascript
+```js
 // jest.config.js
 moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',

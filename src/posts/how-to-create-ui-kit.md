@@ -55,10 +55,13 @@ pnpm create vite your-ui-kit --template react-ts
 # 나는 마이그래에선 해야하니깐... 수동으로 해야함...
 pnpm add -D vite
 ```
+
 필요한 플러그인도 추가해준다.
+
 ```bash
 pnpm add -D @vitejs/plugin-react vite-plugin-dts
 ```
+
 ### 프로젝트 구성 설정
 
 그 다음, `vite.config.ts`를 다음과 같이 추가한다. 
@@ -115,7 +118,6 @@ export default defineConfig({
     ],
   },
 });
-
 ```
 
 `tsconfig.json`: 타입스크립트 설정 관련된 것들은, `create-vite` 로 `vite` 프로젝트를 구성했다면 자동으로 만들어졌을테니깐, 수동으로 하는 나만 고생하면 된다.
@@ -134,7 +136,6 @@ export const Button = ({ children }: { children: ReactNode }) => (
 );
 
 export default Button;
-
 ```
 `lib/main.ts` 엔트리 모듈을 생성한 뒤, 컴포넌트를 내보낸다.
 
@@ -144,9 +145,10 @@ export default Button;
 import { Button } from './components/button';
 
 export { Button };
-
 ```
+
 vite 빌드를 위해 스크립트를 업데이트 한다.
+
 ```json
 {
   "scripts": {
@@ -154,8 +156,6 @@ vite 빌드를 위해 스크립트를 업데이트 한다.
     "preview": "vite preview"
   }
 }
-
-
 ```
 빌드를 수행하면
 
@@ -167,12 +167,12 @@ pnpm run build
 
 ```text
 dist
-├── components
-│   └── button.d.ts
-├── main.d.ts
-├── main.es.d.ts
-├── main.es.js
-└── main.umd.js
+┣━━ components
+┃   ┗━━ button.d.ts
+┣━━ main.d.ts
+┣━━ main.es.d.ts
+┣━━ main.es.js
+┗━━ main.umd.js
 ```
 
 ### React 최소 버전
@@ -188,6 +188,7 @@ pnpm add react@^18 react-dom@^18
 ```
 
 `peerDependencies`도 업데이트 해준다.
+
 ```json
 {
   "peerDependencies": {
@@ -269,7 +270,6 @@ describe('Button', () => {
     ).toBeInTheDocument();
   });
 });
-
 ```
 
 scripts를 업데이트!
@@ -325,8 +325,8 @@ const config: StorybookConfig = {
   }, 
   // ..
 }
-
 ```
+
 > [**2025.05. 이 기능은 버그로 인해 동작하지 않고 있다.**](https://github.com/storybookjs/storybook/issues/30015)
 
 ### 브랜드 커스터마이징
@@ -340,6 +340,7 @@ const config: StorybookConfig = {
 ```bash
 pnpm add -D @storybook/manager-api @storybook/theming @storybook/core-events
 ```
+
 `.storybook/theme.ts` 모듈을 생성해준다.
 
 ```ts
@@ -354,6 +355,7 @@ export default create({
   brandTarget: '_self', // 이렇게 해야 새 창에서 안열린다
 });
 ```
+
 `.storybook/manager.ts` 모듈을 생성해서 커스터마이징한 테마를 등록해준다.
 
 ```ts
@@ -366,8 +368,8 @@ import theme from './theme';
 addons.setConfig({
     theme,
 });
-
 ```
+
 ### 내맘대로 사이트 타이틀 변경
 
 사이트 타이틀 변경이 조금 까다로운데, Storybook 브랜딩이 기본적으로 적용되어 있어, 상당히 곤란하다.
@@ -410,6 +412,7 @@ addons.register('TitleAddon', (api) => {
 
 // ..
 ```
+
 ### 퍼스트 스토리 작성
 
 아까 만든 Button에 대한 스토리를 `src/stories` 디렉토리에 작성한다.
@@ -436,7 +439,6 @@ export const Primary: Story = {
         children: 'Click me!',
     },
 };
-
 ```
 
 그리고 Storybook을 실행해서 확인하면 된다.
@@ -475,7 +477,6 @@ pnpm add -D tailwindcss @tailwindcss/vite
     "tailwindcss": ">=4"
   }
 }
-
 ```
 
 여기서부터 중요한데, 라이브러리 모드에서 `tailwindcss`가 필요한 상황은 Storybook 말고는 없기 때문에,
@@ -503,7 +504,6 @@ const config: StorybookConfig = {
     );
   },
 }
-
 ```
 
 다음은, 루트 CSS에 `tailwindcss`를 import 하면 된다.
@@ -524,7 +524,6 @@ const config: StorybookConfig = {
 import '../src/styles.css';
 
 // ..
-
 ```
 
 ### Button 스타일링
@@ -543,7 +542,6 @@ export const Button = ({ children }: { children: ReactNode }) => (
 );
 
 export default Button;
-
 ```
 
 Storybook을 구동시켜서 원하는대로 적용되었는지 확인하면...
@@ -622,7 +620,6 @@ const preview: Preview = {
     }),
   ],
 };
-
 ```
 
 ## 주의할 점
@@ -659,7 +656,6 @@ Next.js와 같이 RSC(서버 컴포넌트)를 지원하는 프레임워크에서
 /* e.g) your-project/src/global.css */
 
 @source "../node_modules/your-ui-library";
-
 ```
 
 ## 마치며

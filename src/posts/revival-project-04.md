@@ -116,6 +116,7 @@ SyntaxHighlighter.registerLanguage('jsx', bash);
 나중에 다른 코드 하이라이터가 필요하면 여기서 확장하면 될 것 같다.
 
 이렇게하면 페이지 사이즈도 확실하게 줄어드는 것을 확인했다!
+
 ```bash
 # Next.js build Logs
 
@@ -141,6 +142,7 @@ Route (app)                              Size     First Load JS
 ├ ● /post/[slug]                         24.9 kB         128 kB
 ...
 ```
+
 ##### `/post/[slug]` 페이지 사이즈가 거의 90% 줄었음을 확인할 수 있었다!
 
 ## 준비는 모두 끝난듯

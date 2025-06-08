@@ -21,8 +21,10 @@ const CodeBlock = async (
         {...rest}
         className={cn(
           className,
-          'px-1 py-0.5 rounded-sm bg-neutral-100 dark:bg-neutral-800',
-          'font-mono',
+          'relative rounded',
+          'px-[0.3rem] py-[0.2rem]',
+          'bg-neutral-100 dark:bg-neutral-800',
+          'font-mono text-sm text-neutral-900 dark:text-neutral-100',
         )}
       >
         {children}
@@ -38,11 +40,19 @@ const CodeBlock = async (
     },
   });
 
+  const showLineNumber = /ts(x)?|js(on)?|css/.test(match[1]);
+
   return (
-    <div className={cn('overflow-x-auto')}>
-      {/* eslint-disable-next-line react/no-danger */}
-      <div dangerouslySetInnerHTML={{ __html: out }} />
-    </div>
+    <div
+      className={cn(
+        'code-block',
+        showLineNumber && 'code-block__with-line-numbers',
+        'overflow-x-auto',
+        'bg-[#FAFAFA] dark:bg-[#24292e]',
+      )}
+      /* eslint-disable-next-line react/no-danger */
+      dangerouslySetInnerHTML={{ __html: out }}
+    />
   );
 };
 

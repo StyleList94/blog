@@ -158,7 +158,6 @@ export const createCounterSlice: StateCreator<
   decrementCount: () => set((state) => ({ count: state.count - 1 })),
   incrementCount: () => set((state) => ({ count: state.count + 1 })),
 });
-
 ```
 
 타입스크립트라, 타입을 정의하는 과정이 조금 까다로운데, [이거 따라서 했다.](https://zustand.docs.pmnd.rs/guides/typescript#slices-pattern)
@@ -195,7 +194,6 @@ export const createRootStore = () =>
         ...createCounterSlice(...rest),
         // 이후 스토어를 확장할 때, 같은 패턴으로 주입하면 된다.
     }));
-
 ```
 
 이렇게해서 요청마다 스토어를 생성할 수 있게 되었다.
@@ -233,7 +231,6 @@ const StoreProvider = ({ children }: Props) => {
 };
 
 export default StoreProvider;
-
 ```
 
 이렇게 만든 `Context`를 루트 레이아웃에 적절히 감싸주면 된다.
@@ -267,7 +264,6 @@ const useRootStore = <T>(selector: (store: RootStore) => T): T => {
 };
 
 export default useRootStore;
-
 ```
 
 provider 컴포넌트에 바로 선언할 수도 있었지만, 목적별로 모듈을 관리하고 싶어서 분리했다.
@@ -275,9 +271,7 @@ provider 컴포넌트에 바로 선언할 수도 있었지만, 목적별로 모�
 이제 이런 식으로 스토어의 있는 상태와 액션을 가져올 수 있게 되었다.
 
 ```ts
-
 const { count, incrementCount, decremenetCount } = useRootStore((state) => state);
-
 ```
 
 ## 뭔가 이프로 부족하다

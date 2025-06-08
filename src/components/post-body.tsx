@@ -19,16 +19,21 @@ type Props = {
 
 const commonStyle = 'transition ease-in-out duration-200 leading-relaxed';
 
+const tableCellStyle = cn(
+  'px-4 py-2',
+  'text-sm text-left [&[align=center]]:text-center [&[align=right]]:text-right',
+  'border border-neutral-200 dark:border-neutral-700/60',
+);
+
 const components: Partial<MarkdownElement> = {
   h1: ({ children, node, ...props }) => (
     <h1
       className={cn(
         commonStyle,
-        'text-4xl font-extrabold',
-        'mt-12 mb-8',
-        'leading-tight',
-        'bg-linear-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400',
-        'bg-clip-text text-transparent',
+        'text-3xl font-extrabold',
+        'scroll-m-20',
+        'leading-tight tracking-tight',
+        'text-neutral-900 dark:text-neutral-100',
       )}
       {...props}
     >
@@ -39,12 +44,10 @@ const components: Partial<MarkdownElement> = {
     <h2
       className={cn(
         commonStyle,
-        'text-2xl font-bold',
-        'mt-10 mb-6',
-        'leading-snug',
-        'scroll-mt-16',
+        'text-2xl font-semibold',
+        'scroll-m-20 pb-2 mt-10 first:mt-0',
+        'leading-tight tracking-tight',
         'border-b border-neutral-200 dark:border-neutral-800',
-        'pb-3',
       )}
       {...props}
     >
@@ -55,10 +58,9 @@ const components: Partial<MarkdownElement> = {
     <h3
       className={cn(
         commonStyle,
-        'text-xl font-bold',
-        'mt-8 mb-4',
-        'leading-snug',
-        'scroll-mt-16',
+        'text-xl font-semibold',
+        'scroll-m-20 mt-8',
+        'tracking-tight',
         'text-neutral-800 dark:text-neutral-200',
       )}
       {...props}
@@ -68,7 +70,12 @@ const components: Partial<MarkdownElement> = {
   ),
   h4: ({ children, node, ...props }) => (
     <h4
-      className={cn(commonStyle, 'text-lg font-bold', 'mt-6 mb-3')}
+      className={cn(
+        commonStyle,
+        'text-lg font-semibold',
+        'scroll-m-20 mt-6',
+        'tracking-tight',
+      )}
       {...props}
     >
       {children}
@@ -79,7 +86,7 @@ const components: Partial<MarkdownElement> = {
     <p
       className={cn(
         commonStyle,
-        'my-4',
+        'mt-6',
         'leading-relaxed',
         'text-neutral-800 dark:text-neutral-200',
       )}
@@ -93,12 +100,10 @@ const components: Partial<MarkdownElement> = {
     <blockquote
       className={cn(
         commonStyle,
-        'px-6 py-3 my-6',
-        'leading-relaxed',
-        'rounded-lg bg-neutral-50 dark:bg-neutral-900',
-        'text-neutral-700 dark:text-neutral-300',
-        'border-l-4 border-neutral-300 dark:border-neutral-700',
+        'mt-6 pl-6 py-0.5',
+        'bg-neutral-50 dark:bg-neutral-800/50',
         'italic',
+        'border-l-2 border-neutral-300 dark:border-neutral-700',
       )}
       {...props}
     >
@@ -108,17 +113,14 @@ const components: Partial<MarkdownElement> = {
 
   ul: ({ children, node, ...props }) => (
     <ul
-      className={cn(commonStyle, 'list-disc pl-6', 'my-4', 'space-y-2.5')}
+      className={cn(commonStyle, 'my-6 ml-6 list-disc', '[&>li]:mt-2')}
       {...props}
     >
       {children}
     </ul>
   ),
   li: ({ children, node, ...props }) => (
-    <li
-      className={cn(commonStyle, 'list-disc ml-4 py-1 first:pt-0 last:pb-0')}
-      {...props}
-    >
+    <li className={cn(commonStyle)} {...props}>
       {children}
     </li>
   ),
@@ -140,7 +142,6 @@ const components: Partial<MarkdownElement> = {
           commonStyle,
           'border-collapse w-full',
           'bg-white dark:bg-neutral-900',
-          'shadow-xs rounded-lg overflow-hidden',
         )}
         {...props}
       >
@@ -148,13 +149,25 @@ const components: Partial<MarkdownElement> = {
       </table>
     </div>
   ),
+  tr: ({ children, node, ...props }) => (
+    <tr
+      className={cn(
+        commonStyle,
+        'm-0 p-0',
+        'border-t border-neutral-100 dark:border-neutral-800',
+      )}
+      {...props}
+    >
+      {children}
+    </tr>
+  ),
   th: ({ children, node, ...props }) => (
     <th
       className={cn(
         commonStyle,
-        'border-b-2 border-neutral-200 dark:border-neutral-800',
-        'bg-neutral-50 dark:bg-neutral-800',
-        'p-3 text-left',
+        tableCellStyle,
+        'font-semibold',
+        'bg-neutral-50/50 dark:bg-neutral-800/50',
       )}
       {...props}
     >
@@ -162,14 +175,7 @@ const components: Partial<MarkdownElement> = {
     </th>
   ),
   td: ({ children, node, ...props }) => (
-    <td
-      className={cn(
-        commonStyle,
-        'border-b border-neutral-100 dark:border-neutral-800',
-        'p-3',
-      )}
-      {...props}
-    >
+    <td className={cn(commonStyle, tableCellStyle)} {...props}>
       {children}
     </td>
   ),
@@ -182,9 +188,11 @@ const components: Partial<MarkdownElement> = {
         href={href as string}
         className={cn(
           'transition ease-in-out duration-200 leading-normal',
-          'text-blue-600 dark:text-blue-400',
-          'hover:text-blue-800 dark:hover:text-blue-300',
-          'hover:border-blue-600 dark:hover:border-blue-400',
+          'text-teal-600 dark:text-teal-400',
+          '*:text-teal-600 *:dark:text-teal-400',
+          'hover:text-teal-800 dark:hover:text-teal-300',
+          'hover:border-teal-600 dark:hover:border-teal-400',
+          'hover:border-b hover:border-teal-600 dark:hover:border-teal-400',
         )}
         {...props}
       >
@@ -195,29 +203,16 @@ const components: Partial<MarkdownElement> = {
         href={href as string}
         className={cn(
           'transition ease-in-out duration-200 leading-normal',
-          'text-blue-600 dark:text-blue-400',
-          'hover:text-blue-800 dark:hover:text-blue-300',
-          'hover:border-blue-600 dark:hover:border-blue-400',
-          'inline-flex items-center gap-1',
+          'text-sky-600 dark:text-sky-400',
+          '*:text-sky-600 *:dark:text-sky-400',
+          'hover:text-sky-800 dark:hover:text-sky-300',
+          'hover:border-b hover:border-sky-600 dark:hover:border-sky-400',
         )}
         target="_blank"
         rel="noopener noreferrer"
         {...props}
       >
         {children}
-        <svg
-          className="w-3 h-3"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-          />
-        </svg>
       </a>
     );
   },

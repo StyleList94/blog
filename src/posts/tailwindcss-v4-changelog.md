@@ -9,12 +9,12 @@ ogImage: /assets/images/cover.png
 ## 빠른 참고
 
 [Tailwind CSS v4.0](https://tailwindcss.com/blog/tailwindcss-v4),
-[`@layer`](https://developer.mozilla.org/ko/docs/Web/CSS/@layer),
-[`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix),
+[`@layer` MDN 가이드](https://developer.mozilla.org/ko/docs/Web/CSS/@layer),
+[`color-mix()` MDN 가이드](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix),
 [테마 변수 가이드 문서](https://tailwindcss.com/docs/theme),
 [oklch](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch),
 [컨테이너 쿼리](https://tailwindcss.com/docs/responsive-design#container-queries),
-[`@starting-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style),
+[`@starting-style` MDN 가이드](https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style),
 [`not-*` 가이드 문서](https://tailwindcss.com/docs/hover-focus-and-other-states#not),
 [inert](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/inert),
 
@@ -49,11 +49,11 @@ Rust 기반의 새로운 고성능 엔진(Oxide) 도입으로 빌드 속도가 �
 
 이전 버전 대비, 전체 빌드는 3.78배, 증분 빌드는 8.8배 이상 빠르다.
 
-|                             | v3.4  |  v4.0 |  배수 |
-| --------------------------- | :---: | ----: | ----: |
+|                             |  v3.4 |  v4.0 |  배수 |
+| --------------------------- |------:| ----: | ----: |
 | 전체 빌드                   | 378ms | 100ms | 3.78x |
-| 새로운 CSS 포함 증분 빌드   | 44ms  |   5ms |  8.8x |
-| 새로운 CSS 미포함 증분 빌드 | 35ms  | 192µs |  182x |
+| 새로운 CSS 포함 증분 빌드   |  44ms |   5ms |  8.8x |
+| 새로운 CSS 미포함 증분 빌드 |  35ms | 192µs |  182x |
 
 특히 새로운 CSS를 컴파일 하지 않는 증분 빌드를 통해 성능이 대폭 향상되었다는데, 프로젝트 규모가 커질 수록, 이전에 사용했던 클래스를 재사용하는 경우가 많기 때문에 더욱 큰 효과를 볼 수 있다.
 
@@ -217,21 +217,13 @@ CSS에서 정의된 [테마 변수](https://tailwindcss.com/docs/theme)는 CSS �
 ## 더 많은 유틸리티 속성
 
 - 새로운 그림자 유형 [`inset-shadow-*`](https://tailwindcss.com/docs/box-shadow#adding-an-inset-shadow), [`inset-ring-*`](https://tailwindcss.com/docs/box-shadow#adding-an-inset-ring)
-
 - [`field-sizing`](https://tailwindcss.com/docs/field-sizing): 자바스크립트 코드 한 줄 작성 없이, 텍스트영역 크기 자동 조정
-
 - [`color-scheme`](https://tailwindcss.com/docs/color-scheme): 이제 다크모드에서 눈치 없게 혼자 빛나는 스크롤바를 없앨 수 있다.
-
 - [`font-stretch`](https://tailwindcss.com/docs/font-stretch): 폰트 너비 조정이 쉬워집니다(장평).
-
 - [`inert`](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-inert-elements): 비활성 상태의 요소를 쉽게 스타일링할 수 있다.
-
 - [`nth-*`](https://tailwindcss.com/docs/hover-focus-and-other-states#first-last-odd-and-even): 이걸 드디어 해주네...
-
 - [`in-*`](https://tailwindcss.com/docs/hover-focus-and-other-states#implicit-groups): 이제 `group` 클래스를 명시하지 않아도 그룹하듯이 스타일링 할 수 있다.
-
 - [`:popover-open`](https://tailwindcss.com/docs/hover-focus-and-other-states#openclosed-state) 지원
-
 - [`**` 선택자](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-all-descendants) 지원
 
 ## 마이그레이션 방법
