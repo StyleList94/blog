@@ -19,7 +19,6 @@ ogImage: /assets/images/cover.png
 [Storybook에 글꼴 추가](https://storybook.js.org/docs/configure/integration/images-and-assets#referencing-fonts-in-stories),
 [tailwindcss가 빠를 수 밖에 없는 이유 중 하나](https://tailwindcss.com/docs/detecting-classes-in-source-files)
 
-
 ## 세상 좋아졌다
 
 2021년, 디자인 시스템에 꽂혀버린 나머지 `rollup` 번들러를 활용하여 [React Component 라이브러리 템플릿](https://github.com/StyleList94/stylish-ui-kit/tree/v1)을 만든 적이 있다.
@@ -48,7 +47,7 @@ React 마저 서버 컴포넌트 도입으로 인해, 컴포넌트 구조 설계
 
 앗! 그 전에, 패키지 매니저도 `pnpm`으로 바꿔주기 위해 `lockfile`도 자워버리자!
 
-```bash
+```bash:title=Terminal
 # 처음 시작한다면 그냥 create-vite 로 빠르게 시작하면 된다.
 pnpm create vite your-ui-kit --template react-ts
 
@@ -58,19 +57,17 @@ pnpm add -D vite
 
 필요한 플러그인도 추가해준다.
 
-```bash
+```bash:title=Terminal
 pnpm add -D @vitejs/plugin-react vite-plugin-dts
 ```
 
 ### 프로젝트 구성 설정
 
-그 다음, `vite.config.ts`를 다음과 같이 추가한다. 
+그 다음, `vite.config.ts`를 다음과 같이 추가한다.
 
 [Library Mode](https://vite.dev/guide/build.html#library-mode)를 활용해야 한다.
 
-```ts
-// vite.config.ts
-
+```ts:title=vite.config.ts
 import { defineConfig } from 'vite';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -82,14 +79,14 @@ export default defineConfig({
   plugins: [
     react(), // React 플러그인
     dtsPlugin({
-        include: ['lib'],
-        insertTypesEntry: true,
+      include: ['lib'],
+      insertTypesEntry: true,
     }), // 라이브러리 모드에서 *.d.ts 파일 생성을 위해 사용하는 플러그인
   ],
   build: {
     lib: {
       entry: {
-          main: resolve(__dirname, 'lib/main.ts'),
+        main: resolve(__dirname, 'lib/main.ts'),
       },
       name: 'StylishReactUIKit',
       formats: ['es', 'umd'], // 기본 값
@@ -126,9 +123,7 @@ export default defineConfig({
 
 `lib` 디렉토리를 생성한 뒤, 간단한 버튼 컴포넌트를 생성한다.
 
-```tsx
-// lib/components/button.tsx
-
+```tsx:title=lib/components/button.tsx
 import type { ReactNode } from 'react';
 
 export const Button = ({ children }: { children: ReactNode }) => (
@@ -137,11 +132,10 @@ export const Button = ({ children }: { children: ReactNode }) => (
 
 export default Button;
 ```
+
 `lib/main.ts` 엔트리 모듈을 생성한 뒤, 컴포넌트를 내보낸다.
 
-```ts
-// lib/main.ts
-
+```ts:title=lib/main.ts
 import { Button } from './components/button';
 
 export { Button };
@@ -149,7 +143,7 @@ export { Button };
 
 vite 빌드를 위해 스크립트를 업데이트 한다.
 
-```json
+```json:title=package.json
 {
   "scripts": {
     "build": "tsc --p ./tsconfig.build.json && vite build",
@@ -157,9 +151,10 @@ vite 빌드를 위해 스크립트를 업데이트 한다.
   }
 }
 ```
+
 빌드를 수행하면
 
-```bash
+```bash:title=Terminal
 pnpm run build
 ```
 
@@ -183,13 +178,13 @@ dist
 
 그러니깐 최소 버전도 올려주는 것이 좋을 것이다!
 
-```bash
-pnpm add react@^18 react-dom@^18      
+```bash:title=Terminal
+pnpm add react@^18 react-dom@^18
 ```
 
 `peerDependencies`도 업데이트 해준다.
 
-```json
+```json:title=package.json
 {
   "peerDependencies": {
     "react": ">=18",
@@ -206,7 +201,7 @@ Jest도 좋지만 [Vitest는 더 좋다](/post/review-2024#%EC%98%AC%ED%95%B4%EC
 
 ### Vitest 설치
 
-```bash
+```bash:title=Terminal
 pnpm add -D vitest jsdom
 ```
 
@@ -214,9 +209,7 @@ pnpm add -D vitest jsdom
 
 Vite를 사용 중이라면 `vite.config.ts`에서 바로 구성 설정을 수행할 수 있다!
 
-```ts
-// vite.config.ts
-
+```ts:title=vite.config.ts
 // 1. 맨 위에 트리플 슬래시 참조를 통해 vitest 구성 타입 추가
 /// <reference types="vitest" />
 
@@ -229,11 +222,12 @@ export default defineConfig({
     css: true, // css 처리여부
   },
   // ...
-})
+});
 ```
 
 타입스크립트가 알아차릴 수 있도록 `tsconfig.json`을 업데이트 한다.
-```json
+
+```json:title=tsconfig.json
 {
   "compilerOptions": {
     "types": ["vitest/globals"]
@@ -244,7 +238,7 @@ export default defineConfig({
 
 ### Testing Library 추가
 
-```bash
+```bash:title=Terminal
 pnpm add -D @testing-library/react @testing-library/jest-dom @testing-library/dom @testing-library/user-event
 ```
 
@@ -254,7 +248,7 @@ pnpm add -D @testing-library/react @testing-library/jest-dom @testing-library/do
 
 앞서만든 `Button` 컴포넌트의 테스트 코드를 작성한다.
 
-```tsx
+```tsx:title=src/tests/button.test.tsx
 import '@testing-library/jest-dom';
 
 import { render, screen } from '@testing-library/react';
@@ -266,7 +260,7 @@ describe('Button', () => {
     render(<Button>Click Me</Button>);
 
     expect(
-      screen.getByRole('button', { name: 'Click Me' })
+      screen.getByRole('button', { name: 'Click Me' }),
     ).toBeInTheDocument();
   });
 });
@@ -274,7 +268,7 @@ describe('Button', () => {
 
 scripts를 업데이트!
 
-```json
+```json:title=package.json
 {
   "scripts": {
     "test": "vitest run",
@@ -285,7 +279,7 @@ scripts를 업데이트!
 
 그리고 테스트를 실행하면...
 
-```bash
+```bash:title=Terminal
 pnpm run test
 
 ...
@@ -312,19 +306,18 @@ pnpm run test
 ### Storybook 구성
 
 타입스크립트 코멘트 문서를 자동으로 스토리에 포함시켜주는 기능을 추가한다.
-```ts
-// .storybook/main.ts
 
+```ts:title=.storybook/main.ts
 const config: StorybookConfig = {
   // ..
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
-        tsconfigPath: './tsconfig.json',
+      tsconfigPath: './tsconfig.json',
     },
-  }, 
+  },
   // ..
-}
+};
 ```
 
 > [**2025.05. 이 기능은 버그로 인해 동작하지 않고 있다.**](https://github.com/storybookjs/storybook/issues/30015)
@@ -337,15 +330,13 @@ const config: StorybookConfig = {
 
 일단 필요한 패키지를 설치하고
 
-```bash
+```bash:title=Terminal
 pnpm add -D @storybook/manager-api @storybook/theming @storybook/core-events
 ```
 
 `.storybook/theme.ts` 모듈을 생성해준다.
 
-```ts
-// .storybook/theme.ts
-
+```ts:title=.storybook/theme.ts
 import { create } from '@storybook/theming/create';
 
 export default create({
@@ -358,15 +349,13 @@ export default create({
 
 `.storybook/manager.ts` 모듈을 생성해서 커스터마이징한 테마를 등록해준다.
 
-```ts
-// .storybook/manager.ts
-
+```ts:title=.storybook/manager.ts
 import { addons } from '@storybook/manager-api';
 
 import theme from './theme';
 
 addons.setConfig({
-    theme,
+  theme,
 });
 ```
 
@@ -378,10 +367,7 @@ Addon 기능을 활용하면 사이트 타이틀을 어느 정도 입맛대로 �
 
 `./storybook/manager.ts`에 다음 애드온을 구성해주면 된다.
 
-```ts
-
-// .storybook/manager.ts
-
+```ts:title=.storybook/manager.ts
 import { addons } from '@storybook/manager-api';
 import { STORY_RENDERED, DOCS_RENDERED } from '@storybook/core-events';
 
@@ -417,40 +403,38 @@ addons.register('TitleAddon', (api) => {
 
 아까 만든 Button에 대한 스토리를 `src/stories` 디렉토리에 작성한다.
 
-```tsx
-// src/stories/Button.stories.tsx
-
+```tsx:title=src/stories/Button.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from 'lib/components/button';
 
 const meta: Meta<typeof Button> = {
-    component: Button,
-    title: 'Button',
-    tags: ['autodocs'],
-    argTypes: {},
+  component: Button,
+  title: 'Button',
+  tags: ['autodocs'],
+  argTypes: {},
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
-    args: {
-        children: 'Click me!',
-    },
+  args: {
+    children: 'Click me!',
+  },
 };
 ```
 
 그리고 Storybook을 실행해서 확인하면 된다.
 
-```bash
+```bash:title=Terminal
 pnpm run storybook
 ```
 
 ## 요즘 스타일링
 
 여기까지만 해도 필수요소들은 모두 구축이 완료된 상태다.
- 
+
 스타일링은 언제나 선택의 영역이기 때문에 많이 사용할 것 같은 걸로 구성하면 된다.
 
 하지만 요즘 대세는 뭐니뭐니해도 Tailwind CSS를 사용하는 것이기 때문에. 대세에 몸을 맡겨보도록 한다.
@@ -463,13 +447,13 @@ pnpm run storybook
 
 일단 Tailwind CSS를 설치해준다.
 
-```bash
+```bash:title=Terminal
 pnpm add -D tailwindcss @tailwindcss/vite
 ```
 
 `peerDependencies`도 업데이트 해준다.
 
-```json
+```json:title=package.json
 {
   "peerDependencies": {
     "react": ">=18",
@@ -485,12 +469,10 @@ pnpm add -D tailwindcss @tailwindcss/vite
 
 그러기 위해서 Storybook의 [`vite` config를 오버라이딩](https://storybook.js.org/docs/api/main-config/main-config-vite-final) 해줘야 한다.
 
-```ts
-// .storybook/main.ts
-
+```ts:title=.storybook/main.ts
 const config: StorybookConfig = {
   //..
-  
+
   // 라이브러리 번들링할 때 말고, 여기서만 tailwindcss를 구동하기 위한 플러그인을 추가한다.
   async viteFinal(config) {
     const { mergeConfig, defineConfig } = await import('vite');
@@ -503,23 +485,20 @@ const config: StorybookConfig = {
       }),
     );
   },
-}
+};
 ```
 
 다음은, 루트 CSS에 `tailwindcss`를 import 하면 된다.
 
 빌드에 포함 안되어도 되니깐, `src` 디렉토리에 입맛에 맞게 만들어주면 된다.
 
-```css
-/* src/style.css */
-
-@import "tailwindcss";
+```css:title=src/style.css
+@import 'tailwindcss';
 ```
 
 이렇게 만든 CSS 모듈을 `.storybook/preview.ts`에 import 하면 된다.
-```ts
-// .storybook/preview.ts
 
+```ts:title=.storybook/preview.ts
 // ..
 import '../src/styles.css';
 
@@ -530,9 +509,7 @@ import '../src/styles.css';
 
 변경사항들이 잘 적용 되는지 확인하기 위해, `Button` 컴포넌트에 간단한 스타일링을 수행한다.
 
-```tsx
-// lib/components/button.tsx
-
+```tsx:title=lib/components/button.tsx
 import type { ReactNode } from 'react';
 
 export const Button = ({ children }: { children: ReactNode }) => (
@@ -566,7 +543,7 @@ Storybook을 구동시켜서 원하는대로 적용되었는지 확인하면...
 
 폰트는 사실 개별 프로젝트에서 직접 추가하는게 가장 성능이 좋다.
 
-여기서는 [Storybook에 글꼴을 추가](https://storybook.js.org/docs/configure/integration/images-and-assets#referencing-fonts-in-stories)하면 되는데, 
+여기서는 [Storybook에 글꼴을 추가](https://storybook.js.org/docs/configure/integration/images-and-assets#referencing-fonts-in-stories)하면 되는데,
 
 `.storybook/preview-head.html`에 웹폰트를 추가하면 스토리에 적용된다.
 
@@ -580,8 +557,7 @@ Storybook을 구동시켜서 원하는대로 적용되었는지 확인하면...
 
 먼저 `tailwindcss`가 클래스로 다크모드를 알아차릴 수 있도록 CSS를 업데이트 한다
 
-```css
-/* src/style.css */
+```css:title=src/style.css
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
@@ -589,22 +565,20 @@ Storybook을 구동시켜서 원하는대로 적용되었는지 확인하면...
 
 그리고 다음 패키지를 설치한다.
 
-```bash
+```bash:title=Terminal
 pnpm add -D @storybook/addon-themes
 ```
 
 다음으로 `.storybook/preview.ts`에 다음과 같이 업데이트 한다.
 
-```ts
-// .storybook/preview.ts
-
+```ts:title=.storybook/preview.ts
 import { withThemeByClassName } from '@storybook/addon-themes';
 
 // ..
 
 const preview: Preview = {
   parameters: {
-    // ..  
+    // ..
     backgrounds: {
       disable: true, // 이 기능은 배경 색만 바꾸기 때문에, 테마에 따른 스타일링을 확인하기에는 다소 무리가 있다.
     },
@@ -652,9 +626,7 @@ Next.js와 같이 RSC(서버 컴포넌트)를 지원하는 프레임워크에서
 
 의존성 패키지(`node_modules`)내부는 기본적으로 감지되지 않기에, 컴포넌트 라이브러리에서 사용중인 클래스를 감지하도록 설정해줘야 한다.
 
-```css
-/* e.g) your-project/src/global.css */
-
+```css:title=your-project/src/global.css[example]
 @source "../node_modules/your-ui-library";
 ```
 

@@ -1,3 +1,4 @@
-# StyleList94 blog
+# Stylish.LOG
 
-Stylish Diary
+맵시있는 일기장
+

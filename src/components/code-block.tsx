@@ -1,10 +1,72 @@
 import { codeToHtml } from 'shiki';
 
 import type { BundledLanguage } from 'shiki';
-import type { ClassAttributes, HTMLAttributes } from 'react';
+import { ClassAttributes, HTMLAttributes, JSX } from 'react';
 import type { ExtraProps } from 'react-markdown';
 
 import { cn } from '@/lib/utils';
+
+const languageRegExp = /language-(\w+)(:title=(.+))?/;
+const showLineNumberRegExp = /ts(x)?|js(on)?|css/;
+
+const getIcon = (language: string): JSX.Element => {
+  switch (language) {
+    case 'bash':
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-terminal-icon lucide-terminal select-none"
+        >
+          <path d="M12 19h8" />
+          <path d="m4 17 6-6-6-6" />
+        </svg>
+      );
+    case 'json':
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-braces-icon lucide-braces select-none"
+        >
+          <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1" />
+          <path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1" />
+        </svg>
+      );
+    default:
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-code-icon lucide-code select-none"
+        >
+          <path d="m16 18 6-6-6-6" />
+          <path d="m8 6-6 6 6 6" />
+        </svg>
+      );
+  }
+};
 
 const CodeBlock = async (
   props: ClassAttributes<HTMLElement> &
@@ -13,7 +75,7 @@ const CodeBlock = async (
 ) => {
   const { children, className, node, ...rest } = props;
 
-  const match = /language-(\w+)/.exec(className || '');
+  const match = languageRegExp.exec(className || '');
 
   if (!match) {
     return (
@@ -32,27 +94,53 @@ const CodeBlock = async (
     );
   }
 
+  const language = match[1] as BundledLanguage;
+  const showLineNumber = showLineNumberRegExp.test(match[1]);
+  const title = match[3];
+
   const out = await codeToHtml(String(children).replace(/\n$/, ''), {
-    lang: match[1] as BundledLanguage,
+    lang: language,
     themes: {
       light: 'one-light',
       dark: 'github-dark',
     },
   });
 
-  const showLineNumber = /ts(x)?|js(on)?|css/.test(match[1]);
-
   return (
     <div
       className={cn(
-        'code-block',
-        showLineNumber && 'code-block__with-line-numbers',
-        'overflow-x-auto',
+        'flex flex-col rounded-lg',
         'bg-[#FAFAFA] dark:bg-[#24292e]',
       )}
-      /* eslint-disable-next-line react/no-danger */
-      dangerouslySetInnerHTML={{ __html: out }}
-    />
+    >
+      {title && (
+        <>
+          <div className={cn('flex items-center gap-2 px-5 py-3')}>
+            <div className="text-neutral-400 dark:text-neutral-500">
+              {getIcon(language)}
+            </div>
+            <span
+              className={cn(
+                'overflow-hidden text-ellipsis break-normal whitespace-nowrap',
+                'font-sans text-xs text-neutral-500 dark:text-neutral-400',
+              )}
+            >
+              {title}
+            </span>
+          </div>
+          <hr className="border-none h-px w-full bg-zinc-200/50 dark:bg-zinc-700/50" />
+        </>
+      )}
+      <div
+        className={cn(
+          'code-block',
+          showLineNumber && 'code-block__with-line-numbers',
+          'overflow-x-auto',
+        )}
+        /* eslint-disable-next-line react/no-danger */
+        dangerouslySetInnerHTML={{ __html: out }}
+      />
+    </div>
   );
 };
 

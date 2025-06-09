@@ -29,9 +29,7 @@ Root Layout에 `metadata` 라는 이름의 갹체를 [구성](https://nextjs.org
 
 나는 이렇게 구성했다
 
-```ts
-// app/layout.tsx
-
+```tsx:title=app/layout.tsx
 // 이 객체는 따로 모듈로 선언했지만 편의상 여기에 표시
 const metadataContext = {
     title: 'STYLISH.LOG',
@@ -65,9 +63,7 @@ export const metadata: Metadata = {
 
 포스트마다 다른 메타데이터를 구현하기 위해, 다음과 같이 적용해봤다.
 
-```ts
-// app/post/[slug]/page.tsx
-
+```tsx:title=app/post/[slug]/page.tsx
 // 이 객체는 따로 모듈로 선언했지만 편의상 여기에 표시
 const metadataContext = {
     title: 'STYLISH.LOG',
@@ -127,9 +123,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 와... [사이트맵을 모듈로 구성](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#generating-a-sitemap-using-code-js-ts)할 수 있다.
 
-```ts
-// app/sitemap.ts
-
+```ts:title=app/sitemap.ts
 import type { MetadataRoute } from 'next';
 
 export const runtime = 'edge';
@@ -148,8 +142,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
 그리고 게시글 마다 사이트맵을 만들어야할 것 같아서 그냥 따라 해봤다.
 
-```ts
-// app/post/sitemap.ts
+```ts:title=app/post/sitemap.ts
 import type { MetadataRoute } from 'next';
 
 // Edge Runtime 환경에서는 파일시스템 모듈을 이용할 수 없다.
@@ -204,8 +197,7 @@ export default async function sitemap({
 
 각 포스트마다 리치 검색결과가 지원되기를 기대해보며 일단 [추가](https://nextjs.org/docs/app/building-your-application/optimizing/metadata#json-ld)해본다
 
-```tsx
-// app/post/[slug]/page.tsx
+```tsx:title=app/post/[slug]/page.tsx
 export default async function PostContentPage({ params }: Props) {
     
   const jsonLd: WithContext<BlogPosting> = {

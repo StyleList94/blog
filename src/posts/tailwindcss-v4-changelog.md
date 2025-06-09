@@ -49,21 +49,21 @@ Rust 기반의 새로운 고성능 엔진(Oxide) 도입으로 빌드 속도가 �
 
 이전 버전 대비, 전체 빌드는 3.78배, 증분 빌드는 8.8배 이상 빠르다.
 
-|                             |  v3.4 |  v4.0 |  배수 |
-| --------------------------- |------:| ----: | ----: |
-| 전체 빌드                   | 378ms | 100ms | 3.78x |
-| 새로운 CSS 포함 증분 빌드   |  44ms |   5ms |  8.8x |
+|                   |  v3.4 |  v4.0 |    배수 |
+|-------------------|------:|------:|------:|
+| 전체 빌드             | 378ms | 100ms | 3.78x |
+| 새로운 CSS 포함 증분 빌드  |  44ms |   5ms |  8.8x |
 | 새로운 CSS 미포함 증분 빌드 |  35ms | 192µs |  182x |
 
 특히 새로운 CSS를 컴파일 하지 않는 증분 빌드를 통해 성능이 대폭 향상되었다는데, 프로젝트 규모가 커질 수록, 이전에 사용했던 클래스를 재사용하는 경우가 많기 때문에 더욱 큰 효과를 볼 수 있다.
 
-`styled-components`를 채택한 프로젝트의 경우, 컴포넌트가 많이잘 수록 빌드 속도에도 영향을 줬었던 것 같은데, 이정도면 이제 성능때문이라도 CSS-In-JS 기법을 써야할 이유가 없다.
+`styled-components`를 채택한 프로젝트의 경우, 컴포넌트가 많이잘 수록, 빌드 속도에도 영향을 줬었던 것 같은데, 이정도면 이제 성능때문에라도 CSS-In-JS 기법을 써야할 이유가 없다.
 
 ## 모던 웹 기반 설계
 
 모던 CSS의 최신 구문 및 기능들을 모두 지원한다.
 
-```css
+```css:title=CSS
 /* 레이어 순서 정의 */
 @layer theme, base, components, utilities;
 
@@ -110,7 +110,7 @@ v3에서는 config 파일에 content 배열을 정의해서, tailwindcss를 감�
 
 그렇기 때문에, UI 라이브러리에서 `tailwindcss`를 사용하는 경우 CSS 파일에 `@source` 구문을 통해 명시적으로 콘텐츠를 포함 시켜야 한다.
 
-```css
+```css:title=CSS
 @import 'tailwindcss';
 @source "../node_modules/@my-company/ui-lib";
 ```
@@ -137,7 +137,7 @@ CSS에서 정의된 [테마 변수](https://tailwindcss.com/docs/theme)는 CSS �
 
 미리 구성된 단위 값이 아니더라도 자동으로 계산해서 적용해준다.
 
-```html
+```html:title=HTML
 <!-- grid-cols-15는 정의되지 않은 단위지만 자동으로 계산해준다 -->
 <div class="grid grid-cols-15">
   <!-- ... -->
@@ -146,7 +146,7 @@ CSS에서 정의된 [테마 변수](https://tailwindcss.com/docs/theme)는 CSS �
 
 사용자 정의 불리언 `data-*` 속성도 따로 정의할 필요 없이 자동으로 적용해준다.
 
-```html
+```html:title=HTML
 <!-- data-current에 대한 구성을 따로 정의하지 않아도 바로 사용할 수 있다 -->
 <div data-current class="opacity-75 data-current:opacity-100">
   <!-- ... -->
@@ -179,7 +179,7 @@ CSS에서 정의된 [테마 변수](https://tailwindcss.com/docs/theme)는 CSS �
 
 이제 선형 그레디언트에 각도를 지정할 수 있게 되었다.
 
-```html
+```html:title=HTML
 <!-- bg-linear-* 기법으로 각도를 지정할 수 있다. -->
 <div class="bg-linear-45 from-indigo-500 via-purple-500 to-pink-500"></div>
 ```
@@ -197,7 +197,7 @@ CSS에서 정의된 [테마 변수](https://tailwindcss.com/docs/theme)는 CSS �
 
 `bg-gradient-*` 이름이 변경된 이유이기도 하다(다양한 그래디언트 지원).
 
-```html
+```html:title=HTML
 <div
   class="size-24 rounded-full bg-conic/[in_hsl_longer_hue] from-red-600 to-red-600"
 ></div>
@@ -230,7 +230,7 @@ CSS에서 정의된 [테마 변수](https://tailwindcss.com/docs/theme)는 CSS �
 
 [마이그레이션](https://tailwindcss.com/docs/upgrade-guide#using-the-upgrade-tool)은 엄청나게 쉽다.
 
-```bash
+```bash:title=Terminal
 npx @tailwindcss/upgrade
 ```
 

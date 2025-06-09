@@ -35,7 +35,7 @@ Props drilling 문제가 발생할 뿐만 아니라, 전달이 제대로 안되�
 
 난 이것을 참지 못했다.
 
-```tsx
+```tsx:title=code-element.tsx
 const CodeElement = (
     props: ClassAttributes<HTMLElement> &
         HTMLAttributes<HTMLElement> &
@@ -90,9 +90,7 @@ const CodeElement = (
 
 망설이지 말고 적용해준다
 
-```tsx
-// code-element.tsx
-
+```tsx:title=code-element.tsx
 'use client';
 
 // 1. 사용할 언어팩을 불러온다음
@@ -117,7 +115,7 @@ SyntaxHighlighter.registerLanguage('jsx', bash);
 
 이렇게하면 페이지 사이즈도 확실하게 줄어드는 것을 확인했다!
 
-```bash
+```bash:title=Terminal
 # Next.js build Logs
 
 # before

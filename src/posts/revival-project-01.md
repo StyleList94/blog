@@ -34,14 +34,14 @@ ESLint를 제외한 모든 패키지를 최신버전으로 갱신했다. ESLint 
 
 ### 기본 설치
 
-```bash
+```bash:title=Terminal
 # 이거 없으면 요리 자체가 안됨
 yarn add -D vitest @vitejs/plugin-react vite-tsconfig-paths jsdom
 ```
 
 `vitest.config.ts` 구성 모듈을 생성한다. ([레퍼런스](https://vitest.dev/config/))
 
-```ts
+```ts:title=vitest.config.mts
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 // 이것을 사용하면 테스팅 코드에서의 path 애로사항을 단번에 해결할 수 있다
@@ -58,7 +58,7 @@ export default defineConfig({
 ```
 
 `Vitest`는 아직 근본으로 인정받지 못해서, 전역으로 사용하려면 `tsconfig.json`도 수정해줘야 한다
-```json
+```json:title=tsconfig.json
 {
   "compilerOptions": {
     "types": ["vitest/globals"] 
@@ -68,7 +68,7 @@ export default defineConfig({
 
 ### ESLint 플러그인 추가
 
-```bash
+```bash:title=Terminal
 yarn add -D @vitest/eslint-plugin
 ```
 
@@ -76,7 +76,7 @@ yarn add -D @vitest/eslint-plugin
 
 v8에서 동작하게 하려면 다음과 같이 `.eslintrc.json`을 수정해야한다. ([레퍼런스](https://github.com/vitest-dev/eslint-plugin-vitest?tab=readme-ov-file#usage))
 
-```json
+```json:title=.eslintrc.json
 {
   "overrides": [
     {
@@ -94,7 +94,7 @@ v8에서 동작하게 하려면 다음과 같이 `.eslintrc.json`을 수정해�
 
 잘 안쓰긴 할텐데, UI 도구랑 커버리지 확인할 수 있는 모듈은 간지를 챙기기위해 설치해준다
 
-```bash
+```bash:title=Terminal
 yarn add -D @vitest/coverage-v8 @vitest/ui
 ```
 
@@ -102,7 +102,7 @@ yarn add -D @vitest/coverage-v8 @vitest/ui
 
 나는 이렇게 구성했다
 
-```json
+```json:title=package.json
 {
   "scripts": {
     "test": "vitest",

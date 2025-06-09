@@ -74,9 +74,7 @@ ogImage: /assets/images/cover.png
 
 나는 확장성을 위해 모듈 기반으로 구성했다.
 
-```ts
-// styles/colors.ts
-
+```ts:title=styles/colors.ts
 export type ColorValue = HexColorCode | RGBAColorCode;
 
 export type Colors = Record<ColorKey, ColorValue>;
@@ -89,7 +87,7 @@ export const colors: Colors = {
 
 이렇게 구성한 뒤 `colors`를 `tailwind.config.ts`에 포함시키면 된다.
 
-```ts
+```ts:title=tailwind.cnfig.ts
 // Path alias를 지원하지 않기 때문에, 상대경로로 지정해야한다.
 import { colors } from './src/styles/colors';
 

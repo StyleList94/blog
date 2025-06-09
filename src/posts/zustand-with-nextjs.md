@@ -119,11 +119,8 @@ Zustand에 Redux Devtools을 통해 디버깅을 시도해 본 적이 있다면,
 즉, 하나의 최상위 스토어 안에, 기능적으로 구분된 스토어를 여러개 주입하는 방식으로 만들 수 있는 데, 이렇게 하면 디버깅할 때, 조금 편하고,
 정리된 느낌까지 들어 편하다.
 
-```ts
-// src/store/counter.ts
-
+```ts:title=src/store/counter.ts
 // 역시 카운터 만한게 없다!
-
 import { type StateCreator } from 'zustand';
 
 import { type RootStore } from '@/store/index';
@@ -170,9 +167,7 @@ export const createCounterSlice: StateCreator<
 
 그렇기 때문에 [스토어를 만드는 함수를 만들어야 한다](https://zustand.docs.pmnd.rs/guides/nextjs#creating-a-store-per-request). 어쩌다보니 패턴이 요상해졌다.(~~슬라이스를 만드는 함수를 만드는 스토어를 만드는 함수를 만들기?~~)
 
-```ts
-// src/store/index.ts
-
+```ts:title=src/store/index.ts
 import { createStore } from 'zustand/vanilla';
 
 import {
@@ -202,9 +197,7 @@ export const createRootStore = () =>
 
 이제 `Context`를 이용해서 스토어를 생성하고, 상태를 제공할 수 있게 [provider 컴포넌트를 만들면 된다](https://zustand.docs.pmnd.rs/guides/nextjs#providing-the-store).
 
-```tsx
-// src/providers/store-provider.tsx 
-
+```tsx:title=src/providers/store-provider.tsx 
 import { type ReactNode, createContext, useRef } from 'react';
 
 import { createRootStore } from '@/store';
@@ -243,9 +236,7 @@ export default StoreProvider;
 
 스토어를 사용하기 위해 커스텀 Hook을 제작해야한다.
 
-```ts
-// src/store/hooks.ts
-
+```ts:title=src/store/hooks.ts
 import { useContext } from 'react';
 import { useStore } from 'zustand';
 
@@ -270,7 +261,7 @@ provider 컴포넌트에 바로 선언할 수도 있었지만, 목적별로 모�
 
 이제 이런 식으로 스토어의 있는 상태와 액션을 가져올 수 있게 되었다.
 
-```ts
+```ts:title=JSX
 const { count, incrementCount, decremenetCount } = useRootStore((state) => state);
 ```
 

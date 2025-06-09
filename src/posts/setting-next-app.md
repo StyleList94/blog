@@ -10,7 +10,7 @@ ogImage: /assets/images/cover.png
 
 Typescript를 사용할 수 있는 프로젝트를 생성합니다.
 
-```bash
+```bash:title=Terminal
 yarn create next-app --typescript
 ```
 
@@ -18,21 +18,19 @@ yarn create next-app --typescript
 
 jest와 react testing library를 이용하여 유닛 테스팅 환경을 구축합니다
 
-```bash
+```bash:title=Terminal
 yarn add -D jest @testing-library/react @testing-library/jest-dom @testing-library/user-event @types/testing-library__jest-dom identity-obj-proxy babel-jest
 ```
 
 DOM Testing을 위한 setup 파일을 생성합니다
 
-```js
-// jest.setup.js
+```js:title=jest.setup.js
 import '@testing-library/jest-dom/extend-expect';
 ```
 
 jest config 파일을 생성합니다
 
-```js
-// jest.config.js
+```js:title=jest.config.js
 const nextJest = require('next/jest');
 
 const createJestConfig = nextJest({
@@ -65,8 +63,7 @@ module.exports = createJestConfig(customJestConfig);
 
 `package.json`에 스크립트를 추가합니다
 
-```json
-// package.json
+```json:title=package.json
 {
   "scripts": {
     "test": "jest --watch",
@@ -79,14 +76,13 @@ module.exports = createJestConfig(customJestConfig);
 
 다음 패키지를 설치합니다.
 
-```bash
+```bash:title=Terminal
 yarn add -D prettier
 ```
 
 `.prettierrc` 파일을 루트 디렉토리에 생성합니다.
 
-```json
-// .prettierrc
+```json:title=.prettierrc
 {
   "singleQuote": true,
   "semi": true,
@@ -102,14 +98,13 @@ yarn add -D prettier
 
 다음 패키지를 설치합니다.
 
-```bash
+```bash:title=Terminal
  yarn add -D @next/eslint-plugin-next @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-jest eslint-plugin-testing-library
 ```
 
 `.eslintrc.json` 파일을 업데이트 합니다.
 
-```json
-// .eslintrc.json
+```json:title=.eslintrc.json
 {
   "root": true,
   "env": {
@@ -173,14 +168,13 @@ yarn add -D prettier
 
 다음 패키지를 설치합니다.
 
-```bash
+```bash:title=Terminal
 yarn add -D lint-staged
 ```
 
 `.lintstagedrc.js` 파일을 생성합니다.
 
-```js
-// .lintstagedrc.js
+```js:title=.lintstagedrc.js
 const path = require('path');
 
 const buildEslintCommand = (filenames) =>
@@ -197,13 +191,13 @@ module.exports = {
 
 다음 커멘드를 이용하여 husky를 설치합니다.
 
-```bash
+```bash:title=Terminal
 npx husky-init && yarn
 ```
 
 커밋 전에 staged된 변경사항에 대해 ESLint를 검사합니다.
 
-```sh
+```bash:title=.husky/pre-commit
 # .husky/pre-commit
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
@@ -215,8 +209,7 @@ yarn lint-staged
 
 `src` 폴더를 base url로 설정하여 절대 경로를 사용할 수 있게 합니다.
 
-```json
-// tsconfig.json
+```json:title=tsconfig.json
 {
   "compilerOptions": {
     "baseUrl": "src"
@@ -226,8 +219,7 @@ yarn lint-staged
 
 jest config의 `moduleNameMapper`를 업데이트 합니다
 
-```js
-// jest.config.js
+```js:title=jest.config.js
 moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
@@ -239,15 +231,14 @@ moduleNameMapper: {
 
 다음 패키지를 설치합니다.
 
-```bash
+```bash:title=Terminal
 yarn add @emotion/react @emotion/styled
 yarn add -D @emotion/babel-plugin
 ```
 
 `css` props 사용을 위해 다음 설정들을 업데이트 합니다.
 
-```json
-// .babelrc
+```json:title=.babelrc
 {
   "presets": [
     [
@@ -264,8 +255,7 @@ yarn add -D @emotion/babel-plugin
 }
 ```
 
-```json
-// tsconfig.json
+```json:title=tsconfig.json
 {
   "compilerOptions": {
     "jsxImportSource": "@emotion/react"
