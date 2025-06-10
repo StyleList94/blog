@@ -6,7 +6,11 @@ export type Post = {
   coverImage: string;
   ogImage: string;
   content: string;
+  series?: string;
+  seriesOrder?: number;
 };
+
+export type PostSeriesInfo = Pick<Post, 'title' | 'slug'>;
 
 export type TableOfContents = {
   content: string;

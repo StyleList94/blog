@@ -5,7 +5,7 @@ import { render, screen } from '@testing-library/react';
 import Header from '../header';
 
 describe('Header', () => {
-  it('should be render', () => {
+  it('should be rendered', () => {
     vi.useFakeTimers().setSystemTime(new Date('2024-10-08'));
 
     render(<Header />);
@@ -14,7 +14,7 @@ describe('Header', () => {
     expect(screen.getByText('.LOG')).toBeInTheDocument();
   });
 
-  it('should be render if today is hangul day', () => {
+  it('should be rendered if today is hangul day', () => {
     vi.useFakeTimers().setSystemTime(new Date('2024-10-09'));
 
     render(<Header />);

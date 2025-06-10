@@ -4,6 +4,8 @@ description: 블로그 리바이벌 프로젝트 - 2장
 date: '2024-10-05T15:40:00.000Z'
 coverImage: /assets/images/cover.png
 ogImage: /assets/images/cover.png
+series: '블로그 리바이벌 프로젝트'
+seriesOrder: 2
 ---
 
 ## 빠른 참고

@@ -1,8 +1,7 @@
 import GithubSlugger from 'github-slugger';
 
-import type { TableOfContents } from '@/types/post';
+import type { Post, PostSeriesInfo, TableOfContents } from '@/types/post';
 
-// eslint-disable-next-line import/prefer-default-export
 export const generateTOC = (postContent: string): TableOfContents[] => {
   const matches = postContent.matchAll(/^(?<level>#{2,3})\s+(?<content>.+)$/gm);
 
@@ -41,3 +40,12 @@ export const generateTOC = (postContent: string): TableOfContents[] => {
     [],
   );
 };
+
+export const generateSeries = (
+  postList: Omit<Post, 'content'>[],
+  series: string,
+): PostSeriesInfo[] =>
+  postList
+    .filter((post) => post.series === series)
+    .sort((post1, post2) => (post1.seriesOrder ?? 0) - (post2.seriesOrder ?? 0))
+    .map(({ slug, title }) => ({ slug, title }));

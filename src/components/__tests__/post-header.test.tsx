@@ -12,7 +12,7 @@ const props = {
 };
 
 describe('PostHeader', () => {
-  it('should be render', () => {
+  it('should be rendered', () => {
     render(<PostHeader {...props} />);
     expect(screen.getByText('SO Lovely CODE!')).toBeInTheDocument();
     expect(screen.getByText('first description')).toBeInTheDocument();

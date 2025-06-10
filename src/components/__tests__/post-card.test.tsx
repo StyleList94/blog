@@ -24,7 +24,7 @@ afterEach(() => {
 });
 
 describe('PostCard', () => {
-  it('should be render', () => {
+  it('should be rendered', () => {
     render(<PostCard {...props} />);
 
     expect(

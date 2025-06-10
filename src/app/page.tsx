@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { getAllPosts } from '@/lib/services/api/post';
+import { getAllPosts } from '@/lib/services/post';
 
 import type { Post } from '@/types/post';
 

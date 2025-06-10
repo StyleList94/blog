@@ -21,16 +21,12 @@ export async function getPostBySlug(slug: string) {
 
     const { data, content } = matter(fileContents);
 
-    const { title, description, date, coverImage, ogImage } = data as Post;
+    const { ...rest } = data as Omit<Post, 'slug' | 'content'>;
 
     const items: Post = {
       slug: realSlug,
-      title,
-      description,
-      date,
-      coverImage,
-      ogImage,
       content,
+      ...rest,
     };
 
     return items;
@@ -53,5 +49,7 @@ export async function getAllPosts() {
   const slugs = await getPostSlugs();
   const posts = await Promise.all(slugs.map((slug) => getPostBySlug(slug)));
 
-  return posts.sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+  return posts
+    .map(({ content, ...rest }) => ({ ...rest }))
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 }
