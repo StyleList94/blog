@@ -23,7 +23,7 @@ export async function GET() {
       (post) => `
     <item>
         <title>${post.title}</title>
-        <link>https://blog.stylelist94.dev/${post.slug}</link>
+        <link>https://blog.stylelist94.dev/post/${post.slug}</link>
         <description>${post.description}</description>
         <pubDate>${post.date}</pubDate>
     </item>
@@ -36,7 +36,7 @@ export async function GET() {
 
   return new Response(feed, {
     headers: {
-      'Content-Type': 'text/xml',
+      'Content-Type': 'application/xml',
     },
   });
 }
