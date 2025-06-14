@@ -88,6 +88,7 @@ export default async function PostContentPage({ params }: Props) {
             title={post.title}
             description={post.description}
             date={post.date}
+            lastModified={post.lastModified}
           />
           {post.series && seriesList.length > 0 ? (
             <PostSeriesWrapper

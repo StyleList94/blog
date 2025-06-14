@@ -4,6 +4,8 @@ description: 블로그 리바이벌 프로젝트 - 에필로그
 date: '2024-10-22T13:08:00.000Z'
 coverImage: /assets/images/cover.png
 ogImage: /assets/images/cover.png
+series: '블로그 리바이벌 프로젝트'
+seriesOrder: 6
 ---
 
 ## 도장깨기

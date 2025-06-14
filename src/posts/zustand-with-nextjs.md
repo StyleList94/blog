@@ -2,6 +2,7 @@
 title: 상태 관리계의 떠오르는 샛별, Zustand 첫 경험
 description: Next.js에 Zustand를 화끈하게 세팅하기
 date: '2025-05-27T10:19:00.000Z'
+lastModified: '2025-06-14T12:48:00.000Z'
 coverImage: /assets/images/cover.png
 ogImage: /assets/images/cover.png
 ---
@@ -185,7 +186,6 @@ export type RootState = CounterState;
 // 스토어를 만드는 팩토리 함수를 만든다.
 export const createRootStore = () =>
     createStore<RootStore>()((...rest) => ({
-        ...initState,
         ...createCounterSlice(...rest),
         // 이후 스토어를 확장할 때, 같은 패턴으로 주입하면 된다.
     }));

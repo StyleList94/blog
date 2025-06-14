@@ -80,7 +80,13 @@ const PostSeriesWrapper = ({ title, list, currentOrder, children }: Props) => {
         </div>
       </div>
       {children}
-      <div className="flex justify-between items-center gap-4 mt-8 p-4">
+      <div
+        className={cn(
+          'flex flex-col items-start gap-4 w-full mt-8 p-4',
+          'sm:flex-row sm:justify-between sm:items-center',
+          '*:even:self-end *:sm:even:self-auto',
+        )}
+      >
         <div>
           {prevSeriesIndex >= 0 && (
             <SeriesNavigator item={list[prevSeriesIndex]} direction="prev" />
