@@ -2,6 +2,7 @@
 title: UI Kit를 만들어서 디자인 시스템에 곁들여볼까?
 description: React 기반의 컴포넌트 및 스타일 라이브러리 업글(?)기
 date: '2025-05-21T14:05:00.000Z'
+lastModified: '2025-06-16T03:40:00.000Z'
 coverImage: /assets/images/cover.png
 ogImage: /assets/images/cover.png
 ---
@@ -328,16 +329,10 @@ const config: StorybookConfig = {
 
 먼저 사이드바에 브랜딩부터 적용한다.
 
-일단 필요한 패키지를 설치하고
-
-```bash:title=Terminal
-pnpm add -D @storybook/manager-api @storybook/theming @storybook/core-events
-```
-
-`.storybook/theme.ts` 모듈을 생성해준다.
+`.storybook/theme.ts` 모듈을 생성한 뒤, 다음과 같이 구성한다.
 
 ```ts:title=.storybook/theme.ts
-import { create } from '@storybook/theming/create';
+import { create } from 'storybook/theming/create';
 
 export default create({
   base: 'light', // 스토리 영역을 제외하고 테마가 변경된다
@@ -350,7 +345,7 @@ export default create({
 `.storybook/manager.ts` 모듈을 생성해서 커스터마이징한 테마를 등록해준다.
 
 ```ts:title=.storybook/manager.ts
-import { addons } from '@storybook/manager-api';
+import { addons } from 'storybook/manager-api';
 
 import theme from './theme';
 
@@ -363,13 +358,13 @@ addons.setConfig({
 
 사이트 타이틀 변경이 조금 까다로운데, Storybook 브랜딩이 기본적으로 적용되어 있어, 상당히 곤란하다.
 
-Addon 기능을 활용하면 사이트 타이틀을 어느 정도 입맛대로 재조정 할 수 있다.
+커스텀 애드온을 활용하면 사이트 타이틀을 어느 정도 입맛대로 재조정 할 수 있다.
 
 `./storybook/manager.ts`에 다음 애드온을 구성해주면 된다.
 
 ```ts:title=.storybook/manager.ts
-import { addons } from '@storybook/manager-api';
-import { STORY_RENDERED, DOCS_RENDERED } from '@storybook/core-events';
+import { addons } from 'storybook/manager-api';
+import { STORY_RENDERED, DOCS_RENDERED } from 'storybook/internal/core-events';
 
 // ..
 
@@ -404,7 +399,7 @@ addons.register('TitleAddon', (api) => {
 아까 만든 Button에 대한 스토리를 `src/stories` 디렉토리에 작성한다.
 
 ```tsx:title=src/stories/Button.stories.tsx
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Button } from 'lib/components/button';
 
@@ -639,3 +634,7 @@ Next.js와 같이 RSC(서버 컴포넌트)를 지원하는 프레임워크에서
 스타일 가이드를 더 집중적으로 구성하는 쪽으로 방향을 잡는 것이 중요할 것으로 보인다.
 
 디자이너가 개떡같이 말해도 찰떡같이 반영할 수 있도록, 디자인 시스템에 기여해보는건 어떨까?
+
+## 업데이트 히스토리
+
+25-06-16: Storybook v9 릴리즈 대응

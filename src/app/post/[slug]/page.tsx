@@ -70,6 +70,8 @@ export default async function PostContentPage({ params }: Props) {
     '@type': 'BlogPosting',
     headline: post.title,
     dateCreated: post.date,
+    datePublished: post.date,
+    dateModified: post.lastModified,
     description: post.description,
   };
 
