@@ -3,8 +3,6 @@ title: UI Kit를 만들어서 디자인 시스템에 곁들여볼까?
 description: React 기반의 컴포넌트 및 스타일 라이브러리 업글(?)기
 date: '2025-05-21T14:05:00.000Z'
 lastModified: '2025-06-16T03:40:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
 ---
 
 ## 빠른 참고

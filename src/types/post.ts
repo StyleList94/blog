@@ -4,8 +4,8 @@ export type Post = {
   description: string;
   date: string;
   lastModified?: string;
-  coverImage: string;
-  ogImage: string;
+  coverImage?: string;
+  ogImage?: string;
   content: string;
   series?: string;
   seriesOrder?: number;

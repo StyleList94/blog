@@ -2,8 +2,6 @@
 title: 이제 tailwindcss를 사용하지 않을 이유가 없다.
 description: Tailwind CSS v4 변경점 정리
 date: '2025-05-03T14:00:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
 ---
 
 ## 빠른 참고

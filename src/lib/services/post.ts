@@ -36,8 +36,6 @@ export async function getPostBySlug(slug: string) {
       title: '404',
       description: '404',
       date: new Date().toISOString(),
-      coverImage: '404',
-      ogImage: '404',
       content: '404',
     };
 

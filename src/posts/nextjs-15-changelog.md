@@ -2,8 +2,6 @@
 title: Next.js 15는 어떻게 변했을까?
 description: Next.js 15의 변경 점을 내맘대로 정리
 date: '2024-11-14T11:45:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
 ---
 
 ## 빠른 참고

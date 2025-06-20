@@ -2,8 +2,7 @@
 title: Next.js 프로젝트 세팅
 description: Next.js 프로젝트를 처음부터 끝까지 세팅해봅시다.
 date: '2022-03-01T11:21:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
+
 ---
 
 ## Create Next App

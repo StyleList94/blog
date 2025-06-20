@@ -2,8 +2,6 @@
 title: 세련되게 Chrome 확장 프로그램 만들기
 description: React로 Chrome Extensions 빌드하는 방법
 date: '2025-06-18T12:19:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
 ---
 
 ## 빠른 참고

@@ -2,8 +2,6 @@
 title: 시작은 정리부터
 description: 블로그 리바이벌 프로젝트 - 1장
 date: '2024-10-01T14:25:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
 series: '블로그 리바이벌 프로젝트'
 seriesOrder: 2
 ---

@@ -2,8 +2,6 @@
 title: 2024년 연말결산
 description: 내맘대로 정리하는 2024년
 date: '2024-12-31T12:18:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
 ---
 
 ## 올해의 프론트엔드 JS

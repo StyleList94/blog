@@ -2,8 +2,6 @@
 title: 남은 건 이제 의지뿐...
 description: 블로그 리바이벌 프로젝트 - 4장
 date: '2024-10-20T05:30:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
 series: '블로그 리바이벌 프로젝트'
 seriesOrder: 5
 ---

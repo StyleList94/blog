@@ -2,8 +2,6 @@
 title: 나는 기록의 중요성을 모르고 지냈다. 
 description: 블로그 리바이벌 프로젝트 - 프롤로그
 date: '2024-09-27T14:25:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
 series: '블로그 리바이벌 프로젝트'
 seriesOrder: 1
 ---

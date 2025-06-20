@@ -3,8 +3,6 @@ title: 상태 관리계의 떠오르는 샛별, Zustand 첫 경험
 description: Next.js에 Zustand를 화끈하게 세팅하기
 date: '2025-05-27T10:19:00.000Z'
 lastModified: '2025-06-14T12:48:00.000Z'
-coverImage: /assets/images/cover.png
-ogImage: /assets/images/cover.png
 ---
 
 ## 빠른 참고
