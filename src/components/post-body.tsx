@@ -4,7 +4,10 @@ import ReactMarkdown, {
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
+import rehypeUnwrapImages from 'rehype-unwrap-images';
 import Link from 'next/link';
+import Image, { type ImageProps } from 'next/image';
+import { domAnimation, LazyMotion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -217,19 +220,41 @@ const components: Partial<MarkdownElement> = {
     );
   },
   code: CodeBlock,
+  img: ({ node, ...props }) => {
+    const UNOPTIMIZED_EXTENSIONS = ['svg', 'gif', 'webp'];
+
+    const ext =
+      typeof props.src === 'string'
+        ? (props.src.split('.').pop()?.toLowerCase() ?? '')
+        : '';
+
+    const isUnoptimized = UNOPTIMIZED_EXTENSIONS.includes(ext);
+
+    return (
+      <div className="relative w-full aspect-[3/2]">
+        <Image
+          fill
+          style={{ objectFit: 'contain' }}
+          unoptimized={isUnoptimized}
+          {...(props as ImageProps)}
+        />
+      </div>
+    );
+  },
 };
 
 const PostBody = ({ content }: Props) => (
-  <div className="p-4">
-    <ScrollLinked>
+  <div className="py-4">
+    <LazyMotion features={domAnimation}>
+      <ScrollLinked />
       <ReactMarkdown
         components={components}
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw, rehypeSlug]}
+        rehypePlugins={[rehypeRaw, rehypeSlug, rehypeUnwrapImages]}
       >
         {content}
       </ReactMarkdown>
-    </ScrollLinked>
+    </LazyMotion>
   </div>
 );
 

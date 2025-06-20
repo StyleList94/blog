@@ -6,7 +6,7 @@ import type { Post } from '@/types/post';
 type Props = Pick<Post, 'slug' | 'title' | 'description' | 'date'>;
 
 const PostCard = ({ slug, title, description, date }: Props) => (
-  <div className="flex flex-col w-full p-3">
+  <div className="flex flex-col w-full py-3">
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">

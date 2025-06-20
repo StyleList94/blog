@@ -76,7 +76,34 @@ export default async function PostContentPage({ params }: Props) {
   };
 
   return (
-    <LayoutContainer>
+    <>
+      <LayoutContainer>
+        <div className="flex justify-between items-start w-full max-w-[80rem] mx-auto">
+          <div className="flex flex-col flex-1 min-w-0 md:max-w-[45rem]">
+            <PostHeader
+              title={post.title}
+              description={post.description}
+              date={post.date}
+              lastModified={post.lastModified}
+            />
+            {post.series && seriesList.length > 0 ? (
+              <PostSeriesWrapper
+                title={post.series}
+                list={seriesList}
+                currentOrder={post.seriesOrder}
+              >
+                <PostBody content={post.content} />
+              </PostSeriesWrapper>
+            ) : (
+              <PostBody content={post.content} />
+            )}
+          </div>
+          <div className="sticky top-[calc(4rem+1.5rem)] overflow-auto h-[calc(100vh-6rem)] hidden lg:flex grow-0 shrink-0 basis-60 pl-6">
+            <PostTableOfContents items={tocList} />
+          </div>
+        </div>
+      </LayoutContainer>
+
       <script
         type="application/ld+json"
         /* eslint-disable-next-line react/no-danger */
@@ -84,30 +111,6 @@ export default async function PostContentPage({ params }: Props) {
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      <div className="flex justify-between items-start w-full max-w-[80rem] mx-auto">
-        <div className="flex flex-col flex-1 min-w-0 md:max-w-[45rem]">
-          <PostHeader
-            title={post.title}
-            description={post.description}
-            date={post.date}
-            lastModified={post.lastModified}
-          />
-          {post.series && seriesList.length > 0 ? (
-            <PostSeriesWrapper
-              title={post.series}
-              list={seriesList}
-              currentOrder={post.seriesOrder}
-            >
-              <PostBody content={post.content} />
-            </PostSeriesWrapper>
-          ) : (
-            <PostBody content={post.content} />
-          )}
-        </div>
-        <div className="sticky top-[calc(4rem+1.5rem)] overflow-auto h-[calc(100vh-6rem)] hidden lg:flex grow-0 shrink-0 basis-60 pl-6">
-          <PostTableOfContents items={tocList} />
-        </div>
-      </div>
-    </LayoutContainer>
+    </>
   );
 }

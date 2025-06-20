@@ -45,7 +45,7 @@ const PostSeriesWrapper = ({ title, list, currentOrder, children }: Props) => {
 
   return (
     <>
-      <div className={cn('flex flex-col gap-4 p-4')}>
+      <div className={cn('flex flex-col gap-4 py-4')}>
         <div className={cn('flex flex-col gap-2')}>
           <p
             className={cn(
