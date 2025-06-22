@@ -1,7 +1,7 @@
+import type { Post } from '@/types/post';
+
 import Link from 'next/link';
 import { format } from 'date-fns';
-
-import type { Post } from '@/types/post';
 
 type Props = Pick<Post, 'slug' | 'title' | 'description' | 'date'>;
 

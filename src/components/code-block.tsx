@@ -1,46 +1,53 @@
+import type { ClassAttributes, HTMLAttributes, JSX } from 'react';
+import type { ExtraProps } from 'react-markdown';
+import type { BundledLanguage } from 'shiki';
+
 import { codeToHtml } from 'shiki';
 
 import { cn } from '@/lib/utils';
 
-import type { BundledLanguage } from 'shiki';
-import type { ClassAttributes, HTMLAttributes, JSX } from 'react';
-import type { ExtraProps } from 'react-markdown';
+type IconType = 'bash' | 'json' | 'default';
 
 const languageRegExp = /language-(\w+)(:title=(.+))?/;
 const showLineNumberRegExp = /ts(x)?|js(on)?|css/;
 
-const iconElement: Record<string, { className: string; path: JSX.Element }> = {
-  bash: {
-    className: 'lucide lucide-terminal-icon lucide-terminal',
-    path: (
-      <>
-        <path d="M12 19h8" />
-        <path d="m4 17 6-6-6-6" />
-      </>
-    ),
-  },
-  json: {
-    className: 'lucide lucide-braces-icon lucide-braces',
-    path: (
-      <>
-        <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1" />
-        <path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1" />
-      </>
-    ),
-  },
-  default: {
-    className: 'lucide lucide-code-icon lucide-code',
-    path: (
-      <>
-        <path d="m16 18 6-6-6-6" />
-        <path d="m8 6-6 6 6 6" />
-      </>
-    ),
-  },
-};
+const iconElement: Record<IconType, { className: string; path: JSX.Element }> =
+  {
+    bash: {
+      className: 'lucide lucide-terminal-icon lucide-terminal',
+      path: (
+        <>
+          <path d="M12 19h8" />
+          <path d="m4 17 6-6-6-6" />
+        </>
+      ),
+    },
+    json: {
+      className: 'lucide lucide-braces-icon lucide-braces',
+      path: (
+        <>
+          <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1" />
+          <path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1" />
+        </>
+      ),
+    },
+    default: {
+      className: 'lucide lucide-code-icon lucide-code',
+      path: (
+        <>
+          <path d="m16 18 6-6-6-6" />
+          <path d="m8 6-6 6 6 6" />
+        </>
+      ),
+    },
+  };
 
 const BlockIcon = ({ language }: { language: string }) => {
-  const { className, path } = iconElement[language] || iconElement.default;
+  const iconType: IconType = ['bash', 'json'].includes(language)
+    ? (language as IconType)
+    : ('default' as const);
+
+  const { className, path } = iconElement[iconType];
 
   return (
     <svg
@@ -129,7 +136,6 @@ const CodeBlock = async (
           showLineNumber && 'code-block__with-line-numbers',
           'overflow-x-auto',
         )}
-        /* eslint-disable-next-line react/no-danger */
         dangerouslySetInnerHTML={{ __html: out }}
       />
     </div>

@@ -1,7 +1,7 @@
+import type { Post } from '@/types/post';
+
 import { cn } from '@/lib/utils';
 import { getAllPosts } from '@/lib/services/post';
-
-import type { Post } from '@/types/post';
 
 import PostCard from '@/components/post-card';
 import LayoutContainer from '@/components/layout/container';

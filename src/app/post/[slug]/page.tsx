@@ -1,12 +1,12 @@
+import type { Metadata } from 'next';
+import type { Post, PostSeriesInfo } from '@/types/post';
+
 import { redirect } from 'next/navigation';
 import { BlogPosting, WithContext } from 'schema-dts';
 
 import { metadataContext } from '@/lib/metadata';
 import { getAllPosts, getPostBySlug } from '@/lib/services/post';
 import { generateSeries, generateTOC } from '@/lib/post-utils';
-
-import type { Metadata } from 'next';
-import type { Post, PostSeriesInfo } from '@/types/post';
 
 import LayoutContainer from '@/components/layout/container';
 import PostHeader from '@/components/post-header';
@@ -106,7 +106,6 @@ export default async function PostContentPage({ params }: Props) {
 
       <script
         type="application/ld+json"
-        /* eslint-disable-next-line react/no-danger */
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}

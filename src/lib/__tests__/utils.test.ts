@@ -7,7 +7,8 @@ describe('cn()', () => {
   });
 
   it('handles conditional class names correctly', () => {
-    const isTrue = true;
+    const isTrue = typeof 'lovely' === 'string';
+
     const result = cn(
       'btn',
       isTrue && 'btn-primary',

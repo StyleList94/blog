@@ -1,10 +1,9 @@
 import type { MetadataRoute } from 'next';
+import type { Post } from '@/types/post';
 
 import { getAllPosts } from '@/lib/services/post';
 
-import type { Post } from '@/types/post';
-
-export async function generateSitemaps() {
+export function generateSitemaps() {
   return [{ id: 0 }];
 }
 

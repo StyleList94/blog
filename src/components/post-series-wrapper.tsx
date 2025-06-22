@@ -1,9 +1,9 @@
+import type { PropsWithChildren } from 'react';
+import type { PostSeriesInfo } from '@/types/post';
+
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
-
-import type { PropsWithChildren } from 'react';
-import type { PostSeriesInfo } from '@/types/post';
 
 type Props = PropsWithChildren<{
   title: string;

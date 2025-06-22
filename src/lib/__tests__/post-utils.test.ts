@@ -1,5 +1,5 @@
-import { expect } from 'vitest';
 import { Post } from '@/types/post';
+
 import { generateTOC, generateSeries } from '../post-utils';
 
 const mockContent = `
@@ -87,7 +87,7 @@ describe('genetateTOC', () => {
 });
 
 describe('generateSeries()', () => {
-  it('should return an array of series', async () => {
+  it('should return an array of series', () => {
     const seriesList = generateSeries(
       mockPostMetaList as Post[],
       '칵테일 탐구생활',

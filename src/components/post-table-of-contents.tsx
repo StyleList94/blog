@@ -1,13 +1,13 @@
 'use client';
 
+import type { TableOfContents } from '@/types/post';
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import throttle from 'lodash-es/throttle';
 import { useMounted } from '@stylelist94/nine-beauty-actress';
 
 import { cn } from '@/lib/utils';
-
-import type { TableOfContents } from '@/types/post';
 
 type Props = {
   items: TableOfContents[];
@@ -58,7 +58,7 @@ const PostTableOfContents = ({ items }: Props) => {
 
   return (
     <div
-      key={`toc-${mounted}`}
+      key={`toc-${mounted.toString()}`}
       className={cn(
         'border-l px-3 border-neutral-600/20',
         'dark:border-neutral-400/30',

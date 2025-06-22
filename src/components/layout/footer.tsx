@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils';
 import { footerContainerStyle } from '@stylelist94/nine-beauty-actress/styles';
+
+import { cn } from '@/lib/utils';
 
 const Footer = () => (
   <footer className={cn(footerContainerStyle, 'max-w-[64rem]')}>

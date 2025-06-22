@@ -1,6 +1,6 @@
-import { getAllPosts } from '@/lib/services/post';
-
 import type { Post } from '@/types/post';
+
+import { getAllPosts } from '@/lib/services/post';
 
 export const dynamic = 'auto';
 

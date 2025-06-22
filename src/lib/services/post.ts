@@ -1,10 +1,11 @@
 'use server';
 
-import fs from 'node:fs/promises';
-import { join } from 'node:path';
-import matter from 'gray-matter';
-
 import type { Post } from '@/types/post';
+
+import { join } from 'node:path';
+import fs from 'node:fs/promises';
+
+import matter from 'gray-matter';
 
 const postDirectory = join(process.cwd(), 'src/posts');
 

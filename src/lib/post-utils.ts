@@ -1,6 +1,6 @@
-import GithubSlugger from 'github-slugger';
-
 import type { Post, PostSeriesInfo, TableOfContents } from '@/types/post';
+
+import GithubSlugger from 'github-slugger';
 
 export const generateTOC = (postContent: string): TableOfContents[] => {
   const matches = postContent.matchAll(/^(?<level>#{2,3})\s+(?<content>.+)$/gm);

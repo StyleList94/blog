@@ -6,5 +6,4 @@ export const metadataContext = {
   ogImage: 'https://blog.stylelist94.dev/og-image.png',
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default null;
+export default metadataContext;

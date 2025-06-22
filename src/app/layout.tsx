@@ -1,3 +1,6 @@
+import type { ReactNode } from 'react';
+import type { Metadata, Viewport } from 'next';
+
 import {
   notoSerif,
   pretendard,
@@ -5,9 +8,6 @@ import {
   titilliumWeb,
 } from '@/assets/fonts';
 import { metadataContext } from '@/lib/metadata';
-
-import type { ReactNode } from 'react';
-import type { Metadata, Viewport } from 'next';
 
 import AppProvider from '@/providers/app-provider';
 
