@@ -2,6 +2,7 @@
 title: 답답해서 내가 만든 최신 ESLint 규칙 공유하기 
 description: ESLint 규칙 세트를 패키지로 배포하기 
 date: '2025-06-20T12:19:00.000Z'
+lastModified: '2025-06-24T08:30:00.000Z'
 ---
 
 ## 빠른 참고
@@ -40,11 +41,14 @@ ESLint의 Flat Config가 도입 된지 벌써 일년이 지났지만...
 나는 `import`, `jsx-a11y`, `react`, `react-hooks`, `@typescript-eslint` 플러그인들의 규칙이 필요했다.
 
 ```bash:title=Terminal
-pnpm add --save-peer eslint typescript-eslint \
+pnpm add -D \
+  eslint-config-stylish \
+  eslint @eslint/js \
   eslint-plugin-import \
   eslint-plugin-jsx-a11y \
   eslint-plugin-react \
-  eslint-plugin-react-hooks
+  eslint-plugin-react-hooks \
+  typescript-eslint
 ```
 
 그리고 peer 의존성 패키지들의 최소 버전을 명시적으로 지정하기 위해 `package.json`을 살짝 수정해준다.
@@ -52,12 +56,35 @@ pnpm add --save-peer eslint typescript-eslint \
 ```json:title=package.json
 {
   "peerDependencies": {
+    "@eslint/js": ">=9",
     "eslint": ">=9",
     "eslint-plugin-import": ">=2",
     "eslint-plugin-jsx-a11y": ">=6",
     "eslint-plugin-react": ">=7",
     "eslint-plugin-react-hooks": ">=5",
     "typescript-eslint": ">=8"
+  }
+}
+```
+
+### Resolver 등록
+
+TypeScript에서 `import/extensions`, `import/no-extraneous-dependencies` 규칙이 정상적으로 동작하기 위해서는,
+리졸버를 이용해서 프로젝트의 타입스크립트 구성을 알려줘야 한다.
+
+먼저 `eslint-import-resolver-typescript` 패키지를 설치한다.
+
+```bash:title=Terminal
+pnpm add -D eslint-import-resolver-typescript
+```
+
+그리고 피어 의존성 페키지로 등록한다.
+
+```json:title=package.json
+{
+  "peerDependencies": {
+    /* 상기 패키지 포함 */
+    "eslint-import-resolver-typescript": ">=4",
   }
 }
 ```
@@ -155,11 +182,21 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config({
   extends: [tseslint.configs.strictTypeChecked],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: './tsconfig.json',
+      },
+    },
+  },
   rules: {
     /* 각종 규칙들을 정의하거나 덮어쓰기 */
   },
 });
 ```
+
+앞서 세팅한 리졸버를 구성해주면 특정 규칙들에 대한 이슈를 해결할 수 있다.
 
 TypeScript 규칙은 가장 강력한 `strictTypeChecked` 규칙 세트를 적용해봤다. ~~사용해보고 안되면 그 규칙만 덮어쓰면 되니깐!~~
 
@@ -257,18 +294,18 @@ Github 리포지토리 설정에서 `NPM_TOKEN`에 NPM Access Token 넣는거 �
 
 ```js:title=your-project/eslint.config.js
 import tseslint from 'typescript-eslint';
-import stylishConfig from 'eslint-config-stylish';
-import stylishReactConfig from 'eslint-config-stylish/react';
-import stylishTypeScriptConfig from 'eslint-config-stylish/typescript';
+import stylish from 'eslint-config-stylish';
+import stylishReact from 'eslint-config-stylish/react';
+import stylishTypeScript from 'eslint-config-stylish/typescript';
 
 export default tseslint.config(
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    extends: [stylishConfig],
+    extends: [stylish],
   },
   {
     files: ['**/*.{js,jsx,tsx}'],
-    extends: [stylishReactConfig],
+    extends: [stylishReact],
   },
   {
     files: ['**/*.{ts,mts,cts,tsx}'],
@@ -282,7 +319,7 @@ export default tseslint.config(
         sourceType: 'module',
       },
     },
-    extends: [stylishTypeScriptConfig],
+    extends: [stylishTypeScript],
   },
 );
 ```
