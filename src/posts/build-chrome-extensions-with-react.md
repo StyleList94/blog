@@ -293,7 +293,16 @@ const defaultConfig = { // [!code focus]
     ],
   },
 }; // [!code focus]
+```
 
+플러그인을 구성했다면 빌드 환경에 맞게 `config`를 내보내주면 된다.
+
+환경 변수별로 `config` 모듈을 따로 만들면 편리하겠지만,
+나는 파일이 늘어나는 것 보다. 단일 모듈에서 해결하는 것을 더 선호하기 때문에,
+`webpack-merge` 서드파티를 활용해서 구성해보려고 한다!
+
+```js:title=webpack.config.js
+// .. 이어서 작성
 const mergeRules = mergeWithRules({
   module: {
     rules: {

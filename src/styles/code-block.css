@@ -47,7 +47,7 @@ pre .line {
 .code-block__with-line-numbers .line::before {
   display: inline-block;
   content: counter(line);
-  width: 1rem;
+  width: 1.125rem;
   margin-right: 1.25rem;
   text-align: right;
   color: var(--color-neutral-700);
@@ -63,7 +63,6 @@ pre .line {
 
 pre code .diff.add {
   background-color: var(--color-emerald-100) !important;
-  border-left: 4px solid var(--color-emerald-400);
 }
 
 .dark pre code .diff.add {
@@ -72,7 +71,6 @@ pre code .diff.add {
     var(--color-teal-800) 50%,
     transparent
   ) !important;
-  border-left: 4px solid var(--color-emerald-500);
 }
 
 .dark pre code .diff.add span {
@@ -81,7 +79,6 @@ pre code .diff.add {
 
 pre code .diff.remove {
   background-color: var(--color-rose-100) !important;
-  border-left: 4px solid var(--color-rose-400);
 }
 
 .dark pre code .diff.remove {
@@ -90,15 +87,33 @@ pre code .diff.remove {
     var(--color-pink-600) 20%,
     transparent
   ) !important;
-  border-left: 4px solid var(--color-rose-500);
 }
 
 .dark pre code .diff.remove span {
   background-color: color-mix(in oklab, var(--color-pink-600)) !important;
 }
 
-pre code .diff:before {
-  margin-left: -0.25rem;
+pre code .diff::after {
+  position: absolute;
+  left: 0.25rem;
+}
+
+pre code .diff.add::after {
+  content: '+';
+  color: var(--color-emerald-400);
+}
+
+.dark pre code .diff.add::after {
+  color: var(--color-teal-600);
+}
+
+pre code .diff.remove::after {
+  content: '-';
+  color: var(--color-rose-400);
+}
+
+.dark pre code .diff.remove::after {
+  color: var(--color-pink-600);
 }
 
 /* Highlight */
