@@ -1,59 +1,6 @@
 @reference "tailwindcss";
 
-html.dark .shiki,
-html.dark .shiki span {
-  color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
-  font-style: var(--shiki-dark-font-style) !important;
-  font-weight: var(--shiki-dark-font-weight) !important;
-  text-decoration: var(--shiki-dark-text-decoration) !important;
-}
-
-pre {
-  padding: 1.25rem 0;
-  border-radius: var(--radius-lg);
-}
-
-pre code {
-  display: grid;
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  tab-size: 4;
-  hyphens: none;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-}
-
-pre .line {
-  padding: 0 1.25rem;
-  height: calc(var(--text-sm) * var(--leading-normal));
-}
-
-.code-block__with-line-numbers {
-  counter-reset: line;
-}
-
-.code-block__with-line-numbers .line {
-  counter-increment: line;
-  position: relative;
-  padding: 0 1.25rem;
-}
-
-.code-block__with-line-numbers .line::before {
-  display: inline-block;
-  content: counter(line);
-  width: 1rem;
-  margin-right: 1.25rem;
-  text-align: right;
-  color: var(--color-neutral-700);
-  opacity: 0.6;
-  user-select: none;
-}
-
-.dark .code-block__with-line-numbers .line::before {
-  color: var(--color-neutral-400);
-}
+/* GitHub Flavored Markdown */
 
 blockquote > p {
   @apply text-zinc-600 dark:text-zinc-400 my-1;

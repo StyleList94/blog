@@ -1,6 +1,6 @@
 ---
-title: 답답해서 내가 만든 최신 ESLint 규칙 공유하기 
-description: ESLint 규칙 세트를 패키지로 배포하기 
+title: 답답해서 내가 만든 최신 ESLint 규칙 공유하기
+description: ESLint 규칙 세트를 패키지로 배포하기
 date: '2025-06-20T12:19:00.000Z'
 lastModified: '2025-06-24T08:30:00.000Z'
 ---
@@ -21,7 +21,7 @@ ESLint의 Flat Config가 도입 된지 벌써 일년이 지났지만...
 
 ## 패키지 생성하기
 
-[내가 정한 규칙 세트를 패키지로 만들 수 있다](https://eslint.org/docs/latest/extend/shareable-configs#creating-a-shareable-config). 
+[내가 정한 규칙 세트를 패키지로 만들 수 있다](https://eslint.org/docs/latest/extend/shareable-configs#creating-a-shareable-config).
 
 몇가지 규칙이 있긴 한데, ESLint를 프로젝트에 구성했다면 많이 익숙할지도...
 
@@ -83,8 +83,14 @@ pnpm add -D eslint-import-resolver-typescript
 ```json:title=package.json
 {
   "peerDependencies": {
-    /* 상기 패키지 포함 */
-    "eslint-import-resolver-typescript": ">=4",
+    "@eslint/js": ">=9",
+    "eslint-import-resolver-typescript": ">=4", // [!code ++]
+    "eslint": ">=9",
+    "eslint-plugin-import": ">=2",
+    "eslint-plugin-jsx-a11y": ">=6",
+    "eslint-plugin-react": ">=7",
+    "eslint-plugin-react-hooks": ">=5",
+    "typescript-eslint": ">=8"
   }
 }
 ```
@@ -95,13 +101,14 @@ pnpm add -D eslint-import-resolver-typescript
 
 프로젝트 루트에 `index.js` 모듈을 생성하고 다음과 같이 작성한다.
 
-`typescript-eslint`의 `config()` helper를 이용하면 에디터가 지원하는 타입스크립트 기능을 활용해서 안전하게 제작할 수 있다. 
+`typescript-eslint`의 `config()` helper를 이용하면 에디터가 지원하는 타입스크립트 기능을 활용해서 안전하게 제작할 수 있다.
 
 ```js:title=index.js
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import importPlugin from 'eslint-plugin-import';
 
+// [!code focus:12]
 export default tseslint.config({
   extends: [eslint.configs.recommended, importPlugin.flatConfigs.recommended],
   languageOptions: {
@@ -134,10 +141,10 @@ JSX 구문이 없는 모듈에서 react, jsx 관련 규칙을 검사할 필요�
 
 나는 다음과 같이 그룹화 했다.
 
-| 그룹         | 플러그인                               | 
+| 그룹         | 플러그인                               |
 |------------|------------------------------------|
 | Base       | `eslint`, `import`                 |
-| React      | `react`, `react-hooks`, `jsx-a11y` | 
+| React      | `react`, `react-hooks`, `jsx-a11y` |
 | TypeScript | `typescript-eslint`                |
 
 나는 소스코드들을 프로젝트 루트에 잘 놔두지 않기 때문에, `config/` 디렉토리를 생성하고 내부에 모든 모듈을 정의했다.
@@ -151,6 +158,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 
+// [!code focus:22]
 export default tseslint.config({
   plugins: {
     react: reactPlugin,
@@ -180,6 +188,7 @@ JSX 구문에 호환될 수 있도록, `languageOptions`을 미리 정의해주�
 ```js:title=config/typescript.js
 import tseslint from 'typescript-eslint';
 
+// [!code focus:14]
 export default tseslint.config({
   extends: [tseslint.configs.strictTypeChecked],
   settings: {
@@ -290,10 +299,9 @@ Github 리포지토리 설정에서 `NPM_TOKEN`에 NPM Access Token 넣는거 �
 
 이제 갖다 쓰면 된다.
 
-
-
 ```js:title=your-project/eslint.config.js
 import tseslint from 'typescript-eslint';
+// [!code focus:28]
 import stylish from 'eslint-config-stylish';
 import stylishReact from 'eslint-config-stylish/react';
 import stylishTypeScript from 'eslint-config-stylish/typescript';

@@ -126,6 +126,7 @@ import { type StateCreator } from 'zustand';
 
 import { type RootStore } from '@/store/index';
 
+// [!code focus:30]
 // 상태에 대한 타입
 export type CounterState = {
   count: number;
@@ -178,6 +179,7 @@ import {
     initialCounterState,
 } from '@/store/counter';
 
+// [!code focus:11]
 // 슬라이스 된 스토어들의 타입을 결합하는 패턴으로 확장할 수 있다.
 export type RootStore = CounterSlice;
 // 슬라이스 된 스토어들의 상태를 결합하는 패턴으로 확장할 수 있다.
@@ -206,6 +208,7 @@ type Props = {
   children: ReactNode;
 };
 
+// [!code focus:16]
 export type StoreApi = ReturnType<typeof createRootStore>;
 
 // Context 생성
@@ -244,6 +247,7 @@ import { StoreContext } from '@/providers/store-provider';
 
 import { type RootStore } from '@/store/index';
 
+// [!code focus:9]
 const useRootStore = <T>(selector: (store: RootStore) => T): T => {
   const storeContext = useContext(StoreContext);
 

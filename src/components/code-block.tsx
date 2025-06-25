@@ -3,8 +3,16 @@ import type { ExtraProps } from 'react-markdown';
 import type { BundledLanguage } from 'shiki';
 
 import { codeToHtml } from 'shiki';
+import {
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+} from '@shikijs/transformers';
 
 import { cn } from '@/lib/utils';
+
+import '@/styles/code-block.css';
 
 type IconType = 'bash' | 'json' | 'default';
 
@@ -103,6 +111,12 @@ const CodeBlock = async (
       light: 'one-light',
       dark: 'github-dark',
     },
+    transformers: [
+      transformerNotationDiff(),
+      transformerNotationHighlight(),
+      transformerNotationFocus(),
+      transformerNotationErrorLevel(),
+    ],
   });
 
   return (

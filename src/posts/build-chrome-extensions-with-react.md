@@ -212,9 +212,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const defaultConfig = {
+const defaultConfig = { // [!code focus]
+// [!code focus:2]
   module: {
     // 추후 엔트리 추가 예정
+    // [!code focus:11]
     rules: [
       {
         test: /\.(ts|tsx)$/,
@@ -230,6 +232,7 @@ const defaultConfig = {
         test: /\.(png|jpg|gif)$/i,
         type: 'asset/resource',
       },
+      // [!code focus:8]
       {
         test: /\.svg$/i,
         issuer: /\.tsx?$/,
@@ -239,17 +242,20 @@ const defaultConfig = {
     ],
   },
   resolve: { extensions: ['.*', '.ts', '.tsx', '.js'] },
-  plugins: [
+  plugins: [ // [!code focus]
     new EnvironmentPlugin({}),
     new CleanWebpackPlugin({ cleanAfterEveryBuildPatterns: ['*.LICENSE.txt'] }),
+    // [!code focus:22]
     new CopyPlugin({
       patterns: [
         // 아래 두 파일은 확장프로그램의 필수 요소다!
         {
-          from: path.resolve(__dirname, 'src/images'),
+          // [!code highlight:2]
+          from: path.resolve(__dirname, 'src/images'), 
           to: path.resolve(__dirname, 'dist/images'),
         },
         {
+          // [!code highlight:2]
           from: path.resolve(__dirname, 'src/manifest.json'),
           to: path.resolve(__dirname, 'dist'),
         },
@@ -286,7 +292,7 @@ const defaultConfig = {
       new CssMinimizerPlugin(),
     ],
   },
-};
+}; // [!code focus]
 
 const mergeRules = mergeWithRules({
   module: {
@@ -301,6 +307,7 @@ const mergeRules = mergeWithRules({
   },
 });
 
+// [!code focus:29]
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
     return mergeRules(defaultConfig, {
@@ -422,6 +429,7 @@ body {
 ```tsx:title=src/popup/App.tsx
 import { useState } from 'react';
 
+// [!code focus:9]
 const App = () => {
   const [count, setCount] = useState(0);
 
@@ -437,6 +445,7 @@ const App = () => {
           <p className="text-xl">Lovely Extension</p>
         </div>
 
+        // [!code focus:8]
         <div className="flex flex-col items-center gap-2">
           <button
             className="flex justify-center items-center px-3 py-2 rounded-md bg-gray-600 text-white transition-colors hover:bg-gray-700"
@@ -447,6 +456,7 @@ const App = () => {
         </div>
       </div>
     </div>
+  // [!code focus:2]
   );
 };
 
@@ -462,6 +472,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 
+// [!code focus:6]
 const root = ReactDOM.createRoot(document.getElementById('app')!);
 root.render(
   <React.StrictMode>
@@ -470,7 +481,7 @@ root.render(
 );
 ```
 
-### 사이트에서 스크립트 실행하기
+## 사이트에서 스크립트 실행하기
 
 Content scripts 기능을 활용하면 사이트의 DOM 제어와 같은 스크립트를 실행할 수 있다.
 

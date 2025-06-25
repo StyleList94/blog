@@ -1,0 +1,180 @@
+@reference "tailwindcss";
+
+/* Base */
+
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+pre {
+  padding: 1.25rem 0;
+  border-radius: var(--radius-lg);
+}
+
+pre code {
+  display: grid;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  tab-size: 4;
+  hyphens: none;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+}
+
+/* Line number */
+
+pre .line {
+  padding: 0 1.25rem;
+  height: calc(var(--text-sm) * var(--leading-normal));
+}
+
+.code-block__with-line-numbers {
+  counter-reset: line;
+}
+
+.code-block__with-line-numbers .line {
+  counter-increment: line;
+  position: relative;
+  padding: 0 1.25rem;
+}
+
+.code-block__with-line-numbers .line::before {
+  display: inline-block;
+  content: counter(line);
+  width: 1rem;
+  margin-right: 1.25rem;
+  text-align: right;
+  color: var(--color-neutral-700);
+  opacity: 0.6;
+  user-select: none;
+}
+
+.dark .code-block__with-line-numbers .line::before {
+  color: var(--color-neutral-400);
+}
+
+/* Diff */
+
+pre code .diff.add {
+  background-color: var(--color-emerald-100) !important;
+  border-left: 4px solid var(--color-emerald-400);
+}
+
+.dark pre code .diff.add {
+  background-color: color-mix(
+    in oklab,
+    var(--color-teal-800) 50%,
+    transparent
+  ) !important;
+  border-left: 4px solid var(--color-emerald-500);
+}
+
+.dark pre code .diff.add span {
+  background-color: color-mix(in oklab, var(--color-teal-800)) !important;
+}
+
+pre code .diff.remove {
+  background-color: var(--color-rose-100) !important;
+  border-left: 4px solid var(--color-rose-400);
+}
+
+.dark pre code .diff.remove {
+  background-color: color-mix(
+    in oklab,
+    var(--color-pink-600) 20%,
+    transparent
+  ) !important;
+  border-left: 4px solid var(--color-rose-500);
+}
+
+.dark pre code .diff.remove span {
+  background-color: color-mix(in oklab, var(--color-pink-600)) !important;
+}
+
+pre code .diff:before {
+  margin-left: -0.25rem;
+}
+
+/* Highlight */
+
+pre code .highlighted {
+  background-color: color-mix(
+    in oklab,
+    var(--color-gray-400) 10%,
+    transparent
+  ) !important;
+  transition: background-color 0.5s;
+}
+
+.dark pre code .highlighted {
+  background-color: color-mix(
+    in oklab,
+    var(--color-gray-500) 10%,
+    transparent
+  ) !important;
+  transition: background-color 0.5s;
+}
+
+.dark pre code .highlighted span {
+  background-color: color-mix(in oklab, var(--color-gray-500)) !important;
+}
+
+pre code .highlighted.error {
+  background-color: color-mix(
+    in oklab,
+    var(--color-rose-400) 30%,
+    transparent
+  ) !important;
+  transition: background-color 0.5s;
+}
+
+.dark pre code .highlighted.error {
+  background-color: color-mix(
+    in oklab,
+    var(--color-rose-500) 30%,
+    transparent
+  ) !important;
+  transition: background-color 0.5s;
+}
+
+.dark pre code .highlighted.error span {
+  background-color: color-mix(in oklab, var(--color-rose-500)) !important;
+}
+
+pre code .highlighted.warning {
+  background-color: color-mix(
+    in oklab,
+    var(--color-orange-300) 30%,
+    transparent
+  ) !important;
+  transition: background-color 0.5s;
+}
+
+.dark pre code .highlighted.warning {
+  background-color: color-mix(
+    in oklab,
+    var(--color-orange-300) 30%,
+    transparent
+  ) !important;
+  transition: background-color 0.5s;
+}
+
+.dark pre code .highlighted.warning span {
+  background-color: color-mix(in oklab, var(--color-orange-300)) !important;
+}
+
+/* Focus */
+
+pre.has-focused code .line * {
+  transition: opacity 0.2s;
+}
+
+pre.has-focused:not(:hover) code .line:not(.focused) * {
+  opacity: 0.3;
+}

@@ -28,13 +28,13 @@
     "rehype-unwrap-images": "^1.0.0",
     "remark-gfm": "^4.0.1",
     "schema-dts": "^1.1.5",
-    "shiki": "^3.4.2",
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.29.0",
     "@next/eslint-plugin-next": "15.3.3",
+    "@shikijs/transformers": "^3.7.0",
     "@tailwindcss/postcss": "^4.1.8",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -60,6 +60,7 @@
     "lint-staged": "^15.2.11",
     "postcss": "^8",
     "prettier": "^3.4.2",
+    "shiki": "^3.7.0",
     "tailwindcss": "^4.1.8",
     "typescript": "^5",
     "typescript-eslint": "^8.34.1",

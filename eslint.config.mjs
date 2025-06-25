@@ -24,6 +24,18 @@ export default tseslint.config(
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     extends: [stylish],
+    rules: {
+      'import/no-extraneous-dependencies': [
+        'error',
+        {
+          devDependencies: [
+            '**/*.test.?(js|ts|tsx)',
+            '**/code-block.tsx',
+            'eslint.config.*',
+          ],
+        },
+      ],
+    },
   },
   {
     files: ['**/*.{js,jsx,tsx}'],

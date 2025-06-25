@@ -73,7 +73,7 @@ import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import dtsPlugin from 'vite-plugin-dts';
 
-// https://vitejs.dev/config/
+// [!code focus:40]
 export default defineConfig({
   plugins: [
     react(), // React 플러그인
@@ -84,6 +84,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
+      // [!code highlight:3]
       entry: {
         main: resolve(__dirname, 'lib/main.ts'),
       },
@@ -98,6 +99,7 @@ export default defineConfig({
       output: {
         chunkFileNames: () => `bundle/[name]-[hash].js`,
         // 안하면 경고 나옴
+        // [!code highlight:5]
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
@@ -125,6 +127,7 @@ export default defineConfig({
 ```tsx:title=lib/components/button.tsx
 import type { ReactNode } from 'react';
 
+// [!code focus:3]
 export const Button = ({ children }: { children: ReactNode }) => (
   <button>{children}</button>
 );
@@ -210,16 +213,16 @@ Vite를 사용 중이라면 `vite.config.ts`에서 바로 구성 설정을 수�
 
 ```ts:title=vite.config.ts
 // 1. 맨 위에 트리플 슬래시 참조를 통해 vitest 구성 타입 추가
-/// <reference types="vitest" />
+/// <reference types="vitest" /> // [!code ++]
 
 export default defineConfig({
   // ...
   // 2. vitest 설정
-  test: {
-    globals: true, // 이렇게 해야 import 없이 사용할 수 있다. 마치 Jest 처럼...
-    environment: 'jsdom', // DOM 테스트
-    css: true, // css 처리여부
-  },
+  test: { // [!code ++]
+    globals: true, // 이렇게 해야 import 없이 사용할 수 있다. 마치 Jest 처럼... // [!code ++]
+    environment: 'jsdom', // DOM 테스트 // [!code ++]
+    css: true, // css 처리여부 // [!code ++]
+  }, // [!code ++]
   // ...
 });
 ```
@@ -229,8 +232,10 @@ export default defineConfig({
 ```json:title=tsconfig.json
 {
   "compilerOptions": {
-    "types": ["vitest/globals"]
+    // ..
+    "types": ["vitest/globals"] // [!code ++]
   },
+  // ..
   "exclude": ["node_modules", "**/*.test.ts?(x)"]
 }
 ```
@@ -248,7 +253,7 @@ pnpm add -D @testing-library/react @testing-library/jest-dom @testing-library/do
 앞서만든 `Button` 컴포넌트의 테스트 코드를 작성한다.
 
 ```tsx:title=src/tests/button.test.tsx
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 
 import { render, screen } from '@testing-library/react';
 
@@ -270,8 +275,10 @@ scripts를 업데이트!
 ```json:title=package.json
 {
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "build": "tsc --p ./tsconfig.build.json && vite build",
+    "preview": "vite preview"
+    "test": "vitest run", // [!code ++]
+    "test:watch": "vitest" // [!code ++]
   }
 }
 ```
@@ -332,6 +339,7 @@ const config: StorybookConfig = {
 ```ts:title=.storybook/theme.ts
 import { create } from 'storybook/theming/create';
 
+// [!code focus:6]
 export default create({
   base: 'light', // 스토리 영역을 제외하고 테마가 변경된다
   brandTitle: 'Stylish UI',
@@ -345,6 +353,7 @@ export default create({
 ```ts:title=.storybook/manager.ts
 import { addons } from 'storybook/manager-api';
 
+// [!code focus:5]
 import theme from './theme';
 
 addons.setConfig({
@@ -366,6 +375,7 @@ import { STORY_RENDERED, DOCS_RENDERED } from 'storybook/internal/core-events';
 
 // ..
 
+// [!code focus:22]
 addons.register('TitleAddon', (api) => {
   const projectName = 'Stylish UI';
 
@@ -401,6 +411,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Button } from 'lib/components/button';
 
+// [!code focus:15]
 const meta: Meta<typeof Button> = {
   component: Button,
   title: 'Button',
@@ -451,7 +462,7 @@ pnpm add -D tailwindcss @tailwindcss/vite
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18",
-    "tailwindcss": ">=4"
+    "tailwindcss": ">=4" // [!code ++]
   }
 }
 ```
@@ -467,17 +478,17 @@ const config: StorybookConfig = {
   //..
 
   // 라이브러리 번들링할 때 말고, 여기서만 tailwindcss를 구동하기 위한 플러그인을 추가한다.
-  async viteFinal(config) {
-    const { mergeConfig, defineConfig } = await import('vite');
-    const { default: tailwindcss } = await import('@tailwindcss/vite');
-
-    return mergeConfig(
-      config,
-      defineConfig({
-        plugins: [tailwindcss()],
-      }),
-    );
-  },
+  async viteFinal(config) { // [!code ++]
+    const { mergeConfig, defineConfig } = await import('vite'); // [!code ++]
+    const { default: tailwindcss } = await import('@tailwindcss/vite'); // [!code ++]
+    // [!code ++]
+    return mergeConfig( // [!code ++]
+      config, // [!code ++]
+      defineConfig({ // [!code ++]
+        plugins: [tailwindcss()], // [!code ++]
+      }), // [!code ++]
+    ); // [!code ++]
+  }, // [!code ++]
 };
 ```
 
@@ -493,7 +504,7 @@ const config: StorybookConfig = {
 
 ```ts:title=.storybook/preview.ts
 // ..
-import '../src/styles.css';
+import '../src/styles.css'; // [!code ++]
 
 // ..
 ```
@@ -506,6 +517,7 @@ import '../src/styles.css';
 import type { ReactNode } from 'react';
 
 export const Button = ({ children }: { children: ReactNode }) => (
+  // [!code focus:1]
   <button className="flex justify-center items-center px-3 py-2 outline-0 border border-zinc-400 rounded-sm bg-transparent cursor-pointer hover:bg-zinc-200 active:bg-zinc-300 transition-colors duration-200 ease-in-out">
     {children}
   </button>
@@ -569,14 +581,16 @@ import { withThemeByClassName } from '@storybook/addon-themes';
 
 // ..
 
-const preview: Preview = {
+const preview: Preview = { // [!code focus]
   parameters: {
     // ..
+    // [!code focus:3]
     backgrounds: {
       disable: true, // 이 기능은 배경 색만 바꾸기 때문에, 테마에 따른 스타일링을 확인하기에는 다소 무리가 있다.
     },
     // ..
   },
+  // [!code focus:10]
   decorators: [
     withThemeByClassName({
       themes: {
