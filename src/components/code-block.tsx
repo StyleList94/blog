@@ -14,6 +14,10 @@ import { cn } from '@/lib/utils';
 
 import '@/styles/code-block.css';
 
+type Props = ClassAttributes<HTMLElement> &
+  HTMLAttributes<HTMLElement> &
+  ExtraProps;
+
 type IconType = 'bash' | 'json' | 'default';
 
 const languageRegExp = /language-(\w+)(:title=(.+))?/;
@@ -75,11 +79,7 @@ const BlockIcon = ({ language }: { language: string }) => {
   );
 };
 
-const CodeBlock = async (
-  props: ClassAttributes<HTMLElement> &
-    HTMLAttributes<HTMLElement> &
-    ExtraProps,
-) => {
+const CodeBlock = async (props: Props) => {
   const { children, className, node, ...rest } = props;
 
   const match = languageRegExp.exec(className || '');
@@ -101,8 +101,9 @@ const CodeBlock = async (
     );
   }
 
-  const language = match[1] as BundledLanguage;
   const showLineNumber = showLineNumberRegExp.test(match[1]);
+
+  const language = match[1] as BundledLanguage;
   const title = match[3];
 
   const out = await codeToHtml(String(children).replace(/\n$/, ''), {
