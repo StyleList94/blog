@@ -20,12 +20,12 @@ describe('PostHeader', () => {
 
     expect(screen.getByText('Created')).toBeInTheDocument();
     expect(
-      screen.getByText(format(new Date('2022-02-11'), 'yyyy-MM-dd')),
+      screen.getByText(format(new Date('2022-02-11'), 'yyyy.MM.dd.')),
     ).toBeInTheDocument();
 
     expect(screen.getByText('Last updated')).toBeInTheDocument();
     expect(
-      screen.getByText(format(new Date('2025-06-14'), 'yyyy-MM-dd')),
+      screen.getByText(format(new Date('2025-06-14'), 'yyyy.MM.dd.')),
     ).toBeInTheDocument();
   });
 });

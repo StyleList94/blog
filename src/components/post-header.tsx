@@ -26,7 +26,7 @@ const DateBox = ({ date, tag }: DateBoxProps) => (
       {tag}
     </span>
     <p className="font-mono text-sm text-neutral-700 dark:text-neutral-200 text-right">
-      {format(new Date(date), 'yyyy-MM-dd')}
+      {format(new Date(date), 'yyyy.MM.dd.')}
     </p>
   </div>
 );

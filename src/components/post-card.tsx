@@ -21,7 +21,7 @@ const PostCard = ({ slug, title, description, date }: Props) => (
         </div>
         <div className="text-right">
           <span className="font-mono text-xs lg:text-sm text-neutral-700 dark:text-neutral-200">
-            {format(new Date(date), 'yyyy-MM-dd')}
+            {format(new Date(date), 'yyyy.MM.dd.')}
           </span>
         </div>
       </div>

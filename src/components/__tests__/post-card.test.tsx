@@ -32,7 +32,7 @@ describe('PostCard', () => {
     ).toHaveAttribute('href', '/post/so-lovely-code');
     expect(screen.getByText('This is a description')).toBeInTheDocument();
     expect(
-      screen.getByText(format(new Date('2022-02-20'), 'yyyy-MM-dd')),
+      screen.getByText(format(new Date('2022-02-20'), 'yyyy.MM.dd.')),
     ).toBeInTheDocument();
   });
 });
