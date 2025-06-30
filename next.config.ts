@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
       },
     ],
     minimumCacheTTL: 2678400,
-    deviceSizes: [480, 720],
+    deviceSizes: [480, 640],
     formats: ['image/webp'],
   },
 };

@@ -78,8 +78,8 @@ export default async function PostContentPage({ params }: Props) {
   return (
     <>
       <LayoutContainer>
-        <div className="flex justify-between items-start w-full max-w-[80rem] mx-auto">
-          <div className="flex flex-col flex-1 min-w-0 md:max-w-[45rem]">
+        <div className="flex justify-between items-start w-full mx-auto">
+          <div className="flex flex-col flex-1 min-w-0 md:max-w-160">
             <PostHeader
               title={post.title}
               description={post.description}
@@ -98,7 +98,7 @@ export default async function PostContentPage({ params }: Props) {
               <PostBody content={post.content} />
             )}
           </div>
-          <div className="sticky top-[calc(4rem+1.5rem)] overflow-auto h-[calc(100vh-6rem)] hidden lg:flex grow-0 shrink-0 basis-60 pl-6">
+          <div className="sticky top-[calc(3.5rem+1.5rem)] overflow-auto h-[calc(100vh-6rem)] hidden lg:flex grow-0 shrink-0 basis-68 pl-6">
             <PostTableOfContents items={tocList} />
           </div>
         </div>

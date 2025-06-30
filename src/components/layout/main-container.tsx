@@ -13,7 +13,13 @@ type Props = {
 const MainContainer = ({ children }: Props) => (
   <>
     <div className={backdropStyle} />
-    <main className={cn(mainContainerStyle, 'relative max-w-[64rem]')}>
+    <main
+      className={cn(
+        mainContainerStyle,
+        'relative w-full max-w-160',
+        'lg:max-w-240',
+      )}
+    >
       {children}
     </main>
   </>

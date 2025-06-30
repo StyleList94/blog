@@ -19,8 +19,8 @@ const DateBox = ({ date, tag }: DateBoxProps) => (
     <span
       className={cn(
         'inline-flex items-center justify-center rounded-md px-2 py-0.5',
-        'font-medium text-xs text-neutral-600 dark:text-neutral-400',
-        'border border-zinc-300 dark:border-zinc-700',
+        'font-medium text-xs text-neutral-600/80 dark:text-neutral-400/80',
+        'border border-zinc-300/60 dark:border-zinc-700/40',
       )}
     >
       {tag}
@@ -34,7 +34,7 @@ const DateBox = ({ date, tag }: DateBoxProps) => (
 const PostHeader = ({ title, description, date, lastModified }: Props) => (
   <section className="flex flex-col gap-6 py-4">
     <div className="flex flex-col gap-3">
-      <h1 className="text-2xl lg:text-3xl font-semibold text-neutral-900 dark:text-neutral-100">
+      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
         {title}
       </h1>
       <p className="text-sm lg:text-base text-neutral-500 dark:text-neutral-400">

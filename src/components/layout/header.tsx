@@ -14,7 +14,9 @@ const Header = () => {
   return (
     <>
       <header className={headerContainerStyle}>
-        <div className={cn(headerContentBoxStyle, 'lg:max-w-[64rem]')}>
+        <div
+          className={cn(headerContentBoxStyle, 'sm:max-w-160', 'lg:max-w-240')}
+        >
           <div className="flex justify-between w-full select-none">
             {isHangulDay ? (
               <Link
