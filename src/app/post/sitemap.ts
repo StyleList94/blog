@@ -21,7 +21,7 @@ export default async function sitemap({
     resolve(
       postList.slice(start, end).map((post) => ({
         url: `https://blog.stylelist94.dev/post/${post.slug}`,
-        lastModified: new Date(post.lastModified || post.date),
+        lastModified: new Date(post.lastModified ?? post.date),
       })),
     );
   });

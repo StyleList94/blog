@@ -82,7 +82,7 @@ const BlockIcon = ({ language }: { language: string }) => {
 const CodeBlock = async (props: Props) => {
   const { children, className, node, ...rest } = props;
 
-  const match = languageRegExp.exec(className || '');
+  const match = languageRegExp.exec(className ?? '');
 
   if (!match) {
     return (

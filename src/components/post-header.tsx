@@ -43,7 +43,7 @@ const PostHeader = ({ title, description, date, lastModified }: Props) => (
     </div>
     <div className="flex flex-col self-end gap-2">
       <DateBox date={date} tag="Created" />
-      <DateBox date={lastModified || date} tag="Last updated" />
+      <DateBox date={lastModified ?? date} tag="Last updated" />
     </div>
     <div className="flex items-center gap-3 py-2">
       <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700" />
