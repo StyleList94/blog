@@ -82,7 +82,7 @@ const PostSeriesWrapper = ({ title, list, currentOrder, children }: Props) => {
       {children}
       <div
         className={cn(
-          'flex flex-col items-start gap-4 w-full mt-8 p-4',
+          'flex flex-col items-start gap-4 w-full mt-8 py-4',
           'sm:flex-row sm:justify-between sm:items-center',
           '*:even:self-end *:sm:even:self-auto',
         )}
