@@ -10,7 +10,7 @@ describe('Footer', () => {
 
     expect(screen.getByLabelText('GitHub')).toHaveAttribute(
       'href',
-      'https://github.com/StyleList94/blog',
+      'https://github.com/StyleList94/blog/tree/main/src/posts',
     );
 
     expect(screen.getByText(/© 2025./)).toBeInTheDocument();

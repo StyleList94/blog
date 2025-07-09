@@ -16,7 +16,7 @@ const MainContainer = ({ children }: Props) => (
     <main
       className={cn(
         mainContainerStyle,
-        'relative w-full max-w-160',
+        'relative flex flex-col w-full max-w-160',
         'lg:max-w-240',
       )}
     >

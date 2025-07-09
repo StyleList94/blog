@@ -33,7 +33,7 @@ const components: Partial<MarkdownElement> = {
     <h1
       className={cn(
         commonStyle,
-        'text-3xl font-extrabold',
+        'text-2xl sm:text-3xl font-extrabold',
         'scroll-m-20',
         'leading-tight tracking-tight',
         'text-neutral-900 dark:text-neutral-100',
@@ -47,7 +47,7 @@ const components: Partial<MarkdownElement> = {
     <h2
       className={cn(
         commonStyle,
-        'text-2xl font-semibold',
+        'text-xl sm:text-2xl font-semibold',
         'scroll-m-20 pb-2 mt-10 first:mt-0',
         'leading-tight tracking-tight',
         'border-b border-neutral-200 dark:border-neutral-800',
@@ -61,7 +61,7 @@ const components: Partial<MarkdownElement> = {
     <h3
       className={cn(
         commonStyle,
-        'text-xl font-semibold',
+        'text-lg sm:text-xl font-semibold',
         'scroll-m-20 mt-8',
         'tracking-tight',
         'text-neutral-800 dark:text-neutral-200',

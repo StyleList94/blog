@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next';
-import type { Post } from '@/types/post';
 
 import { getAllPosts } from '@/lib/services/post';
 
@@ -12,7 +11,7 @@ export default async function sitemap({
 }: {
   id: number;
 }): Promise<MetadataRoute.Sitemap> {
-  const postList: Omit<Post, 'content'>[] = await getAllPosts();
+  const postList = await getAllPosts();
 
   const start = id * 50000;
   const end = start + 50000;

@@ -39,3 +39,6 @@ next-env.d.ts
 
 # IntelliJ
 .idea
+
+# private posts
+**/posts/private/

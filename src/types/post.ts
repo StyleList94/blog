@@ -11,6 +11,8 @@ export type Post = {
   seriesOrder?: number;
 };
 
+export type PostList = Omit<Post, 'content'>[];
+
 export type PostSeriesInfo = Pick<Post, 'title' | 'slug'>;
 
 export type TableOfContents = {

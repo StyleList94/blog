@@ -1,5 +1,3 @@
-import type { Post } from '@/types/post';
-
 import { getAllPosts } from '@/lib/services/post';
 
 export const dynamic = 'auto';
@@ -7,7 +5,7 @@ export const dynamic = 'auto';
 const LATELY_POST_LIST_COUNT = 5;
 
 export async function GET() {
-  const postList: Omit<Post, 'content'>[] = await getAllPosts();
+  const postList = await getAllPosts();
 
   const latelyPostList = postList.slice(0, LATELY_POST_LIST_COUNT);
 

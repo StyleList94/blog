@@ -1,4 +1,4 @@
-import type { Post, PostSeriesInfo, TableOfContents } from '@/types/post';
+import type { PostList, PostSeriesInfo, TableOfContents } from '@/types/post';
 
 import GithubSlugger from 'github-slugger';
 
@@ -42,7 +42,7 @@ export const generateTOC = (postContent: string): TableOfContents[] => {
 };
 
 export const generateSeries = (
-  postList: Omit<Post, 'content'>[],
+  postList: PostList,
   series: string,
 ): PostSeriesInfo[] =>
   postList
