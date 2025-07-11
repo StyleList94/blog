@@ -4,7 +4,6 @@ import { redirect } from 'next/navigation';
 import { getPostsByPage } from '@/lib/services/post';
 
 import PostCard from '@/components/post-card';
-import LayoutContainer from '@/components/layout/container';
 import Pagination from '@/components/pagination';
 
 const PAGE_SIZE = 5;
@@ -25,7 +24,7 @@ export default async function MainPage({ searchParams }: Props) {
     const currentPage = +page;
 
     return (
-      <LayoutContainer>
+      <>
         {postList.length > 0 && (
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-5 w-full">
@@ -76,7 +75,7 @@ export default async function MainPage({ searchParams }: Props) {
             </Link>
           </div>
         )}
-      </LayoutContainer>
+      </>
     );
   } catch {
     redirect('/');

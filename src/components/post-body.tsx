@@ -7,9 +7,10 @@ import rehypeSlug from 'rehype-slug';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 import Link from 'next/link';
 import Image, { type ImageProps } from 'next/image';
-import { domAnimation, LazyMotion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
+
+import AnimateProvider from '@/providers/animate-provider';
 
 import ScrollLinked from '@/components/scroll-linked';
 import CodeBlock from '@/components/code-block';
@@ -245,7 +246,7 @@ const components: Partial<MarkdownElement> = {
 
 const PostBody = ({ content }: Props) => (
   <div className="py-4">
-    <LazyMotion features={domAnimation}>
+    <AnimateProvider>
       <ScrollLinked />
       <ReactMarkdown
         components={components}
@@ -254,7 +255,7 @@ const PostBody = ({ content }: Props) => (
       >
         {content}
       </ReactMarkdown>
-    </LazyMotion>
+    </AnimateProvider>
   </div>
 );
 

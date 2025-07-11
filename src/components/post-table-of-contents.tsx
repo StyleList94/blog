@@ -49,10 +49,14 @@ const PostTableOfContents = ({ items }: Props) => {
     };
 
     handleScroll();
-    window.addEventListener('scroll', throttle(handleScroll, 100));
+
+    const throttledScroll = throttle(handleScroll, 100);
+
+    window.addEventListener('scroll', throttledScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      throttledScroll.cancel();
     };
   }, [items, mounted]);
 

@@ -8,7 +8,6 @@ import { metadataContext } from '@/lib/metadata';
 import { getAllPosts, getPostBySlug } from '@/lib/services/post';
 import { generateSeries, generateTOC } from '@/lib/post-utils';
 
-import LayoutContainer from '@/components/layout/container';
 import PostHeader from '@/components/post-header';
 import PostBody from '@/components/post-body';
 import PostTableOfContents from '@/components/post-table-of-contents';
@@ -43,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
-  return posts.map((post) => ({
+  return posts.slice(0, 10).map((post) => ({
     slug: post.slug,
   }));
 }
@@ -77,39 +76,37 @@ export default async function PostContentPage({ params }: Props) {
 
   return (
     <>
-      <LayoutContainer>
-        <div className="flex justify-between items-start w-full mx-auto">
-          <div className="flex flex-col flex-1 min-w-0 md:max-w-160">
-            <PostHeader
-              title={post.title}
-              description={post.description}
-              date={post.date}
-              lastModified={post.lastModified}
-            />
-            {post.series && seriesList.length > 0 ? (
-              <PostSeriesWrapper
-                title={post.series}
-                list={seriesList}
-                currentOrder={post.seriesOrder}
-              >
-                <PostBody content={post.content} />
-              </PostSeriesWrapper>
-            ) : (
-              <PostBody content={post.content} />
-            )}
-          </div>
-          <div className="sticky top-[calc(3.5rem+1.5rem)] overflow-auto h-[calc(100vh-6rem)] hidden lg:flex grow-0 shrink-0 basis-68 pl-6">
-            <PostTableOfContents items={tocList} />
-          </div>
-        </div>
-      </LayoutContainer>
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
+
+      <div className="flex justify-between items-start w-full mx-auto">
+        <div className="flex flex-col flex-1 min-w-0 md:max-w-160">
+          <PostHeader
+            title={post.title}
+            description={post.description}
+            date={post.date}
+            lastModified={post.lastModified}
+          />
+          {post.series && seriesList.length > 0 ? (
+            <PostSeriesWrapper
+              title={post.series}
+              list={seriesList}
+              currentOrder={post.seriesOrder}
+            >
+              <PostBody content={post.content} />
+            </PostSeriesWrapper>
+          ) : (
+            <PostBody content={post.content} />
+          )}
+        </div>
+        <div className="sticky top-[calc(3.5rem+1.5rem)] overflow-auto h-[calc(100vh-6rem)] hidden lg:flex grow-0 shrink-0 basis-68 pl-6">
+          <PostTableOfContents items={tocList} />
+        </div>
+      </div>
     </>
   );
 }

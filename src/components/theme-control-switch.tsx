@@ -26,12 +26,12 @@ const ThemeControlSwitch = () => {
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-label="icon-light-mode"
       >
-        <circle cx="12" cy="12" r="4" />
+        <circle cx={12} cy={12} r={4} />
         <path d="M12 2v2" />
         <path d="M12 20v2" />
         <path d="m4.93 4.93 1.41 1.41" />
@@ -48,7 +48,7 @@ const ThemeControlSwitch = () => {
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-label="icon-dark-mode"

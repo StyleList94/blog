@@ -1,4 +1,5 @@
 'use client';
+
 import { useMounted } from '@stylelist94/nine-beauty-actress';
 
 import useThemeControl from '@/hooks/use-theme-control';
