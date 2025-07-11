@@ -76,6 +76,10 @@ export async function getPostsByPage({
     throw new TypeError('page must be a number');
   }
 
+  if (!+page) {
+    throw new RangeError('page must be greater than 0');
+  }
+
   const allPosts = await getAllPosts();
 
   const startIndex = (+page - 1) * limit;

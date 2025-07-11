@@ -50,7 +50,7 @@ React 마저 서버 컴포넌트 도입으로 인해, 컴포넌트 구조 설계
 # 처음 시작한다면 그냥 create-vite 로 빠르게 시작하면 된다.
 pnpm create vite your-ui-kit --template react-ts
 
-# 나는 마이그래에선 해야하니깐... 수동으로 해야함...
+# 나는 마이그레이션 해야하니깐... 수동으로 해야함...
 pnpm add -D vite
 ```
 
