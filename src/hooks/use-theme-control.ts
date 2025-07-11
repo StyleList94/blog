@@ -1,24 +1,19 @@
-import { useEffect } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTheme } from 'next-themes';
-import { useMounted } from '@stylelist94/nine-beauty-actress';
 
 export default function useThemeControl() {
-  const { theme, setTheme, resolvedTheme, systemTheme } = useTheme();
-  const mounted = useMounted();
+  const { setTheme, resolvedTheme, theme } = useTheme();
 
-  const isDarkTheme = resolvedTheme === 'dark';
+  const isDarkTheme = useMemo(() => resolvedTheme === 'dark', [resolvedTheme]);
+  const isSystemTheme = useMemo(() => theme === 'system', [theme]);
 
-  const toggleTheme = () => {
-    const targetTheme = systemTheme === 'dark' ? 'light' : 'dark';
+  const toggleTheme = useCallback(() => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  }, [resolvedTheme, setTheme]);
 
-    setTheme(theme === 'system' ? targetTheme : 'system');
-  };
+  const setSystemTheme = useCallback(() => {
+    setTheme('system');
+  }, [setTheme]);
 
-  useEffect(() => {
-    if (mounted && theme !== 'system' && systemTheme === resolvedTheme) {
-      setTheme('system');
-    }
-  }, [mounted, theme, systemTheme, resolvedTheme, setTheme]);
-
-  return { isDarkTheme, toggleTheme };
+  return { isDarkTheme, isSystemTheme, toggleTheme, setSystemTheme };
 }

@@ -2,14 +2,11 @@ import { footerContainerStyle } from '@stylelist94/nine-beauty-actress/styles';
 
 import { cn } from '@/lib/utils';
 
+import ResetThemeButton from '@/components/reset-theme-button';
+
 const Footer = () => (
   <footer className={cn(footerContainerStyle, 'max-w-160', 'lg:max-w-240')}>
-    <div
-      className={cn(
-        'flex flex-col gap-3',
-        'sm:flex-row sm:justify-between sm:gap-4',
-      )}
-    >
+    <div className="flex justify-between gap-4">
       <div className="flex items-center gap-4">
         <a
           href="https://github.com/StyleList94/blog/tree/main/src/posts"
@@ -36,6 +33,10 @@ const Footer = () => (
             />
           </svg>
         </a>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <ResetThemeButton />
       </div>
     </div>
     <div>

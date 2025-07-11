@@ -14,7 +14,7 @@ const PageButton = ({ children, isActive, ...props }: PageButtonProps) => (
   <Link
     className={cn(
       'transition-colors ease-in-out duration-200',
-      'flex justify-center items-center w-9 h-9 p-1',
+      'flex justify-center items-center size-9 p-1',
       'rounded-md',
       'text-zinc-400 dark:text-zinc-500',
       isActive && 'text-zinc-950 dark:text-zinc-50',
@@ -29,22 +29,22 @@ const PageButton = ({ children, isActive, ...props }: PageButtonProps) => (
 );
 
 const Pagination = ({ currentPage = 1 }: Props) => (
-    <div className="flex items-center">
-      <div className="flex items-center gap-1">
-        {'LOVE'.split('').map((page, index) => {
-          const pageNumber = index + 1;
-          return (
-            <PageButton
-              isActive={pageNumber === currentPage}
-              key={`page-${page}`}
-              href={index ? `/?page=${pageNumber}` : '/'}
-            >
-              {page}
-            </PageButton>
-          );
-        })}
-      </div>
+  <div className="flex items-center">
+    <div className="flex items-center gap-1">
+      {'LOVE'.split('').map((page, index) => {
+        const pageNumber = index + 1;
+        return (
+          <PageButton
+            isActive={pageNumber === currentPage}
+            key={`page-${page}`}
+            href={index ? `/?page=${pageNumber}` : '/'}
+          >
+            {page}
+          </PageButton>
+        );
+      })}
     </div>
-  );
+  </div>
+);
 
 export default Pagination;
