@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom/vitest';
 
-import Router from 'next/router';
 import { render, screen } from '@testing-library/react';
 import { format } from 'date-fns';
 
@@ -13,16 +12,6 @@ const props = {
   date: '2022-02-20T10:00:00.000Z',
 };
 
-const routerChangeStart = vi.fn();
-
-beforeEach(() => {
-  Router.events.on('routeChangeStart', routerChangeStart);
-});
-
-afterEach(() => {
-  Router.events.off('routeChangeStart', routerChangeStart);
-});
-
 describe('PostCard', () => {
   it('should be rendered', () => {
     render(<PostCard {...props} />);
@@ -31,8 +20,26 @@ describe('PostCard', () => {
       screen.getByRole('link', { name: /SO Lovely CODE!/ }),
     ).toHaveAttribute('href', '/post/so-lovely-code');
     expect(screen.getByText('This is a description')).toBeInTheDocument();
+    expect(screen.getByText('Created')).toBeInTheDocument();
     expect(
-      screen.getByText(format(new Date('2022-02-20'), 'yyyy.MM.dd.')),
+      screen.getByText(
+        format(new Date('2022-02-20T10:00:00.000Z'), 'yyyy.MM.dd.'),
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it('should be rendered if post is updated', () => {
+    render(<PostCard {...props} lastModified="2025-08-05T14:25:00.000Z" />);
+
+    expect(
+      screen.getByRole('link', { name: /SO Lovely CODE!/ }),
+    ).toHaveAttribute('href', '/post/so-lovely-code');
+    expect(screen.getByText('This is a description')).toBeInTheDocument();
+    expect(screen.getByText('Updated')).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        format(new Date('2025-08-05T14:25:00.000Z'), 'yyyy.MM.dd.'),
+      ),
     ).toBeInTheDocument();
   });
 });

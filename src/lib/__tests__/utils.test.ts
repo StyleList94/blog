@@ -1,4 +1,4 @@
-import { cn, sleep } from '../utils';
+import { cn, getUpdatedDateByPost, sleep } from '../utils';
 
 describe('cn()', () => {
   it('merges class names correctly', () => {
@@ -19,7 +19,7 @@ describe('cn()', () => {
 
   it('removes duplicate class names using tailwind-merge', () => {
     const result = cn('p-4', 'p-2');
-    expect(result).toBe('p-2'); // tailwind-merge should keep only the last class
+    expect(result).toBe('p-2');
   });
 
   it('handles empty and undefined values correctly', () => {
@@ -60,5 +60,28 @@ describe('sleep()', () => {
     vi.advanceTimersByTime(ms);
 
     await expect(sleepPromise).resolves.toBeUndefined();
+  });
+});
+
+describe('getUpdatedDateByPost()', () => {
+  const mockPost = {
+    slug: 'survive-in-front-end',
+    title: '프론트엔드로 살아남기',
+    description: '사용자 경험이 중요할까? 성능이 중요할까?',
+    date: '2025-08-05T05:30:00.000Z',
+    content: '',
+  };
+
+  it('returns date if last modified date is undefined', () => {
+    expect(getUpdatedDateByPost(mockPost)).toBe('2025-08-05T05:30:00.000Z');
+  });
+
+  it('returns last modified date', () => {
+    const updatedPost = {
+      ...mockPost,
+      lastModified: '2025-08-05T15:30:00.000Z',
+    };
+
+    expect(getUpdatedDateByPost(updatedPost)).toBe('2025-08-05T15:30:00.000Z');
   });
 });

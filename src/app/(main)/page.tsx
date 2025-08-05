@@ -35,6 +35,7 @@ export default async function MainPage({ searchParams }: Props) {
                   title={post.title}
                   description={post.description}
                   date={post.date}
+                  lastModified={post.lastModified}
                 />
               ))}
             </div>

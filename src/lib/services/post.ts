@@ -7,6 +7,8 @@ import fs from 'node:fs/promises';
 
 import matter from 'gray-matter';
 
+import { getUpdatedDateByPost } from '@/lib/utils';
+
 type RequestPostsByPageParams = {
   page?: string | string[];
   limit?: number;
@@ -61,7 +63,9 @@ export async function getAllPosts(): Promise<PostList> {
 
   return posts
     .map(({ content, ...rest }) => ({ ...rest }))
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+    .sort((post1, post2) =>
+      getUpdatedDateByPost(post1) > getUpdatedDateByPost(post2) ? -1 : 1,
+    );
 }
 
 export async function getPostsByPage({
