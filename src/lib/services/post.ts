@@ -68,6 +68,20 @@ export async function getAllPosts(): Promise<PostList> {
     );
 }
 
+export async function getNewPosts({
+  limit = 5,
+}: {
+  limit?: number;
+} = {}): Promise<PostList> {
+  const slugs = await getPostSlugs();
+  const posts = await Promise.all(slugs.map((slug) => getPostBySlug(slug)));
+
+  return posts
+    .map(({ content, ...rest }) => ({ ...rest }))
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+    .slice(0, limit);
+}
+
 export async function getPostsByPage({
   page = '1',
   limit = 5,
