@@ -6,8 +6,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import throttle from 'lodash-es/throttle';
 import { useMounted } from '@stylelist94/nine-beauty-actress';
-
-import { cn } from '@/lib/utils';
+import { clsx } from 'clsx';
 
 type Props = {
   items: TableOfContents[];
@@ -63,20 +62,17 @@ const PostTableOfContents = ({ items }: Props) => {
   return (
     <div
       key={`toc-${mounted.toString()}`}
-      className={cn(
-        'border-l px-3 border-neutral-600/20',
-        'dark:border-neutral-400/30',
-      )}
+      className="border-l px-3 border-neutral-600/20 dark:border-neutral-400/30"
     >
       <ul
         aria-label="toc-level-1"
-        className={cn('text-sm text-neutral-400', 'dark:text-neutral-500')}
+        className="text-sm text-neutral-400 dark:text-neutral-500"
       >
         {items.map((item) => (
           <li key={`table-of-contents-level-1-${item.slug}`} className="m-1.5">
             <Link
               href={`#${item.slug}`}
-              className={cn(
+              className={clsx(
                 'transition-all',
                 activeHeading === item.slug &&
                   'text-neutral-800 dark:text-neutral-200 scale-105',
@@ -93,7 +89,7 @@ const PostTableOfContents = ({ items }: Props) => {
                 >
                   <Link
                     href={`#${childItem.slug}`}
-                    className={cn(
+                    className={clsx(
                       'transition-all',
                       activeHeading === childItem.slug &&
                         'text-neutral-800 dark:text-neutral-200 scale-105',
