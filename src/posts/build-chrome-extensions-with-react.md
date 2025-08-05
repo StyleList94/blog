@@ -402,8 +402,6 @@ module.exports = (env, argv) => {
 
 이제 `React`와 `tailwindcss`를 이용해서 확장 프로그램을 눌렀을 때 표시할 UI를 만들 수 있다!
 
-팝업은 
-
 먼저 클라이언트 사이드 렌더링을 위한 HTML 템플릿을 생성한다
 
 ```html:title=src/popup/index.html
