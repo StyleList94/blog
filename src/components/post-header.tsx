@@ -34,7 +34,7 @@ const DateBox = ({ date, tag }: DateBoxProps) => (
 const PostHeader = ({ title, description, date, lastModified }: Props) => (
   <section className="flex flex-col gap-6 py-4">
     <div className="flex flex-col gap-3">
-      <h1 className="text-lg sm:text-xl lg:text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
+      <h1 className="text-lg sm:text-xl lg:text-2xl font-medium text-neutral-900 dark:text-neutral-100">
         {title}
       </h1>
       <p className="text-sm lg:text-base text-neutral-500 dark:text-neutral-400">
