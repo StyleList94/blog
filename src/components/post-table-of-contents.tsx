@@ -60,10 +60,7 @@ const PostTableOfContents = ({ items }: Props) => {
   }, [items, mounted]);
 
   return (
-    <div
-      key={`toc-${mounted.toString()}`}
-      className="border-l px-3 border-neutral-600/20 dark:border-neutral-400/30"
-    >
+    <div key={`toc-${mounted.toString()}`} className="px-3">
       <ul
         aria-label="toc-level-1"
         className="text-sm text-neutral-400 dark:text-neutral-500"
@@ -73,9 +70,9 @@ const PostTableOfContents = ({ items }: Props) => {
             <Link
               href={`#${item.slug}`}
               className={clsx(
-                'transition-all',
+                'transition',
                 activeHeading === item.slug &&
-                  'text-neutral-800 dark:text-neutral-200 scale-105',
+                  'text-neutral-800 dark:text-neutral-200',
               )}
             >
               {item.content.replace(/`/g, '')}
@@ -90,9 +87,9 @@ const PostTableOfContents = ({ items }: Props) => {
                   <Link
                     href={`#${childItem.slug}`}
                     className={clsx(
-                      'transition-all',
+                      'transition',
                       activeHeading === childItem.slug &&
-                        'text-neutral-800 dark:text-neutral-200 scale-105',
+                        'text-neutral-800 dark:text-neutral-200 scale',
                     )}
                   >
                     {childItem.content.replace(/`/g, '')}

@@ -13,7 +13,12 @@ const Header = () => {
 
   return (
     <>
-      <header className={headerContainerStyle}>
+      <header
+        className={cn(
+          headerContainerStyle,
+          'transition-colors ease-in-out duration-200',
+        )}
+      >
         <div
           className={cn(headerContentBoxStyle, 'sm:max-w-160', 'lg:max-w-240')}
         >
@@ -23,9 +28,9 @@ const Header = () => {
                 href="/"
                 className="flex items-end gap-0.5 font-sans text-xl tracking-wide"
               >
-                스타일리시
+                맵시
                 <span className="text-sm leading-relaxed tracking-wider">
-                  .로그
+                  .일기
                 </span>
               </Link>
             ) : (

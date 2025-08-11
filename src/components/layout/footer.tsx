@@ -13,9 +13,9 @@ const Footer = () => (
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            'text-3xl text-zinc-800/50',
-            'dark:text-zinc-300/50',
-            'transition duration-200 ease-in-out',
+            'text-2xl text-zinc-800/80',
+            'dark:text-zinc-200/50',
+            'transition-colors duration-200 ease-in-out',
           )}
           aria-label="GitHub"
         >
@@ -47,9 +47,8 @@ const Footer = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          StyleList94
-        </a>{' '}
-        All rights reserved
+          @StyleList94
+        </a>
       </p>
     </div>
   </footer>

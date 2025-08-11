@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@stylelist94/nine-beauty-actress':
-        specifier: 0.5.0
-        version: 0.5.0(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(motion@12.15.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.8)
+        specifier: ^0.5.1
+        version: 0.5.1(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(motion@12.15.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.8)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -893,8 +893,8 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@stylelist94/nine-beauty-actress@0.5.0':
-    resolution: {integrity: sha512-CUfkzoLOQP0cMtXhit3LwrF4in2bIP6SeOo1JYUDAiD21a+bYbUBRcwJhR/Pq7go6ls78MPNCo0XVSFo5qxVXg==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/0.5.0/ad59722e95f782eb6c99e336af02d7326fec56aa}
+  '@stylelist94/nine-beauty-actress@0.5.1':
+    resolution: {integrity: sha512-k1o9R9m5X5n46G7GFCUZRoFbv3YyjHAbKtwBwf6D8ib8mke4USY2ZROOGBjrMTKYtkymip/Djl0NhPx8+L3S3w==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/0.5.1/5ff8d2554b3068e4624e3ff79ea8da8443cf64b8}
     peerDependencies:
       motion: '>=12'
       react: '>=18'
@@ -4019,7 +4019,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@stylelist94/nine-beauty-actress@0.5.0(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(motion@12.15.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.8)':
+  '@stylelist94/nine-beauty-actress@0.5.1(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(motion@12.15.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.8)':
     dependencies:
       '@radix-ui/react-switch': 1.2.5(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       clsx: 2.1.1

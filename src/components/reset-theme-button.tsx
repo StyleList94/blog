@@ -18,7 +18,7 @@ const ResetThemeButton = () => {
         e.preventDefault();
         setSystemTheme();
       }}
-      className="flex justify-center items-center size-7.5 rounded-sm text-2xl border border-transparent transition-colors ease-in-out duration-200 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 text-zinc-500/50 dark:text-zinc-400/50"
+      className="flex justify-center items-center size-6 rounded-sm text-2xl border border-transparent transition-colors ease-in-out duration-200 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 text-zinc-500/50 dark:text-zinc-400/50"
       aria-label="reset theme"
     >
       <svg

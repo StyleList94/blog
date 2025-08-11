@@ -1,5 +1,3 @@
-'use server';
-
 import type { Post, PostList } from '@/types/post';
 
 import { join } from 'node:path';

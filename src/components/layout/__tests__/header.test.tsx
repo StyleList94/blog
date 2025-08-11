@@ -19,7 +19,7 @@ describe('Header', () => {
 
     render(<Header />);
 
-    expect(screen.getByText('스타일리시')).toBeInTheDocument();
-    expect(screen.getByText('.로그')).toBeInTheDocument();
+    expect(screen.getByText('맵시')).toBeInTheDocument();
+    expect(screen.getByText('.일기')).toBeInTheDocument();
   });
 });
