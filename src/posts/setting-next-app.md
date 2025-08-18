@@ -99,7 +99,7 @@ ESLint의 단짝, Prettier의 차례다!
 pnpm add -D prettier
 ```
 
-`.prettierrc` 파일을 루트 디렉토리에 생성합니다.
+패키지를 추가했다면 `.prettierrc` 파일을 루트 디렉토리에 생성한 뒤, 규칙을 정의해준다.
 
 ```json:title=.prettierrc
 {
@@ -113,7 +113,7 @@ pnpm add -D prettier
 }
 ```
 
-ESLint를 구성하기로 했다면 [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier?tab=readme-ov-file#installation)를 꼭 ESLint에 추가해줘야 한다!
+ESLint를 구성하기로 했다면 [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier?tab=readme-ov-file#installation)를 꼭 ESLint 구성에 추가해줘야 한다!
 
 ## lint-staged
 
