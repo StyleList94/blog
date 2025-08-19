@@ -1,6 +1,6 @@
 ---
 title: 나랑 별 보러 가지 않을래?
-description: Next.js에서 Astro까지 1부 
+description: Next.js에서 Astro까지 1부
 date: '2025-08-18T09:00:00.000Z'
 series: 'Astro 첫 경험'
 seriesOrder: 1
@@ -62,7 +62,6 @@ UI 프레임워크 간 마이그레이션할 때, 점진적으로 할 수 있다
 ## 정리의 첫 걸음
 
 프레임워크를 전환하는건 꽤나 큰 공사이다.
-
 
 그나마 가장 쉬운 방법은 [전환하려는 프레임워크의 '시작하기'](https://docs.astro.build/en/install-and-setup/) 방법을 통해 새로운 앱을 만들고, 하나씩 옮기는 법이다.
 
@@ -289,7 +288,6 @@ import '@/styles/global.css';
 
 메타정보를 동적으로 관리해야하는 경우 `head` 하위 태그들을 별도의 컴포넌트로 구성해서 주입하면 된다.
 
-
 ```astro:title=src/components/head.astro
 ---
 import { Font } from 'astro:assets';
@@ -465,7 +463,7 @@ export const server = {
     async handler(formData: FormData): Promise<ConvertResult> {
       // 이런식으로 formDate를 바로 사용할 수 있다.
       const file = formData.get('icon') as File;
-      
+
       // 데이터 처리후 양식에 맞게 반환
     },
   }),
@@ -485,7 +483,7 @@ import { actions } from 'astro:actions';
 
 const IconConverter = () => {
   // ..
-  
+
   const convertAction = (formData: FormData) => {
     const file = formData.get('icon') as File;
 
@@ -542,4 +540,3 @@ Astro 특성상 React 컴포넌트는 일단 서버에서 한번 실행된다.
 하지만 아직 할 게 많이 남았다.
 
 다크모드 마이그레이션, 코드 포멧터, 테스팅 등등은 후속 편에서 다뤄보기로 한다.
-

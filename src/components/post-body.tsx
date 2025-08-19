@@ -104,7 +104,7 @@ const components: Partial<MarkdownElement> = {
     <blockquote
       className={cn(
         commonStyle,
-        'mt-6 pl-6 py-0.5',
+        'mt-6 pl-6 pr-2 py-0.5',
         'bg-neutral-50 dark:bg-neutral-800/50',
         'italic',
         'border-l-2 border-neutral-300 dark:border-neutral-700',
