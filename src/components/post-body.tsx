@@ -117,7 +117,12 @@ const components: Partial<MarkdownElement> = {
 
   ul: ({ children, node, ...props }) => (
     <ul
-      className={cn(commonStyle, 'my-6 ml-6 list-disc', '[&>li]:mt-2')}
+      className={cn(
+        commonStyle,
+        'my-6 ml-6 list-disc',
+        '[&>li]:mt-2',
+        '[&>li>ul]:my-2',
+      )}
       {...props}
     >
       {children}
