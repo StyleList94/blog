@@ -8,7 +8,9 @@ type Props = {
   currentPage?: number;
 };
 
-type PageButtonProps = PropsWithChildren<LinkProps & { isActive?: boolean }>;
+type PageButtonProps = PropsWithChildren<
+  LinkProps<'/'> & { isActive?: boolean }
+>;
 
 const PageButton = ({ children, isActive, ...props }: PageButtonProps) => (
   <Link

@@ -194,7 +194,7 @@ const components: Partial<MarkdownElement> = {
       (href as string).startsWith('/') || (href as string).startsWith('#');
     return isInternal ? (
       <Link
-        href={href as string}
+        href={href as `/post/${string}`}
         className={cn(
           'transition ease-in-out duration-200 leading-normal',
           'text-teal-600 dark:text-teal-400',

@@ -2,6 +2,7 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { FlatCompat } from '@eslint/eslintrc';
+import { globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 import stylish from 'eslint-config-stylish';
 import stylishReact from 'eslint-config-stylish/react';
@@ -19,9 +20,15 @@ const compat = new FlatCompat({
 });
 
 export default tseslint.config(
-  ...compat.config({
-    extends: ['plugin:@next/next/core-web-vitals'],
-  }),
+  ...compat.extends('plugin:@next/next/core-web-vitals'),
+  globalIgnores([
+    'node_modules/**',
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+    'vitest.config.mts',
+  ]),
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     extends: [stylish],
