@@ -2,7 +2,7 @@
 title: UI Kit를 만들어서 디자인 시스템에 곁들여볼까?
 description: React 기반의 컴포넌트 및 스타일 라이브러리 업글(?)기
 date: '2025-05-21T14:05:00.000Z'
-lastModified: '2025-06-16T03:40:00.000Z'
+lastModified: '2025-10-04T14:00:00.000Z'
 ---
 
 ## 빠른 참고
@@ -54,10 +54,10 @@ pnpm create vite your-ui-kit --template react-ts
 pnpm add -D vite
 ```
 
-필요한 플러그인도 추가해준다.
+React 플러그인도 추가해준다.
 
 ```bash:title=Terminal
-pnpm add -D @vitejs/plugin-react vite-plugin-dts
+pnpm add -D @vitejs/plugin-react
 ```
 
 ### 프로젝트 구성 설정
@@ -71,16 +71,11 @@ import { defineConfig } from 'vite';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
-import dtsPlugin from 'vite-plugin-dts';
 
 // [!code focus:40]
 export default defineConfig({
   plugins: [
     react(), // React 플러그인
-    dtsPlugin({
-      include: ['lib'],
-      insertTypesEntry: true,
-    }), // 라이브러리 모드에서 *.d.ts 파일 생성을 위해 사용하는 플러그인
   ],
   build: {
     lib: {
@@ -143,16 +138,41 @@ import { Button } from './components/button';
 export { Button };
 ```
 
+빌드 이후에 타입 정의 모듈을 추가해 주기 위해서 `tsconfig.build.json`을 수정해야한다.
+
+```json:title=tsconfig.build.json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist",
+    "emitDeclarationOnly": true,
+    "noEmit": false
+  },
+  "include": ["lib"]
+}
+```
+
+옵션의 의미는 다음과 같다.
+
+- `declaration`: TypeScript 컴파일 시 `.d.ts` 타입 선언 파일을 생성
+- `declarationDir`: 생성된 `.d.ts` 파일을 저장할 위치(`./dist`)
+- `emitDeclarationOnly`: 오직 타입 선언 파일만 생성
+- `noEmit`: `emitDeclarationOnly` 이거 사용하려면 반드시 falsy 해야함
+- `include`: 여기 포함된 디렉토리 내의 파일만 이 설정으로 컴파일
+
 vite 빌드를 위해 스크립트를 업데이트 한다.
 
 ```json:title=package.json
 {
   "scripts": {
-    "build": "tsc --p ./tsconfig.build.json && vite build",
+    "build": "vite build && tsc --p ./tsconfig.build.json",
     "preview": "vite preview"
   }
 }
 ```
+
+Vite가 빌드하면서 output을 초기화 하기떄문에 순서가 중요하다!
 
 빌드를 수행하면
 
@@ -275,7 +295,7 @@ scripts를 업데이트!
 ```json:title=package.json
 {
   "scripts": {
-    "build": "tsc --p ./tsconfig.build.json && vite build",
+    "build": "vite build && tsc --p ./tsconfig.build.json",
     "preview": "vite preview"
     "test": "vitest run", // [!code ++]
     "test:watch": "vitest" // [!code ++]

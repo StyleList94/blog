@@ -55,7 +55,10 @@ describe('sleep()', () => {
     const sleepPromise = sleep(ms);
 
     expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), ms);
+    expect(setTimeout).toHaveBeenCalledExactlyOnceWith(
+      expect.any(Function),
+      ms,
+    );
 
     vi.advanceTimersByTime(ms);
 

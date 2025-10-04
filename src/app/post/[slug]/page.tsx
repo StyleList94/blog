@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Route } from 'next';
 import type { Post, PostSeriesInfo } from '@/types/post';
 
 import { redirect } from 'next/navigation';
@@ -52,7 +52,7 @@ export default async function PostContentPage({ params }: Props) {
   const post: Post = await getPostBySlug(slug);
 
   if (post.slug === '404') {
-    redirect(`/404`);
+    redirect('/not-found' as Route<'/not-found'>);
   }
 
   let seriesList: PostSeriesInfo[] = [];

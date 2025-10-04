@@ -1,7 +1,7 @@
 'use client';
 
 import { useScroll, useSpring } from 'motion/react';
-import * as m from 'motion/react-m';
+import { div as MotionDiv } from 'motion/react-m';
 
 const ScrollLinked = () => {
   const { scrollYProgress } = useScroll();
@@ -12,7 +12,7 @@ const ScrollLinked = () => {
   });
 
   return (
-    <m.div
+    <MotionDiv
       id="scroll-indicator"
       style={{
         scaleX,
