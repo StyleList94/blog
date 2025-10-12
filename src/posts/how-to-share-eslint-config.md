@@ -2,12 +2,15 @@
 title: 답답해서 내가 만든 최신 ESLint 규칙 공유하기
 description: ESLint 규칙 세트를 패키지로 배포하기
 date: '2025-06-20T12:19:00.000Z'
-lastModified: '2025-06-24T08:30:00.000Z'
+lastModified: '2025-10-12T12:30:00.000Z'
 ---
 
 ## 빠른 참고
 
 [나만의 Config 만들기](https://eslint.org/docs/latest/extend/shareable-configs)
+
+> 2025.10: `defineConfig()`에 여러 인수를 지원하는 기능이 추가되었다.
+> `tseslint.config()`는 deprecated 될 예정이다.
 
 ## 벌써 일년
 
@@ -105,11 +108,11 @@ pnpm add -D eslint-import-resolver-typescript
 
 ```js:title=index.js
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
 
 // [!code focus:12]
-export default tseslint.config({
+export default defineConfig({
   extends: [eslint.configs.recommended, importPlugin.flatConfigs.recommended],
   languageOptions: {
     ecmaVersion: 12,
@@ -122,8 +125,6 @@ export default tseslint.config({
   },
 });
 ```
-
-`tseslint.config()`는 가변 인수 형식이므로, 배열형태가 아님에 주의하자!
 
 5번 줄에서 `extends`의 값으로 플러그인 별 활성화할 기본 규칙 세트를 지정할 수 있다.
 
@@ -141,8 +142,8 @@ JSX 구문이 없는 모듈에서 react, jsx 관련 규칙을 검사할 필요�
 
 나는 다음과 같이 그룹화 했다.
 
-| 그룹         | 플러그인                               |
-|------------|------------------------------------|
+| 그룹       | 플러그인                           |
+| ---------- | ---------------------------------- |
 | Base       | `eslint`, `import`                 |
 | React      | `react`, `react-hooks`, `jsx-a11y` |
 | TypeScript | `typescript-eslint`                |
@@ -152,14 +153,14 @@ JSX 구문이 없는 모듈에서 react, jsx 관련 규칙을 검사할 필요�
 앞서 만든 `index.js`를 `config/` 내부로 옮긴 뒤, `react.js`, `typescript.js` 모듈들도 생성해준다.
 
 ```js:title=config/react.js
-import tseslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 // [!code focus:22]
-export default tseslint.config({
+export default defineConfig({
   plugins: {
     react: reactPlugin,
     'react-hooks': reactHooks,
@@ -186,10 +187,11 @@ export default tseslint.config({
 JSX 구문에 호환될 수 있도록, `languageOptions`을 미리 정의해주만 프로젝트에서 가져다 쓸 때, 따로 정의 안해줘도 된다.
 
 ```js:title=config/typescript.js
+import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
 // [!code focus:14]
-export default tseslint.config({
+export default defineConfig({
   extends: [tseslint.configs.strictTypeChecked],
   settings: {
     'import/resolver': {
@@ -300,13 +302,13 @@ Github 리포지토리 설정에서 `NPM_TOKEN`에 NPM Access Token 넣는거 �
 이제 갖다 쓰면 된다.
 
 ```js:title=your-project/eslint.config.js
-import tseslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
 // [!code focus:28]
 import stylish from 'eslint-config-stylish';
 import stylishReact from 'eslint-config-stylish/react';
 import stylishTypeScript from 'eslint-config-stylish/typescript';
 
-export default tseslint.config(
+export default defineConfig(
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     extends: [stylish],
@@ -336,7 +338,7 @@ export default tseslint.config(
 
 대부분의 프로젝트는 타입스크립트일 테니 `typescript-eslint`를 활용하겠지만,
 
-기본 ESLint의 `defineConfig()`에 구성해도 똑같이 동작한다!, 다만 인수를 배열로 감싸주는것만 잊지말자.
+기본 ESLint의 `defineConfig()`에 구성해도 똑같이 동작한다! 다만 인수를 배열로 감싸주는것만 잊지말자.
 
 ## 정리
 

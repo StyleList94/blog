@@ -2,7 +2,7 @@
 title: UI Kit를 만들어서 디자인 시스템에 곁들여볼까?
 description: React 기반의 컴포넌트 및 스타일 라이브러리 업글(?)기
 date: '2025-05-21T14:05:00.000Z'
-lastModified: '2025-10-04T14:00:00.000Z'
+lastModified: '2025-10-12T12:20:00.000Z'
 ---
 
 ## 빠른 참고
@@ -166,7 +166,7 @@ vite 빌드를 위해 스크립트를 업데이트 한다.
 ```json:title=package.json
 {
   "scripts": {
-    "build": "vite build && tsc --p ./tsconfig.build.json",
+    "build": "vite build && tsc -p ./tsconfig.build.json",
     "preview": "vite preview"
   }
 }
@@ -295,7 +295,7 @@ scripts를 업데이트!
 ```json:title=package.json
 {
   "scripts": {
-    "build": "vite build && tsc --p ./tsconfig.build.json",
+    "build": "vite build && tsc -p ./tsconfig.build.json",
     "preview": "vite preview"
     "test": "vitest run", // [!code ++]
     "test:watch": "vitest" // [!code ++]
@@ -331,7 +331,7 @@ pnpm run test
 
 ### Storybook 구성
 
-타입스크립트 코멘트 문서를 자동으로 스토리에 포함시켜주는 기능을 추가한다.
+TSDoc 코멘트를 자동으로 스토리에 포함시켜주는 기능을 추가한다.
 
 ```ts:title=.storybook/main.ts
 const config: StorybookConfig = {
@@ -345,8 +345,6 @@ const config: StorybookConfig = {
   // ..
 };
 ```
-
-> [**2025.05. 이 기능은 버그로 인해 동작하지 않고 있다.**](https://github.com/storybookjs/storybook/issues/30015)
 
 ### 브랜드 커스터마이징
 
