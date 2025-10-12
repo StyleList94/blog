@@ -7,6 +7,6 @@ import process from 'node:process';
 export default {
   '*.{js,jsx,ts,tsx}': (filenames) => {
     const files = filenames.map((file) => path.relative(process.cwd(), file));
-    return `next lint --fix ${files.map((file) => `--file ${file}`).join(' ')}`;
+    return `eslint --fix ${files.join(' ')}`;
   },
 };

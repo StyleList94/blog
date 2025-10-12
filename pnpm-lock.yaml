@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@stylelist94/nine-beauty-actress':
-        specifier: ^0.6.0
-        version: 0.6.0(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(motion@12.23.22(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.14)
+        specifier: ^0.6.2
+        version: 0.6.2(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(motion@12.23.22(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.14)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -122,8 +122,8 @@ importers:
         specifier: ^10.1.8
         version: 10.1.8(eslint@9.37.0(jiti@2.6.1))
       eslint-config-stylish:
-        specifier: ^2.2.0
-        version: 2.2.0(@eslint/js@9.37.0)(eslint-import-resolver-typescript@3.6.3)(eslint-plugin-import@2.32.0)(eslint-plugin-jsx-a11y@6.10.2(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-react-hooks@6.1.1(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-react@7.37.5(eslint@9.37.0(jiti@2.6.1)))(eslint@9.37.0(jiti@2.6.1))(typescript-eslint@8.45.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.8.3))
+        specifier: ^2.3.0
+        version: 2.3.0(@eslint/js@9.37.0)(eslint-import-resolver-typescript@3.6.3)(eslint-plugin-import@2.32.0)(eslint-plugin-jsx-a11y@6.10.2(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-react-hooks@6.1.1(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-react@7.37.5(eslint@9.37.0(jiti@2.6.1)))(eslint@9.37.0(jiti@2.6.1))(typescript-eslint@8.45.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.8.3))
       eslint-plugin-import:
         specifier: ^2.32.0
         version: 2.32.0(@typescript-eslint/parser@8.45.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.8.3))(eslint-import-resolver-typescript@3.6.3)(eslint@9.37.0(jiti@2.6.1))
@@ -1032,8 +1032,8 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@stylelist94/nine-beauty-actress@0.6.0':
-    resolution: {integrity: sha512-GC708GNdofcFnAfRwQFGuuNSXSRoy2TYyvrT3CQTshhuwDD5hP7NJyoZgvCkQHXuXBtLX+gauk7HHInzSWB5Vw==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/0.6.0/ac09fb8ec8163f80474574f50c31e4217bea15b6}
+  '@stylelist94/nine-beauty-actress@0.6.2':
+    resolution: {integrity: sha512-LnHp5HstSK6P4f5UdOxQEbn0EbCLynTmhkGZ3i7DnhbrdUYyF9in5q36l1Y8lRQDloY2CaKkFGXSPXYRHEyZuQ==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/0.6.2/6a8d82160f3a5b631b5d54f50705206a89589166}
     peerDependencies:
       motion: '>=12'
       react: '>=18'
@@ -1810,8 +1810,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-config-stylish@2.2.0:
-    resolution: {integrity: sha512-1h0pRakT0xjDPUc4Nw+Yk0xu020X8BX7DZzfKBLRxMb1fMsxO3GaTt6xCdOXtJBLLtEw2prBpumIM8bFAaIMvQ==}
+  eslint-config-stylish@2.3.0:
+    resolution: {integrity: sha512-Dy4tCY/anqQbp2OWaJ/eK+RUP/zGpNg0ssV2Grge4XDhix1ZlTCxG599fpEus2Z/YzXfT5Ina4roXiWz3CNWCQ==}
     engines: {node: '>=18.18.0'}
     peerDependencies:
       '@eslint/js': '>=9'
@@ -4351,7 +4351,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@stylelist94/nine-beauty-actress@0.6.0(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(motion@12.23.22(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.14)':
+  '@stylelist94/nine-beauty-actress@0.6.2(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(motion@12.23.22(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwindcss@4.1.14)':
     dependencies:
       '@radix-ui/react-switch': 1.2.5(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       clsx: 2.1.1
@@ -5290,7 +5290,7 @@ snapshots:
     dependencies:
       eslint: 9.37.0(jiti@2.6.1)
 
-  eslint-config-stylish@2.2.0(@eslint/js@9.37.0)(eslint-import-resolver-typescript@3.6.3)(eslint-plugin-import@2.32.0)(eslint-plugin-jsx-a11y@6.10.2(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-react-hooks@6.1.1(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-react@7.37.5(eslint@9.37.0(jiti@2.6.1)))(eslint@9.37.0(jiti@2.6.1))(typescript-eslint@8.45.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.8.3)):
+  eslint-config-stylish@2.3.0(@eslint/js@9.37.0)(eslint-import-resolver-typescript@3.6.3)(eslint-plugin-import@2.32.0)(eslint-plugin-jsx-a11y@6.10.2(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-react-hooks@6.1.1(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-react@7.37.5(eslint@9.37.0(jiti@2.6.1)))(eslint@9.37.0(jiti@2.6.1))(typescript-eslint@8.45.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.8.3)):
     dependencies:
       '@eslint/js': 9.37.0
       eslint: 9.37.0(jiti@2.6.1)
