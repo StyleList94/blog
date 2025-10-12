@@ -10,6 +10,7 @@ const props = {
   description: 'first description',
   date: '2022-02-11T14:14:12.000Z',
   lastModified: '2025-06-14T12:38:12.000Z',
+  readingTimeMinutes: 5,
 };
 
 describe('PostHeader', () => {
@@ -27,5 +28,7 @@ describe('PostHeader', () => {
     expect(
       screen.getByText(format(new Date('2025-06-14'), 'yyyy.MM.dd.')),
     ).toBeInTheDocument();
+
+    expect(screen.getByText('5 min read')).toBeInTheDocument();
   });
 });

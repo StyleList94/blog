@@ -2,11 +2,14 @@ import { format } from 'date-fns';
 
 import { cn } from '@/lib/utils';
 
+import ReadingTime from '@/components/reading-time';
+
 type Props = {
   title: string;
   description: string;
   date: string;
   lastModified?: string;
+  readingTimeMinutes: number;
 };
 
 type DateBoxProps = {
@@ -31,7 +34,13 @@ const DateBox = ({ date, tag }: DateBoxProps) => (
   </div>
 );
 
-const PostHeader = ({ title, description, date, lastModified }: Props) => (
+const PostHeader = ({
+  title,
+  description,
+  date,
+  lastModified,
+  readingTimeMinutes,
+}: Props) => (
   <section className="flex flex-col gap-6 py-4">
     <div className="flex flex-col gap-3">
       <h1 className="text-lg sm:text-xl lg:text-2xl font-medium text-neutral-900 dark:text-neutral-100">
@@ -40,6 +49,9 @@ const PostHeader = ({ title, description, date, lastModified }: Props) => (
       <p className="text-sm lg:text-base text-neutral-500 dark:text-neutral-400">
         {description}
       </p>
+      <div className="flex">
+        <ReadingTime minutes={readingTimeMinutes} />
+      </div>
     </div>
     <div className="flex flex-col self-end gap-2">
       <DateBox date={date} tag="Created" />

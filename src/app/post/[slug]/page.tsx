@@ -7,6 +7,7 @@ import { BlogPosting, WithContext } from 'schema-dts';
 import { metadataContext } from '@/lib/metadata';
 import { getAllPosts, getPostBySlug } from '@/lib/services/post';
 import { generateSeries, generateTOC } from '@/lib/post-utils';
+import { calculateReadingTime } from '@/lib/utils';
 
 import PostHeader from '@/components/post-header';
 import PostBody from '@/components/post-body';
@@ -63,6 +64,7 @@ export default async function PostContentPage({ params }: Props) {
   }
 
   const tocList = generateTOC(post.content);
+  const readingTimeMinutes = calculateReadingTime(post.content);
 
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
@@ -90,6 +92,7 @@ export default async function PostContentPage({ params }: Props) {
             description={post.description}
             date={post.date}
             lastModified={post.lastModified}
+            readingTimeMinutes={readingTimeMinutes}
           />
           {post.series && seriesList.length > 0 ? (
             <PostSeriesWrapper
