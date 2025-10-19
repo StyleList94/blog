@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {
-  headerContainerStyle,
-  headerContentBoxStyle,
+  headerContainer,
+  headerContentBox,
 } from '@stylelist94/nine-beauty-actress/styles';
 
 import { cn } from '@/lib/utils';
@@ -15,13 +15,11 @@ const Header = () => {
     <>
       <header
         className={cn(
-          headerContainerStyle,
+          headerContainer,
           'transition-colors ease-in-out duration-200',
         )}
       >
-        <div
-          className={cn(headerContentBoxStyle, 'sm:max-w-160', 'lg:max-w-240')}
-        >
+        <div className={cn(headerContentBox, 'sm:max-w-160', 'lg:max-w-240')}>
           <div className="flex justify-between w-full select-none">
             {isHangulDay ? (
               <Link

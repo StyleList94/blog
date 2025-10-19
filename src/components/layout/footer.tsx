@@ -1,11 +1,11 @@
-import { footerContainerStyle } from '@stylelist94/nine-beauty-actress/styles';
+import { footer } from '@stylelist94/nine-beauty-actress/styles';
 
 import { cn } from '@/lib/utils';
 
 import ResetThemeButton from '@/components/reset-theme-button';
 
 const Footer = () => (
-  <footer className={cn(footerContainerStyle, 'max-w-160', 'lg:max-w-240')}>
+  <footer className={cn(footer, 'max-w-160!', 'lg:max-w-240!')}>
     <div className="flex justify-between gap-4">
       <div className="flex items-center gap-4">
         <a
