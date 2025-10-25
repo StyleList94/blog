@@ -1,8 +1,5 @@
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-import { FlatCompat } from '@eslint/eslintrc';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import nextPlugin from '@next/eslint-plugin-next';
 import stylish from 'eslint-config-stylish';
 import stylishReact from 'eslint-config-stylish/react';
 import stylishReactHooks from 'eslint-config-stylish/react-hooks';
@@ -11,15 +8,8 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import vitest from '@vitest/eslint-plugin';
 import testingLibrary from 'eslint-plugin-testing-library';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
 export default defineConfig(
-  ...compat.extends('plugin:@next/next/core-web-vitals'),
+  nextPlugin.configs['core-web-vitals'],
   globalIgnores([
     'node_modules/**',
     '.next/**',

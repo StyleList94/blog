@@ -1,12 +1,7 @@
-import path from 'node:path';
-import process from 'node:process';
-
 /**
  * @type {import('lint-staged').Configuration}
  */
 export default {
-  '*.{js,jsx,ts,tsx}': (filenames) => {
-    const files = filenames.map((file) => path.relative(process.cwd(), file));
-    return `eslint --fix ${files.join(' ')}`;
-  },
+  '*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}': 'eslint --fix',
+  '*.{json,md,yml,yaml}': 'prettier --write',
 };
