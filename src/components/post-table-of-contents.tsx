@@ -2,7 +2,7 @@
 
 import type { TableOfContents } from '@/types/post';
 
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import Link from 'next/link';
 import throttle from 'lodash-es/throttle';
 import { useMounted } from '@stylelist94/nine-beauty-actress';
@@ -11,6 +11,30 @@ import { clsx } from 'clsx';
 type Props = {
   items: TableOfContents[];
 };
+
+type TableOfContentProps = {
+  item: TableOfContents;
+  isActive: boolean;
+  level: 1 | 2;
+};
+
+const TableOfContent = memo<TableOfContentProps>(
+  ({ item, isActive, level }) => (
+    <li key={`table-of-contents-level-${level}-${item.slug}`} className="m-1.5">
+      <Link
+        href={`#${item.slug}`}
+        className={clsx(
+          'transition',
+          isActive && 'text-neutral-800 dark:text-neutral-200',
+        )}
+      >
+        {item.content.replace(/`/g, '')}
+      </Link>
+    </li>
+  ),
+);
+
+TableOfContent.displayName = 'TableOfContent';
 
 const PostTableOfContents = ({ items }: Props) => {
   const mounted = useMounted();
@@ -66,7 +90,7 @@ const PostTableOfContents = ({ items }: Props) => {
         className="text-sm text-neutral-400 dark:text-neutral-500"
       >
         {items.map((item) => (
-          <li key={`table-of-contents-level-1-${item.slug}`} className="m-1.5">
+          <li key={`parent-${item.slug}`} className="m-1.5">
             <Link
               href={`#${item.slug}`}
               className={clsx(
@@ -78,25 +102,18 @@ const PostTableOfContents = ({ items }: Props) => {
               {item.content.replace(/`/g, '')}
             </Link>
 
-            <ul aria-label="toc-level-2" className="pl-2">
-              {item.children.map((childItem) => (
-                <li
-                  key={`table-of-contents-level-2-${childItem.slug}`}
-                  className="m-1.5"
-                >
-                  <Link
-                    href={`#${childItem.slug}`}
-                    className={clsx(
-                      'transition',
-                      activeHeading === childItem.slug &&
-                        'text-neutral-800 dark:text-neutral-200 scale',
-                    )}
-                  >
-                    {childItem.content.replace(/`/g, '')}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {item.children.length > 0 && (
+              <ul aria-label="toc-level-2" className="pl-2">
+                {item.children.map((childItem) => (
+                  <TableOfContent
+                    key={childItem.slug}
+                    item={childItem}
+                    isActive={activeHeading === childItem.slug}
+                    level={2}
+                  />
+                ))}
+              </ul>
+            )}
           </li>
         ))}
       </ul>
@@ -104,4 +121,4 @@ const PostTableOfContents = ({ items }: Props) => {
   );
 };
 
-export default PostTableOfContents;
+export default memo(PostTableOfContents);
