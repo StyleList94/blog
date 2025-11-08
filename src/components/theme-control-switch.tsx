@@ -26,20 +26,12 @@ const ThemeControlSwitch = () => {
   const mounted = useMounted();
   const { theme, setTheme } = useThemeControl();
 
-  const handleThemeChange = (value: string) => {
-    setTheme(value);
-  };
-
   if (!mounted) {
     return null;
   }
 
   return (
-    <ToggleGroup
-      type="single"
-      value={theme ?? 'system'}
-      onValueChange={handleThemeChange}
-    >
+    <ToggleGroup type="single" value={theme} onValueChange={setTheme}>
       <ToggleGroupItem value="light">
         <svg {...iconBaseProps} aria-label="icon-light-mode">
           <circle cx={12} cy={12} r={4} />

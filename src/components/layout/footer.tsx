@@ -6,7 +6,7 @@ import ThemeControlSwitch from '../theme-control-switch';
 
 const Footer = () => (
   <footer className={cn(footer, 'max-w-160!', 'lg:max-w-240!')}>
-    <div className="flex justify-between gap-4">
+    <div className="flex justify-between items-center gap-4">
       <div className="flex items-center gap-4">
         <a
           href="https://github.com/StyleList94/blog/tree/main/src/posts"
@@ -35,7 +35,7 @@ const Footer = () => (
         </a>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 h-9">
         <ThemeControlSwitch />
       </div>
     </div>
