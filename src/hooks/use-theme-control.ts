@@ -11,9 +11,5 @@ export default function useThemeControl() {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   }, [resolvedTheme, setTheme]);
 
-  const setSystemTheme = useCallback(() => {
-    setTheme('system');
-  }, [setTheme]);
-
-  return { isDarkTheme, isSystemTheme, toggleTheme, setSystemTheme };
+  return { theme, isDarkTheme, isSystemTheme, toggleTheme, setTheme };
 }

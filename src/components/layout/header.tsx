@@ -6,8 +6,6 @@ import {
 
 import { cn } from '@/lib/utils';
 
-import ThemeControlSwitch from '@/components/theme-control-switch';
-
 const Header = () => {
   const isHangulDay = new Date().getMonth() === 9 && new Date().getDate() === 9;
 
@@ -43,8 +41,6 @@ const Header = () => {
               </Link>
             )}
           </div>
-
-          <ThemeControlSwitch />
         </div>
       </header>
       <div className="mt-14" />

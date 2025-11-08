@@ -13,6 +13,10 @@ describe('Footer', () => {
       'https://github.com/StyleList94/blog/tree/main/src/posts',
     );
 
+    expect(screen.getByLabelText('icon-light-mode')).toBeInTheDocument();
+    expect(screen.getByLabelText('icon-system')).toBeInTheDocument();
+    expect(screen.getByLabelText('icon-dark-mode')).toBeInTheDocument();
+
     expect(screen.getByText(/© 2025./)).toBeInTheDocument();
     expect(screen.getByText(/@StyleList94/)).toHaveAttribute(
       'href',
