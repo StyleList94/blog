@@ -25,7 +25,7 @@ Context API 부터 시작해서 지금 Zustand 까지 왔다.
 
 React와 처음 만나면 자연스럽게 알게 되는 패턴이다.
 
-내가 처음 React를 알게 되었을 떄는, SPA(Single Page Application, ~~에잇세컨즈 같은거 아님~~)가 대세였기 때문에,
+내가 처음 React를 알게 되었을 때는, SPA(Single Page Application, ~~에잇세컨즈 같은거 아님~~)가 대세였기 때문에,
 
 클라이언트 단위만 챙기면 되는 아주 편한 시대였다.
 
@@ -96,13 +96,13 @@ Zustand를 적절하게 사용하려면 다음 권장사항을 준수해야한�
 이를 단일 Provider의 값으로 전파하면 된다.
 
 스토어별로 Provider를 만들 필요가 없는 데, 이유는 스토어에 저장 된 상태가 갱산될 때, Provider의 자식 컴포넌트가 모두 리렌더링 되는 것이 아니라,
-늘 그렇듯이 구독하고 있는 부분만 리렌더링 된다. 밑에서 구현하겠지만, Provider엔 `useRef`에 저장된 스토어가 주입된다. 
+늘 그렇듯이 구독하고 있는 부분만 리렌더링 된다. 밑에서 구현하겠지만, Provider엔 `useRef`에 저장된 스토어가 주입된다.
 
 실제로도 될 수 있으면 하지마라고 한다.
 
 ## 그래서 하고 싶은 건?
 
-**Next.js의 아키텍처를 존중하면서 Zustand를 사용하는데, Redux의 리듀서 방식을 같이 활용해보고 싶었다.** 
+**Next.js의 아키텍처를 존중하면서 Zustand를 사용하는데, Redux의 리듀서 방식을 같이 활용해보고 싶었다.**
 
 Zustand에 Redux Devtools을 통해 디버깅을 시도해 본 적이 있다면, Redux와 다르게 하나의 앱인데도 불구하고, 스토어별로 구분되서 출력된다.
 
@@ -199,7 +199,7 @@ export const createRootStore = () =>
 
 이제 `Context`를 이용해서 스토어를 생성하고, 상태를 제공할 수 있게 [provider 컴포넌트를 만들면 된다](https://zustand.docs.pmnd.rs/guides/nextjs#providing-the-store).
 
-```tsx:title=src/providers/store-provider.tsx 
+```tsx:title=src/providers/store-provider.tsx
 import { type ReactNode, createContext, useRef } from 'react';
 
 import { createRootStore } from '@/store';
@@ -218,7 +218,7 @@ const StoreProvider = ({ children }: Props) => {
   const storeRef = useRef<StoreApi>(null);
 
   // value가 변경된다고 자식 컴포넌트가 모두 리렌더링 되지 않는다.
-  // 상태 업데이트에 의한 리렌더링은 스토어에서 결정된다. 
+  // 상태 업데이트에 의한 리렌더링은 스토어에서 결정된다.
   if (!storeRef.current) {
     storeRef.current = createRootStore(); // 스토어를 생성한다.
   }
@@ -232,8 +232,6 @@ export default StoreProvider;
 이렇게 만든 `Context`를 루트 레이아웃에 적절히 감싸주면 된다.
 
 이렇게 해서 생성한 스토어를 컴포넌트 레벨에서 전달할 수 있게 되었다.
-
-
 
 ## 스토어 사용하기
 
