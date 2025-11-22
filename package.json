@@ -1,5 +1,5 @@
 {
-  "name": "stylelist94-blog",
+  "name": "stylish-log",
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",

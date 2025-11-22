@@ -40,5 +40,8 @@ next-env.d.ts
 # IntelliJ
 .idea
 
+# VSCode
+.vscode
+
 # private posts
 **/posts/private/
