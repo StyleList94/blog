@@ -2,6 +2,7 @@
 title: 어디까지 반응할까?
 description: React 192% 활용하기
 date: '2025-11-15T15:00:00.000Z'
+lastModified: '2025-11-22T15:30:00.000Z'
 ---
 
 ## 빠른 참고
@@ -14,7 +15,8 @@ date: '2025-11-15T15:00:00.000Z'
 [`useActionState`](https://react.dev/reference/react/useActionState),
 [`useOptimistic`](https://react.dev/reference/react/useOptimistic),
 [`useEffectEvent`](https://react.dev/reference/react/useEffectEvent),
-[`use`](https://react.dev/reference/react/use)
+[`use`](https://react.dev/reference/react/use),
+[`Activity`](https://react.dev/reference/react/Activity)
 
 ## 어떻게 사랑하지 않을 수 있어
 
@@ -36,7 +38,7 @@ React 19.2 릴리즈 기념으로 생각보다 활용하면 UI, UX, DX 모두 �
 
 [공식 문서](https://react.dev/reference/react/useSyncExternalStore)
 
-> 외부 저장소의 값을 useState 처럼 사용하고 싶을 때 추천!
+> localStorage를 `useState`처럼 관리하고 싶을 때!
 
 이름 그대로 외부 스토어의 상태를 동기화 할 수 있는 Hook이다.
 
@@ -133,7 +135,7 @@ Web Storage 뿐만 아니라 외부 저장소에 대한 상태를 공유받고 �
 
 [공식 문서](https://react.dev/reference/react/useId)
 
-> 이제 id 애트리뷰트에 값을 넣을 수 있는 방법이 생겼다!
+> 이제 id 애트리뷰트에 값을 넣을 수 있는 방법이 생겼다!?
 
 v18 이전에는 컴포넌트에 ID를 부여하는건 쉽지 않은 일이었다.
 
@@ -356,6 +358,12 @@ UI가 지금 당장 바뀐 것처럼 보이게 하고 싶을 때, 사용하면 �
 
 > 항상 최신의 상태 값을 참조하고 싶지만, effect의 의존성으로는 관리하고 싶지 않을 때
 
+한 번쯤은 effect를 제어하면서 이런 고민을 분명히 했을 것이다!
+
+> 아.. 이건 effect랑 전혀 상관이 없는데 참조만 해야한다는 이유로 의존성 배열에 넣어야해?
+
+그래서 [_Effect Event_](https://react.dev/learn/separating-events-from-effects#declaring-an-effect-event)라는 개념이 나왔다!
+
 공식 문서에는 비반응형 로직을 분리해서 _Effect Event_ 라는 재사용 가능한 함수로 만들 수 있다고 설명하는데,
 
 그냥 `useEffect` 내부에서 참조되어야하는 값이지만 이 값의 업데이트로 인해 이팩트가 실행되는건 막고 싶을 때, 이 기법을 사용하면 된다.
@@ -415,7 +423,7 @@ function ChatRoom({ roomId, theme }) {
 
 [공식 문서](https://react.dev/reference/react/use)
 
-> 놀랍게도 이건 Hook이 아닙니다!
+> 놀랍게도 이건 Hook이 아니다!
 
 Promise나 context를 가져올 수 있는 새로운 방법이다.
 
@@ -457,6 +465,28 @@ function MessageComponent({ messagePromise }) {
 | 주의사항                 | Promise는 반드시 “한 번 생성된 안정된 리소스”여야 함 | Context value가 **매 렌더마다 새 Promise면** 무한 Suspense 가능성 있음 |
 
 서버 컴포넌트를 사용하지 않는 환경이라면 그렇게 많이 사용되지는 않는다. 그래서 별 두개!
+
+## Activity
+
+`v19.2`부터 사용 가능
+
+추천: ⭐️⭐️
+
+[공식 문서](https://react.dev/reference/react/Activity)
+
+> _조건부 렌더링의 새로운 시즌이 열렸습니다_
+
+조건부로 렌더링 되어야하는 상황의 단점은, 조건에 의해 언마운트 될 때, 상태가 다 날아간다는 것이다.
+
+심지어 이걸 막을려고 CSS로 그냥 안 보이는 처리를 하게 되면 성능에 문제가 생길 수도 있었다.
+
+이러한 문제를 해결하기 위해 v19.2에서는 `<Activity>` 라는 새로운 컴포넌트가 출시되었다.
+
+UI를 안 보이게 숨기면서도 상태(state)는 그대로 유지하고, 성능까지 챙기게 해주는 경계 컴포넌트라고 이해하면 되겠다!
+
+`<Activity>` 컴포넌트로 조건에 의해서 안보이는 상황일 때, `display: none !important` 형태로 CSS가 주입되고, effect의 cleanup이 실행되면서 언마운트 되지만, 상태는 살아 있는 아주 기묘한 현상이 발생한다!
+
+다만 이걸 사용하면 메모리 사용량이 약간 증가할 수 있고, Suspense 경계 전략이 약간 변경되어야하고, 출시 초기라 프레임워크 등에서 버그가 보고되고 있기도 해서 별 두개! 이런 상황이 생겼을 때, 실험적으로 도입해보면 좋을 것 같다!
 
 ## 사랑받는 이유를 알게 되었다
 
