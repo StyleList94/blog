@@ -33,7 +33,7 @@ const PageButton = ({ children, isActive, ...props }: PageButtonProps) => (
 const Pagination = ({ currentPage = 1 }: Props) => (
   <div className="flex items-center">
     <div className="flex items-center gap-1">
-      {'LOVE'.split('').map((page, index) => {
+      {'HEART'.split('').map((page, index) => {
         const pageNumber = index + 1;
         return (
           <PageButton

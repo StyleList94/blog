@@ -8,7 +8,7 @@ describe('Pagination', () => {
   it('should be rendered', () => {
     render(<Pagination />);
 
-    'LOVE'.split('').forEach((page, index) => {
+    'HEART'.split('').forEach((page, index) => {
       expect(screen.getByRole('link', { name: page })).toHaveAttribute(
         'href',
         index ? `/?page=${index + 1}` : '/',
@@ -19,13 +19,13 @@ describe('Pagination', () => {
   it('should highlight for current page', () => {
     const { rerender } = render(<Pagination currentPage={1} />);
 
-    expect(screen.getByRole('link', { name: 'L' })).toHaveClass(
+    expect(screen.getByRole('link', { name: 'H' })).toHaveClass(
       'text-zinc-950 dark:text-zinc-50',
     );
 
-    'LOVE'.split('').forEach((page) => {
+    'HEART'.split('').forEach((page) => {
       expect(screen.getByRole('link', { name: page })).toHaveClass(
-        page === 'L'
+        page === 'H'
           ? 'text-zinc-950 dark:text-zinc-50'
           : 'text-zinc-400 dark:text-zinc-500',
       );
@@ -33,9 +33,9 @@ describe('Pagination', () => {
 
     rerender(<Pagination currentPage={3} />);
 
-    'LOVE'.split('').forEach((page) => {
+    'HEART'.split('').forEach((page) => {
       expect(screen.getByRole('link', { name: page })).toHaveClass(
-        page === 'V'
+        page === 'A'
           ? 'text-zinc-950 dark:text-zinc-50'
           : 'text-zinc-400 dark:text-zinc-500',
       );
