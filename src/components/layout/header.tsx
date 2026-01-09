@@ -32,10 +32,10 @@ const Header = () => {
             ) : (
               <Link
                 href="/"
-                className="flex items-end gap-0.5 font-display text-xl tracking-wide"
+                className="flex items-end font-display text-xl tracking-wider"
               >
-                Stylish
-                <span className="text-sm leading-relaxed tracking-wider">
+                stylish
+                <span className="text-sm font-bold leading-relaxed tracking-wide">
                   .LOG
                 </span>
               </Link>

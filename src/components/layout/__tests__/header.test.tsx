@@ -10,7 +10,7 @@ describe('Header', () => {
 
     render(<Header />);
 
-    expect(screen.getByText('Stylish')).toBeInTheDocument();
+    expect(screen.getByText('stylish')).toBeInTheDocument();
     expect(screen.getByText('.LOG')).toBeInTheDocument();
   });
 

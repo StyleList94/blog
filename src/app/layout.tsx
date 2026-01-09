@@ -2,10 +2,10 @@ import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 
 import {
+  comfortaa,
   notoSerif,
   pretendard,
   robotoMono,
-  titilliumWeb,
 } from '@/assets/fonts';
 import { metadataContext } from '@/lib/metadata';
 
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="ko"
-      className={`${pretendard.variable} ${robotoMono.variable} ${notoSerif.variable} ${titilliumWeb.variable}`}
+      className={`${pretendard.variable} ${robotoMono.variable} ${notoSerif.variable} ${comfortaa.variable}`}
       suppressHydrationWarning
     >
       <body>

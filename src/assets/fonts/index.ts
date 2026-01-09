@@ -1,4 +1,4 @@
-import { Noto_Serif_KR, Roboto_Mono, Titillium_Web } from 'next/font/google';
+import { Comfortaa, Noto_Serif_KR, Roboto_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const pretendard = localFont({
@@ -47,10 +47,9 @@ export const robotoMono = Roboto_Mono({
   weight: ['400', '700'],
 });
 
-export const titilliumWeb = Titillium_Web({
+export const comfortaa = Comfortaa({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-titillium-web',
-  style: ['normal'],
-  weight: ['400'],
+  variable: '--font-comfortaa',
+  weight: ['400', '700'],
 });
