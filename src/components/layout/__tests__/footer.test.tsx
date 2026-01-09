@@ -17,7 +17,7 @@ describe('Footer', () => {
     expect(screen.getByLabelText('icon-system')).toBeInTheDocument();
     expect(screen.getByLabelText('icon-dark-mode')).toBeInTheDocument();
 
-    expect(screen.getByText(/© 2025./)).toBeInTheDocument();
+    expect(screen.getByText(/© 2026./)).toBeInTheDocument();
     expect(screen.getByText(/@StyleList94/)).toHaveAttribute(
       'href',
       'https://github.com/StyleList94',

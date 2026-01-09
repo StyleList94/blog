@@ -41,7 +41,7 @@ const Footer = () => (
     </div>
     <div>
       <p className="text-xs text-neutral-500 dark:text-neutral-400">
-        © 2025.{' '}
+        © 2026.{' '}
         <a
           href="https://github.com/StyleList94"
           target="_blank"
