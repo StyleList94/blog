@@ -1,5 +1,5 @@
 ---
-title: 테크(?) 블로그는 코드가 멋스러워야 한다. 
+title: 테크(?) 블로그는 코드가 멋스러워야 한다.
 description: 구문 강조 맵시 나게 갈아엎기
 date: '2025-06-27T08:00:00.000Z'
 ---
@@ -103,7 +103,7 @@ type Props = ClassAttributes<HTMLElement> &
 
 const CodeBlock = async (props: Props) => {
   const { children, className, node, ...rest } = props;
-  
+
   const match = /language-(\w+)/.exec(className || '');
 
   // 언어를 발견 못했다면 그냥 모노 폰트에 배경을 적용한다. 라이브러리 같은 문구 강조하는 그거 맞다!
@@ -177,18 +177,18 @@ html.dark .shiki span {
 `code-block.tsx`에 조건부 클래스를 적용하면
 
 ```tsx:title=src/components/code-block.tsx
-// import 뭐시기.. 
+// import 뭐시기..
 
 // [!code focus:21]
 const CodeBlock = async (props: Props) => {
   //..
-  
+
   // ts, tsx, js, json, css 에 한해서 줄 번호 표시
   const showLineNumber = /ts(x)?|js(on)?|css/.test(match[1]); // [!code ++]
 
   return (
      // [!code --:3]
-    <div className={cn('overflow-x-auto')}> 
+    <div className={cn('overflow-x-auto')}>
       <div dangerouslySetInnerHTML={{ __html: out }} />
     </div>
     <div // [!code ++:8]
@@ -208,7 +208,7 @@ const CodeBlock = async (props: Props) => {
 이제 `::before` 가상클래스를 활용해서 번호를 붙여주면 된다!
 
 ```css:title=src/styles/code-block.css
-/* 높이를 지정해주면 더 예쁘게 나온다 */ 
+/* 높이를 지정해주면 더 예쁘게 나온다 */
 pre .line {
   padding: 0 1.25rem;
   height: calc(var(--text-sm) * var(--leading-normal));
@@ -245,7 +245,7 @@ pre .line {
 
 근데 100줄이 넘어가면 가독성이 떨어지니깐, 그냥 코드를 적절하게 분할해서 읽기 좋게 하는 것이 좋겠다.
 
-안 그래도 JSX 코드는 들여쓰기가 너무 많아서 가독성이 떨어진다...ㅜㅜ 
+안 그래도 JSX 코드는 들여쓰기가 너무 많아서 가독성이 떨어진다...ㅜㅜ
 
 ### 배경색 채우기
 
@@ -257,7 +257,7 @@ pre .line {
 
 ```tsx:title=src/components/code-block.tsx
 // ..
-<div 
+<div
   className={cn(
     'code-block',
     showLineNumber && 'code-block__with-line-numbers',
@@ -292,9 +292,9 @@ const languageRegExp = /language-(\w+)(:title=(.+))?/; // [!code ++]
 
 띄어쓰기 말고 타이틀을 구분할 묘수가 필요한데, 나는 `:`로 구분하기로 했다. 이렇게!
 
-```text
+````text
 ```tsx:title=src/components/code-block.tsx```
-```
+````
 
 이제 코드 언어와 타이틀을 함께 추출할 수 있게 됐다.
 
@@ -365,7 +365,7 @@ return (
 
 [이 '시키'](https://shiki.style/packages/transformers)랑 함께라면 이런 효과도 어렵지 않게 구현할 수 있다!
 
-근데, 주의할 점은 문서에도 언급했듯이 스타일이 제공 되지 않는다! 
+근데, 주의할 점은 문서에도 언급했듯이 스타일이 제공 되지 않는다!
 
 스타일링은 알아서 하라는 까칠한 모먼트를 보여준다. ~~그래도 괜찮아!~~
 
@@ -376,7 +376,6 @@ pnpm add -D @shikijs/transformers
 ```
 
 나는 효과를 4개 사용했다.
-
 
 ```tsx:title=src/components/code-block.tsx
 // ..
@@ -400,9 +399,9 @@ const out = await codeToHtml(String(children).replace(/\n$/, ''), {
   },
   // [!code ++:6]
   transformers: [
-    transformerNotationDiff(), // 변경 사항 (+/-) 하이라이터 
+    transformerNotationDiff(), // 변경 사항 (+/-) 하이라이터
     transformerNotationHighlight(), // 일반 하이라이터
-    transformerNotationFocus(), // 포커스 효과 
+    transformerNotationFocus(), // 포커스 효과
     transformerNotationErrorLevel(), // 에러, 경고 하이라이터
   ],
 });
@@ -497,8 +496,8 @@ pre code .diff.remove::after {
 그러면 이렇게 보여줄 수 있다!
 
 ```ts
-console.log('치즈버거') // [!code --]
-console.log('띠뜨버거!') // [!code ++]
+console.log('치즈버거'); // [!code --]
+console.log('띠뜨버거!'); // [!code ++]
 ```
 
 ### 하이라이팅
@@ -536,8 +535,8 @@ pre code .highlighted {
 그러면 이렇게 원하는 부분을 하이라이트 처리할 수 있다!
 
 ```ts
-console.log('이것봐 나를 한번 쳐다봐') // [!code highlight]
-console.log('나 지금 이쁘다고 말해봐')
+console.log('이것봐 나를 한번 쳐다봐'); // [!code highlight]
+console.log('나 지금 이쁘다고 말해봐');
 ```
 
 ### 아직 끝나지 않았다
@@ -554,7 +553,6 @@ console.log('나 지금 이쁘다고 말해봐')
 ### 집중해줘
 
 `// [!code focus]`를 코드에 입력하면 해당 영역이 [포커싱 처리](https://shiki.style/packages/transformers#transformernotationhighlight)되는 효과를 줄 수 있다.
-
 
 마찬가지로 `// [!code focus:숫자]` 사용도 가능하다.
 
@@ -577,9 +575,9 @@ pre.has-focused:not(:hover) code .line:not(.focused) * {
 그러면 이렇게 포커스 효과를 줄 수 있다.
 
 ```ts
-console.log('드립 고갈된건 안비밀')
-console.log('올해 롯데 가을야구 제발') // [!code focus]
-console.log('유광점퍼 입어보고 싶다')
+console.log('드립 고갈된건 안비밀');
+console.log('올해 롯데 가을야구 제발'); // [!code focus]
+console.log('유광점퍼 입어보고 싶다');
 ```
 
 개인적으로 이 효과가 가장 좋다. 가독성을 위해 많이 써먹을 수 있다!

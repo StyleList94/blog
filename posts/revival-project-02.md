@@ -7,6 +7,7 @@ seriesOrder: 3
 ---
 
 ## 빠른 참고
+
 - [Next.js 글꼴 적용 방법(App Router)](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
 - [tailwindcss 컬러 확장 방법](https://tailwindcss.com/docs/customizing-colors#adding-additional-colors)
 
@@ -66,7 +67,7 @@ seriesOrder: 3
 
 ## 색칠놀이
 
-컬러도 최대한 `tailwindcss` 기본 구성을 활용하기로 했다. 하지만 
+컬러도 최대한 `tailwindcss` 기본 구성을 활용하기로 했다. 하지만
 
 블랙이 `#000000`이라는 이거 하나 만큼은 용납못하겠다.
 
@@ -132,7 +133,7 @@ const config = {
 
 ### 본문
 
-여기는 일단 응급처지만 해놓았다. 
+여기는 일단 응급처지만 해놓았다.
 
 단락간 간격이 너무 좁아 일단 넓혀놨고, 머릿글 영역을 수정했다.
 

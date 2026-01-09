@@ -124,7 +124,7 @@ pnpm add -D webpack webpack-cli --save-dev
 pnpm add -D typescript ts-loader chrome-types
 ```
 
-`chrome-types` 패키지는 chrome extension API에 대한 타입을 제공한다. 
+`chrome-types` 패키지는 chrome extension API에 대한 타입을 제공한다.
 
 `tsconfig.json`도 작성해준다
 
@@ -170,6 +170,7 @@ export default {
   },
 };
 ```
+
 CSS는 나중에 popup을 생성할 때 추가해준다.
 
 ### 기타 로더 및 플러그인
@@ -190,6 +191,7 @@ CSS는 나중에 popup을 생성할 때 추가해준다.
 단일 파일로 환경별 구성을 하기 위해 `webpack-merge` 패키지도 추가로 구성하면 좋다.
 
 싹다 설치 해준다.
+
 ```bash:title=Terminal
 pnpm add -D babel-loader css-loader postcss-loader @svgr/webpack \
 html-webpack-plugin clean-webpack-plugin copy-webpack-plugin \
@@ -251,7 +253,7 @@ const defaultConfig = { // [!code focus]
         // 아래 두 파일은 확장프로그램의 필수 요소다!
         {
           // [!code highlight:2]
-          from: path.resolve(__dirname, 'src/images'), 
+          from: path.resolve(__dirname, 'src/images'),
           to: path.resolve(__dirname, 'dist/images'),
         },
         {
@@ -362,7 +364,7 @@ module.exports = (env, argv) => {
 
 ## 매니페스트 정의
 
-내가 만든 JS 번들 앱이 Chrome 확장 프로그램으로 인정 받으려면 반드시 번들 최상위 루트에 [정해진 규격](https://developer.chrome.com/docs/extensions/reference/manifest)의  `manifest.json`을 포함해야 한다.
+내가 만든 JS 번들 앱이 Chrome 확장 프로그램으로 인정 받으려면 반드시 번들 최상위 루트에 [정해진 규격](https://developer.chrome.com/docs/extensions/reference/manifest)의 `manifest.json`을 포함해야 한다.
 
 메니페스트 파일을 다음과 같이 만들어 준다.
 
@@ -444,7 +446,7 @@ const App = () => {
     const nextCount = count + 1;
     setCount(nextCount);
   };
-  
+
   return (
     <div className="flex flex-col p-6">
       <div className="flex flex-col w-full gap-8">
@@ -513,7 +515,7 @@ const article = document.querySelector('body');
 
 if (article) {
   article.style.backgroundColor = '#000';
-} 
+}
 ```
 
 컨텐츠 스크립트는 빌드 이후에 `chrome://extensions`의 개발자 모드에서 Update를 눌러 갱신해야 반영된다.
@@ -537,6 +539,7 @@ Service Worker 기능을 이용하면 브라우저 이벤트를 핸들링 할 �
 ```
 
 이제 서비스 워커를 생성할 수 있다. 아래 예시는 확장 프로그램이 설치되었을 때, Popup UI를 열어주는 기능을 수행한다.
+
 ```ts:title=src/service-worker/background.ts
 chrome.runtime.onInstalled.addListener(async () => {
   await chrome.action.openPopup();

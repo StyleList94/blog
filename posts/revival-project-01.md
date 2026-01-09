@@ -7,12 +7,12 @@ seriesOrder: 2
 ---
 
 ## 빠른 참고
-- [Next.js 업그레이드 가이드](https://nextjs.org/docs/app/building-your-application/upgrading/version-14) 
-- [Vitest Config 레퍼런스](https://vitest.dev/config/) 
+
+- [Next.js 업그레이드 가이드](https://nextjs.org/docs/app/building-your-application/upgrading/version-14)
+- [Vitest Config 레퍼런스](https://vitest.dev/config/)
 - [Vitest ESLint Plugin 사용법](https://github.com/vitest-dev/eslint-plugin-vitest?tab=readme-ov-file#usage)
 - [tailwindcss Next.js Quick Start](https://tailwindcss.com/docs/guides/nextjs)
 - [App Router 마이그레이션](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#migrating-from-pages-to-app)
-
 
 ## 의존 패키지 업데이트
 
@@ -58,10 +58,11 @@ export default defineConfig({
 ```
 
 `Vitest`는 아직 근본으로 인정받지 못해서, 전역으로 사용하려면 `tsconfig.json`도 수정해줘야 한다
+
 ```json:title=tsconfig.json
 {
   "compilerOptions": {
-    "types": ["vitest/globals"] 
+    "types": ["vitest/globals"]
   }
 }
 ```
@@ -114,7 +115,7 @@ yarn add -D @vitest/coverage-v8 @vitest/ui
 
 ## 스타일링 방법 바꾸기
 
-`Emotion`은 RSC(서버 컴포넌트)를 지원해주지 않는다.(작성일 기준 오피셜임) 
+`Emotion`은 RSC(서버 컴포넌트)를 지원해주지 않는다.(작성일 기준 오피셜임)
 
 그리고 그 동안 이걸로 스타일링하면서 가장 힘들었던 것이 컴포넌트 이름 짓는거였다.
 

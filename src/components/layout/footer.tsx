@@ -9,7 +9,7 @@ const Footer = () => (
     <div className="flex justify-between items-center gap-4">
       <div className="flex items-center gap-4">
         <a
-          href="https://github.com/StyleList94/blog/tree/main/src/posts"
+          href="https://github.com/StyleList94/blog/tree/main/posts"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(

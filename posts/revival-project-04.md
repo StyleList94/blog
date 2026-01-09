@@ -7,6 +7,7 @@ seriesOrder: 5
 ---
 
 ## 빠른 참고
+
 - [next-themes 수화 문제 해결](https://github.com/pacocoursey/next-themes?tab=readme-ov-file#avoid-hydration-mismatch)
 - [react-syntax-highlighter 빌드 경량화](https://github.com/react-syntax-highlighter/react-syntax-highlighter?tab=readme-ov-file#light-build)
 - [작업 결과](https://github.com/StyleList94/blog/commit/924cd9603ec8d907e9c140c41d655f877e642c93)

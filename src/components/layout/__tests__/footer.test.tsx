@@ -10,7 +10,7 @@ describe('Footer', () => {
 
     expect(screen.getByLabelText('GitHub')).toHaveAttribute(
       'href',
-      'https://github.com/StyleList94/blog/tree/main/src/posts',
+      'https://github.com/StyleList94/blog/tree/main/posts',
     );
 
     expect(screen.getByLabelText('icon-light-mode')).toBeInTheDocument();

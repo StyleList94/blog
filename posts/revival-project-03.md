@@ -7,6 +7,7 @@ seriesOrder: 4
 ---
 
 ## 빠른 참고
+
 - [Next.js 메타데이터 적용(App Router)](https://nextjs.org/docs/app/building-your-application/optimizing/metadata)
 - [Next.js 웹 아이콘 적용(App Router)](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons)
 - [Next.js 오픈그래프 이미지 적용(App Router)](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
@@ -172,7 +173,7 @@ export default async function sitemap({
   // 평생 글을 써도 5만개는 못쓸꺼 같은데...
   const start = id * 50000;
   const end = start + 50000;
-  
+
   // 사실 프로미스가 아닌데 그냥 있어보일려고 이렇게 했다.
   return new Promise((resolve) => {
     resolve(
@@ -186,6 +187,7 @@ export default async function sitemap({
 ```
 
 그 결과로 사이트맵 주소가 2개 나온다.
+
 - https://blog.stylelist94.dev/sitemap.xml
 - https://blog.stylelist94.dev/post/sitemap/0.xml
 
@@ -199,7 +201,7 @@ export default async function sitemap({
 
 ```tsx:title=app/post/[slug]/page.tsx
 export default async function PostContentPage({ params }: Props) {
-    
+
   const jsonLd: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',

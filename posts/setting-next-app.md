@@ -166,6 +166,3 @@ pnpm exec lint-staged
 ## 역사속으로
 
 [3년 전 버전이 그립다면](https://github.com/StyleList94/blog/blob/248e7334dc391f170c9fa2146fa8ff7604a819ff/src/posts/setting-next-app.md)
-
-
-

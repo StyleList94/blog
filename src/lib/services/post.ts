@@ -18,7 +18,7 @@ type ResponsePostsByPageData = {
   postList: PostList;
 };
 
-const postDirectory = join(process.cwd(), 'src/posts');
+const postDirectory = join(process.cwd(), 'posts');
 
 export async function getPostSlugs() {
   const list = await fs.readdir(postDirectory);
