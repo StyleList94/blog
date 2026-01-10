@@ -14,6 +14,10 @@ const Header = () => {
       <header
         className={cn(
           headerContainer,
+          'bg-white/60! dark:bg-zinc-900/80!',
+          'backdrop-blur-2xl',
+          'mask-[linear-gradient(to_bottom,black_75%,transparent)]',
+          'will-change-transform',
           'transition-colors ease-in-out duration-200',
         )}
       >
@@ -35,7 +39,7 @@ const Header = () => {
                 className="flex items-end font-display text-xl tracking-wider"
               >
                 stylish
-                <span className="text-sm font-bold leading-relaxed tracking-wide">
+                <span className="text-sm font-bold leading-relaxed tracking-normal">
                   .LOG
                 </span>
               </Link>
