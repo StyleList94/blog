@@ -3,7 +3,6 @@
 import type { TableOfContents } from '@/types/post';
 
 import { memo, useEffect, useState } from 'react';
-import Link from 'next/link';
 import throttle from 'lodash-es/throttle';
 import { useMounted } from '@stylelist94/nine-beauty-actress';
 import { clsx } from 'clsx';
@@ -21,7 +20,7 @@ type TableOfContentProps = {
 const TableOfContent = memo<TableOfContentProps>(
   ({ item, isActive, level }) => (
     <li key={`table-of-contents-level-${level}-${item.slug}`} className="m-1.5">
-      <Link
+      <a
         href={`#${item.slug}`}
         className={clsx(
           'transition',
@@ -29,12 +28,16 @@ const TableOfContent = memo<TableOfContentProps>(
         )}
       >
         {item.content.replace(/`/g, '')}
-      </Link>
+      </a>
     </li>
   ),
 );
 
 TableOfContent.displayName = 'TableOfContent';
+
+const HEADER_HEIGHT = 56;
+const HEADING_POSITION_OFFSET = HEADER_HEIGHT + 40;
+const BOTTOM_THRESHOLD = 50;
 
 const PostTableOfContents = ({ items }: Props) => {
   const mounted = useMounted();
@@ -45,11 +48,9 @@ const PostTableOfContents = ({ items }: Props) => {
       return () => {};
     }
 
-    const HEADER_HEIGHT = 56;
-    const HEADING_POSITION_OFFSET = HEADER_HEIGHT + 40;
+    const allHeadings = items.flatMap((item) => [item, ...item.children]);
 
-    const resultHeadingPosition = items
-      .flatMap((item) => [item, ...item.children])
+    const resultHeadingPosition = allHeadings
       .map((heading) => {
         const scrollTop = window.scrollY;
         const headingElement = document.querySelector(`#${heading.slug}`);
@@ -64,6 +65,16 @@ const PostTableOfContents = ({ items }: Props) => {
 
     const handleScroll = () => {
       const scrollTop = window.scrollY;
+
+      const isAtBottom =
+        window.innerHeight + scrollTop >=
+        document.documentElement.scrollHeight - BOTTOM_THRESHOLD;
+
+      if (isAtBottom && allHeadings.length > 0) {
+        setActiveHeading(allHeadings[allHeadings.length - 1].slug);
+        return;
+      }
+
       const currentHeading = resultHeadingPosition.find(
         (headingPos) => headingPos.top - HEADING_POSITION_OFFSET <= scrollTop,
       );
@@ -91,7 +102,7 @@ const PostTableOfContents = ({ items }: Props) => {
       >
         {items.map((item) => (
           <li key={`parent-${item.slug}`} className="m-1.5">
-            <Link
+            <a
               href={`#${item.slug}`}
               className={clsx(
                 'transition',
@@ -100,7 +111,7 @@ const PostTableOfContents = ({ items }: Props) => {
               )}
             >
               {item.content.replace(/`/g, '')}
-            </Link>
+            </a>
 
             {item.children.length > 0 && (
               <ul aria-label="toc-level-2" className="pl-2">
