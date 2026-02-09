@@ -19,7 +19,7 @@ export default async function sitemap({
   return new Promise((resolve) => {
     resolve(
       postList.slice(start, end).map((post) => ({
-        url: `https://blog.stylelist94.dev/post/${post.slug}`,
+        url: `https://blog.styleli.sh/post/${post.slug}`,
         lastModified: new Date(post.lastModified ?? post.date),
       })),
     );

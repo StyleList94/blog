@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://blog.stylelist94.dev/sitemap.xml',
+    sitemap: 'https://blog.styleli.sh/sitemap.xml',
   };
 }

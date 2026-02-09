@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://blog.stylelist94.dev',
+      url: 'https://blog.styleli.sh',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
