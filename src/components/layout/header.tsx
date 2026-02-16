@@ -14,9 +14,8 @@ const Header = () => {
       <header
         className={cn(
           headerContainer,
-          'bg-white/60! dark:bg-zinc-900/80!',
           'backdrop-blur-2xl',
-          'mask-[linear-gradient(to_bottom,black_75%,transparent)]',
+          'mask-[linear-gradient(to_bottom,black_75%,transparent_105%)]',
           'will-change-transform',
           'transition-colors ease-in-out duration-200',
         )}
