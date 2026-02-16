@@ -32,8 +32,8 @@ const ThemeControlSwitch = () => {
 
   return (
     <ToggleGroup type="single" value={theme} onValueChange={setTheme}>
-      <ToggleGroupItem value="light">
-        <svg {...iconBaseProps} aria-label="icon-light-mode">
+      <ToggleGroupItem value="light" aria-label="라이트 모드">
+        <svg {...iconBaseProps} aria-hidden="true">
           <circle cx={12} cy={12} r={4} />
           <path d="M12 2v2" />
           <path d="M12 20v2" />
@@ -45,15 +45,15 @@ const ThemeControlSwitch = () => {
           <path d="m19.07 4.93-1.41 1.41" />
         </svg>
       </ToggleGroupItem>
-      <ToggleGroupItem value="system">
-        <svg {...iconBaseProps} aria-label="icon-system">
+      <ToggleGroupItem value="system" aria-label="시스템 모드">
+        <svg {...iconBaseProps} aria-hidden="true">
           <rect width="20" height="14" x="2" y="3" rx="2" />
           <line x1="8" x2="16" y1="21" y2="21" />
           <line x1="12" x2="12" y1="17" y2="21" />
         </svg>
       </ToggleGroupItem>
-      <ToggleGroupItem value="dark">
-        <svg {...iconBaseProps} aria-label="icon-dark-mode">
+      <ToggleGroupItem value="dark" aria-label="다크 모드">
+        <svg {...iconBaseProps} aria-hidden="true">
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
         </svg>
       </ToggleGroupItem>
