@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://blog.styleli.sh'),
   title: metadataContext.title,
   description: metadataContext.description,
-  keywords: ['블로그', 'Blog', '기술 블로그', 'Tech Blog'],
+  keywords: metadataContext.keywords,
   openGraph: {
     title: metadataContext.title,
     description: metadataContext.description,

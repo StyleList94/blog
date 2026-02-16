@@ -10,7 +10,7 @@ export async function GET() {
   const feed = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
-    <title>Stylish.LOG</title>
+    <title>stylish.log</title>
     <link>https://blog.styleli.sh</link>
     <description>첫경험 위주로 끄적여봅니다.</description>
     ${postList
