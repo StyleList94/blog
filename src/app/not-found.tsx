@@ -30,9 +30,8 @@ export default function NotFound() {
       </div>
 
       <div className="flex flex-col gap-2 select-none">
-        <p className="flex items-baseline font-display text-xl tracking-wider">
-          stylish
-          <span className="text-sm">.log</span>
+        <p className="flex items-baseline font-display text-xl">
+          stylish<span className="text-lg">.log</span>
         </p>
       </div>
     </div>
