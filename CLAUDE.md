@@ -29,15 +29,19 @@ src/
 ├── app/           # App Router (pages, layouts, metadata)
 │   ├── (main)/    # Main route group
 │   └── post/      # Blog post dynamic routes
+├── assets/        # Fonts (local Pretendard woff2 files)
 ├── components/    # React components with colocated __tests__/
+├── hooks/         # Custom React hooks
 ├── lib/           # Utilities and services
 │   └── services/  # Data fetching (post service)
-├── hooks/         # Custom React hooks
-└── providers/     # Theme provider (next-themes)
+├── providers/     # Theme provider (next-themes)
+└── styles/        # Global CSS (Tailwind theme, font variables)
 posts/             # Markdown posts with gray-matter frontmatter
 ```
 
 ## Key Patterns
+
+**UI components**: `@stylelist94/nine-beauty-actress` provides layout primitives (header, footer containers) and toggle components.
 
 **Blog posts**: Markdown files in `/posts` with frontmatter (title, description, date, lastModified, series). Parsed with gray-matter, rendered with react-markdown + rehype plugins.
 
@@ -47,6 +51,16 @@ posts/             # Markdown posts with gray-matter frontmatter
 
 **Code highlighting**: Shiki with transformers in `code-block.tsx`
 
+**Fonts**: Pretendard (local, sans) and Geist Mono (Google, mono/display). Defined in `src/assets/fonts/index.ts`, mapped to CSS variables in `src/styles/global.css`.
+
+**Metadata**: Centralized in `src/lib/metadata.ts` (`metadataContext`). OG/Twitter images are file-based (`src/app/opengraph-image.png`, `src/app/twitter-image.png`).
+
+**Brand text**: `stylish.log` appears in header, not-found, and error pages with identical styling (`font-display text-xl`, `.log` in `text-lg`).
+
+## Testing
+
+Vitest + @testing-library/react. Test files colocated in `__tests__/` next to components.
+
 ## Code Style
 
 Uses custom shared config `eslint-config-stylish`. Pre-commit runs lint-staged via Husky.
@@ -54,3 +68,8 @@ Uses custom shared config `eslint-config-stylish`. Pre-commit runs lint-staged v
 ## Environment
 
 `.env.local` contains `NEXT_PUBLIC_ENV` (dev/prod).
+
+## Gotchas
+
+- Must use `pnpm` (lockfile: `pnpm-lock.yaml`)
+- `@types/react` is pinned to `19.2.10` to match peer dependencies
