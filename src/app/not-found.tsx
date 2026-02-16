@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col justify-center items-center gap-12 w-full max-w-[500px] h-screen mx-auto py-16 px-6 text-black dark:text-white">
+    <div className="flex flex-col justify-center items-center gap-12 w-full max-w-125 h-screen mx-auto py-16 px-6 text-black dark:text-white">
       <div className="flex flex-col items-center gap-6">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,9 +30,8 @@ export default function NotFound() {
       </div>
 
       <div className="flex flex-col gap-2 select-none">
-        <p className="flex items-end gap-0.5 font-display text-xl tracking-wide">
-          Stylish
-          <span className="text-sm leading-relaxed tracking-wider">.LOG</span>
+        <p className="flex items-baseline font-display text-xl">
+          stylish<span className="text-lg">.log</span>
         </p>
       </div>
     </div>

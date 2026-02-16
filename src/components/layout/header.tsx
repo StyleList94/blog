@@ -14,9 +14,8 @@ const Header = () => {
       <header
         className={cn(
           headerContainer,
-          'bg-white/60! dark:bg-zinc-900/80!',
           'backdrop-blur-2xl',
-          'mask-[linear-gradient(to_bottom,black_75%,transparent)]',
+          'mask-[linear-gradient(to_bottom,black_75%,transparent_105%)]',
           'will-change-transform',
           'transition-colors ease-in-out duration-200',
         )}
@@ -36,12 +35,9 @@ const Header = () => {
             ) : (
               <Link
                 href="/"
-                className="flex items-end font-display text-xl tracking-wider"
+                className="flex items-baseline font-display text-xl"
               >
-                stylish
-                <span className="text-sm font-bold leading-relaxed tracking-normal">
-                  .LOG
-                </span>
+                stylish<span className="text-lg">.log</span>
               </Link>
             )}
           </div>

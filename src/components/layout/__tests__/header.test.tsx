@@ -11,7 +11,7 @@ describe('Header', () => {
     render(<Header />);
 
     expect(screen.getByText('stylish')).toBeInTheDocument();
-    expect(screen.getByText('.LOG')).toBeInTheDocument();
+    expect(screen.getByText('.log')).toBeInTheDocument();
   });
 
   it('should be rendered if today is hangul day', () => {
