@@ -69,6 +69,14 @@ Uses custom shared config `eslint-config-stylish`. Pre-commit runs lint-staged v
 
 `.env.local` contains `NEXT_PUBLIC_ENV` (dev/prod).
 
+## PR Review Guidelines
+
+- Check accessibility: `aria-label`, `aria-hidden`, semantic HTML
+- Font changes must update both `src/assets/fonts/index.ts` and `src/styles/global.css`
+- Metadata changes must go through `src/lib/metadata.ts`, not hardcoded
+- Ensure tests pass and cover changed components
+- Check changed posts for typos, broken links, and frontmatter correctness
+
 ## Gotchas
 
 - Must use `pnpm` (lockfile: `pnpm-lock.yaml`)
