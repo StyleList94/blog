@@ -6,9 +6,8 @@
 
 @theme inline {
   --font-sans: var(--font-pretendard);
-  --font-serif: var(--font-noto-serif);
-  --font-mono: var(--font-roboto-mono);
-  --font-display: var(--font-comfortaa);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-geist-mono);
 
   --color-white: #ffffff;
   --color-black: rgba(10, 10, 10, 100);

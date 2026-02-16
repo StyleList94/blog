@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 
-import { comfortaa, notoSerif, pretendard, robotoMono } from '@/assets/fonts';
+import { geistMono, pretendard } from '@/assets/fonts';
 import { metadataContext } from '@/lib/metadata';
 
 import AppProvider from '@/providers/app-provider';
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="ko"
-      className={`${pretendard.variable} ${robotoMono.variable} ${notoSerif.variable} ${comfortaa.variable}`}
+      className={`${pretendard.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body>

@@ -1,4 +1,4 @@
-import { Comfortaa, Noto_Serif_KR, Roboto_Mono } from 'next/font/google';
+import { Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const pretendard = localFont({
@@ -32,24 +32,9 @@ export const pretendard = localFont({
   variable: '--font-pretendard',
 });
 
-export const notoSerif = Noto_Serif_KR({
+export const geistMono = Geist_Mono({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-noto-serif',
-  weight: ['400'],
-});
-
-export const robotoMono = Roboto_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-roboto-mono',
-  style: ['normal', 'italic'],
-  weight: ['400', '700'],
-});
-
-export const comfortaa = Comfortaa({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-comfortaa',
+  variable: '--font-geist-mono',
   weight: ['400', '700'],
 });
