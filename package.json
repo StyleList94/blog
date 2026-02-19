@@ -13,7 +13,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@stylelist94/nine-beauty-actress": "2.0.1",
+    "@stylelist94/nine-beauty-actress": "2.1.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "github-slugger": "^2.0.0",

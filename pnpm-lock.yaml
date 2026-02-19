@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@stylelist94/nine-beauty-actress':
-        specifier: 2.0.1
-        version: 2.0.1(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(motion@12.34.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.1.1
+        version: 2.1.1(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(motion@12.34.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -2139,11 +2139,11 @@ packages:
         integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==,
       }
 
-  '@stylelist94/nine-beauty-actress@2.0.1':
+  '@stylelist94/nine-beauty-actress@2.1.1':
     resolution:
       {
-        integrity: sha512-bl7lGGUlTVUW4nxUQrQ9iY+ck84nFBnPyNkue8kN15hX02Iu+EbxWMRdjBBunUQ/SlK6Ny9W8KxCq0xLaGGw0g==,
-        tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/2.0.1/b0aace1fa905c344e69229b30fe00485a07c5fdb,
+        integrity: sha512-oaDkfWSZ5DH6XTl3CTXgrKjy1Og+0eGbUiBA+m9X3D3A3AQ/5OkxDCqMlcB1eVSCpgyR88Z8NJ3UYLpbJt9sDw==,
+        tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/2.1.1/1e3b8911ad1d41ab713b4e7f760d7266fb204b9e,
       }
     peerDependencies:
       motion: '>=12'
@@ -7707,7 +7707,7 @@ snapshots:
 
   '@standard-schema/spec@1.0.0': {}
 
-  '@stylelist94/nine-beauty-actress@2.0.1(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(motion@12.34.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@stylelist94/nine-beauty-actress@2.1.1(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(motion@12.34.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@radix-ui/react-checkbox': 1.3.3(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@radix-ui/react-collapsible': 1.1.12(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
