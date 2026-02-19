@@ -1,11 +1,11 @@
-import { footer } from '@stylelist94/nine-beauty-actress/styles';
+import { Footer as FooterContainer } from '@stylelist94/nine-beauty-actress';
 
 import { cn } from '@/lib/utils';
 
 import ThemeControlSwitch from '../theme-control-switch';
 
 const Footer = () => (
-  <footer className={cn(footer, 'max-w-160!', 'lg:max-w-240!')}>
+  <FooterContainer className={cn('max-w-160!', 'lg:max-w-240!')}>
     <div className="flex justify-between items-center gap-4">
       <div className="flex items-center gap-4">
         <a
@@ -54,7 +54,7 @@ const Footer = () => (
         </a>
       </p>
     </div>
-  </footer>
+  </FooterContainer>
 );
 
 export default Footer;
