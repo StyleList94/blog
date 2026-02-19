@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @import '@stylelist94/nine-beauty-actress/style.css';
+@import '@stylelist94/nine-beauty-actress/tailwind-theme.css';
 
 @custom-variant dark (&:is(.dark *));
 
