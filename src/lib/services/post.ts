@@ -84,17 +84,12 @@ export async function getPostsByPage({
   page = '1',
   limit = 5,
 }: RequestPostsByPageParams): Promise<ResponsePostsByPageData> {
-  if (typeof page !== 'string') {
+  if (typeof page !== 'string')
     throw new TypeError('page is not array parameter');
-  }
 
-  if (!/^\d+$/.test(page)) {
-    throw new TypeError('page must be a number');
-  }
+  if (!/^\d+$/.test(page)) throw new TypeError('page must be a number');
 
-  if (!+page) {
-    throw new RangeError('page must be greater than 0');
-  }
+  if (!+page) throw new RangeError('page must be greater than 0');
 
   const allPosts = await getAllPosts();
 
