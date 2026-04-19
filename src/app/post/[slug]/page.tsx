@@ -52,9 +52,7 @@ export default async function PostContentPage({ params }: Props) {
   const { slug } = await params;
   const post: Post = await getPostBySlug(slug);
 
-  if (post.slug === '404') {
-    redirect('/not-found' as Route<'/not-found'>);
-  }
+  if (post.slug === '404') redirect('/not-found' as Route<'/not-found'>);
 
   let seriesList: PostSeriesInfo[] = [];
 

@@ -84,7 +84,7 @@ const CodeBlock = async (props: Props) => {
 
   const match = languageRegExp.exec(className ?? '');
 
-  if (!match) {
+  if (!match)
     return (
       <code
         {...rest}
@@ -99,7 +99,6 @@ const CodeBlock = async (props: Props) => {
         {children}
       </code>
     );
-  }
 
   const showLineNumber = showLineNumberRegExp.test(match[1]);
 

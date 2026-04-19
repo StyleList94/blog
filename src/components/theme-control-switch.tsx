@@ -26,9 +26,7 @@ const ThemeControlSwitch = () => {
   const mounted = useMounted();
   const { theme, setTheme } = useThemeControl();
 
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   return (
     <ToggleGroup type="single" value={theme} onValueChange={setTheme}>

@@ -28,10 +28,7 @@ const Header = () => {
             </span>
           </Link>
         ) : (
-          <Link
-            href="/"
-            className="flex items-baseline font-display text-xl"
-          >
+          <Link href="/" className="flex items-baseline font-display text-xl">
             stylish<span className="text-lg">.log</span>
           </Link>
         )}

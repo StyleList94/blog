@@ -27,13 +27,10 @@ export const generateTOC = (postContent: string): TableOfContents[] => {
 
       const lastTocItemIndex = nextPrevItem.length - 1;
 
-      if (lastTocItemIndex >= 0 && level === 2) {
+      if (lastTocItemIndex >= 0 && level === 2)
         nextPrevItem[lastTocItemIndex].children.push(tocItem);
-      }
 
-      if (level === 1) {
-        nextPrevItem.push(tocItem);
-      }
+      if (level === 1) nextPrevItem.push(tocItem);
 
       return nextPrevItem;
     },

@@ -46,7 +46,7 @@ vi.mock('next/navigation', async () => {
     await vi.importActual<typeof navigation>('next/navigation');
   return {
     ...originalModule,
-    redirect: vi.fn(),
+    redirect: vi.fn<typeof navigation.redirect>(),
   };
 });
 

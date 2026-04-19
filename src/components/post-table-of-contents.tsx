@@ -44,9 +44,7 @@ const PostTableOfContents = ({ items }: Props) => {
   const [activeHeading, setActiveHeading] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!mounted) {
-      return () => {};
-    }
+    if (!mounted) return () => {};
 
     const allHeadings = items.flatMap((item) => [item, ...item.children]);
 
