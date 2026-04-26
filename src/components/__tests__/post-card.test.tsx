@@ -21,7 +21,7 @@ describe('PostCard', () => {
     ).toHaveAttribute('href', '/post/so-lovely-code');
     expect(screen.getByText('This is a description')).toBeInTheDocument();
     expect(
-      screen.getByText(format(new Date('2022-02-20T10:00:00.000Z'), 'MM.dd.')),
+      screen.getByText(format(new Date('2022-02-20T10:00:00.000Z'), 'MM/dd')),
     ).toBeInTheDocument();
   });
 
@@ -33,7 +33,7 @@ describe('PostCard', () => {
     ).toHaveAttribute('href', '/post/so-lovely-code');
     expect(screen.getByText('This is a description')).toBeInTheDocument();
     expect(
-      screen.getByText(format(new Date('2025-08-05T14:25:00.000Z'), 'MM.dd.')),
+      screen.getByText(format(new Date('2025-08-05T14:25:00.000Z'), 'MM/dd')),
     ).toBeInTheDocument();
   });
 });

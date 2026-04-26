@@ -11,7 +11,7 @@ type Props = Pick<
 const PostCard = ({ slug, title, description, date, lastModified }: Props) => (
   <div className="flex flex-col gap-1.5 w-full">
     <span className="font-mono text-xs text-neutral-400 dark:text-neutral-500">
-      {format(new Date(lastModified ?? date), 'MM.dd.')}
+      {format(new Date(lastModified ?? date), 'MM/dd')}
     </span>
     <Link
       href={`/post/${slug}`}
