@@ -15,7 +15,7 @@ const PostCard = ({ slug, title, description, date, lastModified }: Props) => (
     </span>
     <Link
       href={`/post/${slug}`}
-      className="text-base sm:text-lg font-medium hover:underline"
+      className="text-lg font-medium hover:underline"
     >
       {title}
     </Link>

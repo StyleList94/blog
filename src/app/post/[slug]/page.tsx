@@ -83,31 +83,29 @@ export default async function PostContentPage({ params }: Props) {
         }}
       />
 
-      <div className="flex justify-between items-start w-full mx-auto">
-        <div className="flex flex-col flex-1 min-w-0 md:max-w-160">
-          <PostHeader
-            title={post.title}
-            description={post.description}
-            date={post.date}
-            lastModified={post.lastModified}
-            readingTimeMinutes={readingTimeMinutes}
-          />
-          {post.series && seriesList.length > 0 ? (
-            <PostSeriesWrapper
-              title={post.series}
-              list={seriesList}
-              currentOrder={post.seriesOrder}
-            >
-              <PostBody content={post.content} />
-            </PostSeriesWrapper>
-          ) : (
+      <div className="flex flex-col w-full">
+        <PostHeader
+          title={post.title}
+          description={post.description}
+          date={post.date}
+          lastModified={post.lastModified}
+          readingTimeMinutes={readingTimeMinutes}
+        />
+        {post.series && seriesList.length > 0 ? (
+          <PostSeriesWrapper
+            title={post.series}
+            list={seriesList}
+            currentOrder={post.seriesOrder}
+          >
             <PostBody content={post.content} />
-          )}
-        </div>
-        <div className="sticky top-[calc(3.5rem+1.5rem)] overflow-auto h-[calc(100vh-6rem)] hidden lg:flex grow-0 shrink-0 basis-68 pl-6">
-          <PostTableOfContents items={tocList} />
-        </div>
+          </PostSeriesWrapper>
+        ) : (
+          <PostBody content={post.content} />
+        )}
       </div>
+      <aside className="hidden xl:block fixed top-16 left-[calc(50%+20rem)] w-60 max-h-[calc(100vh-8rem)] overflow-auto">
+        <PostTableOfContents items={tocList} />
+      </aside>
     </>
   );
 }

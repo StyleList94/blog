@@ -16,19 +16,22 @@ const props = {
 describe('PostHeader', () => {
   it('should be rendered', () => {
     render(<PostHeader {...props} />);
+
     expect(screen.getByText('SO Lovely CODE!')).toBeInTheDocument();
     expect(screen.getByText('first description')).toBeInTheDocument();
 
-    expect(screen.getByText('Created')).toBeInTheDocument();
+    const expectedDate = format(new Date('2025-06-14'), 'yyyy.MM.dd.');
     expect(
-      screen.getByText(format(new Date('2022-02-11'), 'yyyy.MM.dd.')),
+      screen.getByText(new RegExp(`${expectedDate}.*5 min read`)),
     ).toBeInTheDocument();
+  });
 
-    expect(screen.getByText('Last updated')).toBeInTheDocument();
+  it('should fall back to date when lastModified is absent', () => {
+    render(<PostHeader {...props} lastModified={undefined} />);
+
+    const expectedDate = format(new Date('2022-02-11'), 'yyyy.MM.dd.');
     expect(
-      screen.getByText(format(new Date('2025-06-14'), 'yyyy.MM.dd.')),
+      screen.getByText(new RegExp(`${expectedDate}.*5 min read`)),
     ).toBeInTheDocument();
-
-    expect(screen.getByText('5 min read')).toBeInTheDocument();
   });
 });

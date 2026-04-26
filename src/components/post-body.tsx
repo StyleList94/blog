@@ -21,7 +21,9 @@ type Props = {
   content: string;
 };
 
-const commonStyle = 'transition ease-in-out duration-200 leading-relaxed';
+const commonStyle = 'transition ease-in-out duration-200';
+
+const bodyStyle = 'text-sm/6';
 
 const tableCellStyle = cn(
   'px-4 py-2',
@@ -29,14 +31,28 @@ const tableCellStyle = cn(
   'border border-neutral-200 dark:border-neutral-700/60',
 );
 
+const subHeadingStyle = cn(
+  'text-sm/tight font-semibold',
+  'scroll-m-20 mt-7',
+  'tracking-tight',
+  'text-neutral-800 dark:text-neutral-200',
+);
+
+const linkStyle = cn(
+  'transition ease-in-out duration-200 leading-normal',
+  'text-sky-600 dark:text-sky-400',
+  '*:text-sky-600 *:dark:text-sky-400',
+  'hover:text-sky-800 dark:hover:text-sky-300',
+  'hover:border-b hover:border-sky-600 dark:hover:border-sky-400',
+);
+
 const components: Partial<MarkdownElement> = {
   h1: ({ children, node, ...props }) => (
     <h1
       className={cn(
         commonStyle,
-        'text-2xl sm:text-3xl font-extrabold',
-        'scroll-m-20',
-        'leading-tight tracking-tight',
+        'text-lg/tight font-medium',
+        'scroll-m-20 tracking-tight',
         'text-neutral-900 dark:text-neutral-100',
       )}
       {...props}
@@ -48,9 +64,9 @@ const components: Partial<MarkdownElement> = {
     <h2
       className={cn(
         commonStyle,
-        'text-xl sm:text-2xl font-semibold',
-        'scroll-m-20 pb-2 mt-10 first:mt-0',
-        'leading-tight tracking-tight',
+        'text-base/tight font-semibold',
+        'scroll-m-20 pb-2 mt-9 first:mt-0',
+        'tracking-tight',
         'border-b border-neutral-200 dark:border-neutral-800',
       )}
       {...props}
@@ -59,29 +75,12 @@ const components: Partial<MarkdownElement> = {
     </h2>
   ),
   h3: ({ children, node, ...props }) => (
-    <h3
-      className={cn(
-        commonStyle,
-        'text-lg sm:text-xl font-semibold',
-        'scroll-m-20 mt-8',
-        'tracking-tight',
-        'text-neutral-800 dark:text-neutral-200',
-      )}
-      {...props}
-    >
+    <h3 className={cn(commonStyle, subHeadingStyle)} {...props}>
       {children}
     </h3>
   ),
   h4: ({ children, node, ...props }) => (
-    <h4
-      className={cn(
-        commonStyle,
-        'text-lg font-semibold',
-        'scroll-m-20 mt-6',
-        'tracking-tight',
-      )}
-      {...props}
-    >
+    <h4 className={cn(commonStyle, subHeadingStyle)} {...props}>
       {children}
     </h4>
   ),
@@ -90,8 +89,8 @@ const components: Partial<MarkdownElement> = {
     <p
       className={cn(
         commonStyle,
-        'mt-6',
-        'leading-relaxed',
+        bodyStyle,
+        'mt-5',
         'text-neutral-800 dark:text-neutral-200',
       )}
       {...props}
@@ -104,8 +103,8 @@ const components: Partial<MarkdownElement> = {
     <blockquote
       className={cn(
         commonStyle,
-        'mt-6 pl-6 pr-2 py-0.5',
-        'bg-neutral-50 dark:bg-neutral-800/50',
+        bodyStyle,
+        'mt-5 pl-6 pr-2 py-0.5',
         'italic',
         'border-l-2 border-neutral-300 dark:border-neutral-700',
       )}
@@ -119,7 +118,8 @@ const components: Partial<MarkdownElement> = {
     <ul
       className={cn(
         commonStyle,
-        'my-6 ml-6 list-disc',
+        bodyStyle,
+        'my-5 ml-6 list-disc',
         '[&>li]:mt-2',
         '[&>li>ul]:my-2',
       )}
@@ -129,7 +129,7 @@ const components: Partial<MarkdownElement> = {
     </ul>
   ),
   li: ({ children, node, ...props }) => (
-    <li className={cn(commonStyle)} {...props}>
+    <li className={cn(commonStyle, bodyStyle)} {...props}>
       {children}
     </li>
   ),
@@ -145,7 +145,7 @@ const components: Partial<MarkdownElement> = {
   ),
 
   table: ({ children, node, ...props }) => (
-    <div className="overflow-x-auto my-6">
+    <div className="overflow-x-auto my-5">
       <table
         className={cn(
           commonStyle,
@@ -184,39 +184,30 @@ const components: Partial<MarkdownElement> = {
     </th>
   ),
   td: ({ children, node, ...props }) => (
-    <td className={cn(commonStyle, tableCellStyle)} {...props}>
+    <td className={cn(commonStyle, bodyStyle, tableCellStyle)} {...props}>
       {children}
     </td>
   ),
 
   a: ({ href, children, node, ...props }) => {
-    const isInternal =
-      (href as string).startsWith('/') || (href as string).startsWith('#');
-    return isInternal ? (
-      <Link
-        href={href as `/post/${string}`}
-        className={cn(
-          'transition ease-in-out duration-200 leading-normal',
-          'text-teal-600 dark:text-teal-400',
-          '*:text-teal-600 *:dark:text-teal-400',
-          'hover:text-teal-800 dark:hover:text-teal-300',
-          'hover:border-teal-600 dark:hover:border-teal-400',
-          'hover:border-b hover:border-teal-600 dark:hover:border-teal-400',
-        )}
-        {...props}
-      >
-        {children}
-      </Link>
-    ) : (
+    const hrefStr = href as string;
+    const isInternal = hrefStr.startsWith('/') || hrefStr.startsWith('#');
+
+    if (isInternal)
+      return (
+        <Link
+          href={hrefStr as `/post/${string}`}
+          className={linkStyle}
+          {...props}
+        >
+          {children}
+        </Link>
+      );
+
+    return (
       <a
-        href={href as string}
-        className={cn(
-          'transition ease-in-out duration-200 leading-normal',
-          'text-sky-600 dark:text-sky-400',
-          '*:text-sky-600 *:dark:text-sky-400',
-          'hover:text-sky-800 dark:hover:text-sky-300',
-          'hover:border-b hover:border-sky-600 dark:hover:border-sky-400',
-        )}
+        href={hrefStr}
+        className={linkStyle}
         target="_blank"
         rel="noopener noreferrer"
         {...props}
