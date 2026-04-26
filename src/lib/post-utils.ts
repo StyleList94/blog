@@ -2,6 +2,8 @@ import type { PostList, PostSeriesInfo, TableOfContents } from '@/types/post';
 
 import GithubSlugger from 'github-slugger';
 
+import { getUpdatedDateByPost } from '@/lib/utils';
+
 export const generateTOC = (postContent: string): TableOfContents[] => {
   const matches = postContent.matchAll(/^(?<level>#{2,3})\s+(?<content>.+)$/gm);
 
@@ -46,3 +48,16 @@ export const generateSeries = (
     .filter((post) => post.series === series)
     .sort((post1, post2) => (post1.seriesOrder ?? 0) - (post2.seriesOrder ?? 0))
     .map(({ slug, title }) => ({ slug, title }));
+
+export type PostsByYear = { year: number; posts: PostList };
+
+export const groupPostsByYear = (postList: PostList): PostsByYear[] => {
+  const map = new Map<number, PostList>();
+  postList.forEach((post) => {
+    const year = new Date(getUpdatedDateByPost(post)).getFullYear();
+    const existing = map.get(year) ?? [];
+    existing.push(post);
+    map.set(year, existing);
+  });
+  return Array.from(map, ([year, posts]) => ({ year, posts }));
+};

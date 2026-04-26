@@ -6,10 +6,6 @@ blockquote > p {
   @apply text-zinc-600 dark:text-zinc-400 my-1;
 }
 
-h2:first-of-type {
-  margin-top: 0;
-}
-
 h2 > code,
 h3 > code {
   font-size: inherit;

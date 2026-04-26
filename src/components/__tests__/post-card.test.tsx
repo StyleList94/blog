@@ -20,26 +20,20 @@ describe('PostCard', () => {
       screen.getByRole('link', { name: /SO Lovely CODE!/ }),
     ).toHaveAttribute('href', '/post/so-lovely-code');
     expect(screen.getByText('This is a description')).toBeInTheDocument();
-    expect(screen.getByText('Created')).toBeInTheDocument();
     expect(
-      screen.getByText(
-        format(new Date('2022-02-20T10:00:00.000Z'), 'yyyy.MM.dd.'),
-      ),
+      screen.getByText(format(new Date('2022-02-20T10:00:00.000Z'), 'MM/dd')),
     ).toBeInTheDocument();
   });
 
-  it('should be rendered if post is updated', () => {
+  it('should render lastModified date when present', () => {
     render(<PostCard {...props} lastModified="2025-08-05T14:25:00.000Z" />);
 
     expect(
       screen.getByRole('link', { name: /SO Lovely CODE!/ }),
     ).toHaveAttribute('href', '/post/so-lovely-code');
     expect(screen.getByText('This is a description')).toBeInTheDocument();
-    expect(screen.getByText('Updated')).toBeInTheDocument();
     expect(
-      screen.getByText(
-        format(new Date('2025-08-05T14:25:00.000Z'), 'yyyy.MM.dd.'),
-      ),
+      screen.getByText(format(new Date('2025-08-05T14:25:00.000Z'), 'MM/dd')),
     ).toBeInTheDocument();
   });
 });

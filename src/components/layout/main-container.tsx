@@ -12,7 +12,6 @@ const MainContainer = ({ children }: Props) => (
     className={cn(
       'relative flex flex-col w-full max-w-160',
       'transition-colors ease-in-out duration-200',
-      'lg:max-w-240',
     )}
     backdropClassName="transition-colors ease-in-out duration-200"
   >

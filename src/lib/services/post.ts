@@ -7,17 +7,6 @@ import matter from 'gray-matter';
 
 import { getUpdatedDateByPost } from '@/lib/utils';
 
-type RequestPostsByPageParams = {
-  page?: string | string[];
-  limit?: number;
-};
-
-type ResponsePostsByPageData = {
-  total: number;
-  lastPage: number;
-  postList: PostList;
-};
-
 const postDirectory = join(process.cwd(), 'posts');
 
 export async function getPostSlugs() {
@@ -78,27 +67,4 @@ export async function getNewPosts({
     .map(({ content, ...rest }) => ({ ...rest }))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
     .slice(0, limit);
-}
-
-export async function getPostsByPage({
-  page = '1',
-  limit = 5,
-}: RequestPostsByPageParams): Promise<ResponsePostsByPageData> {
-  if (typeof page !== 'string')
-    throw new TypeError('page is not array parameter');
-
-  if (!/^\d+$/.test(page)) throw new TypeError('page must be a number');
-
-  if (!+page) throw new RangeError('page must be greater than 0');
-
-  const allPosts = await getAllPosts();
-
-  const startIndex = (+page - 1) * limit;
-  const total = allPosts.length;
-
-  return {
-    total,
-    lastPage: Math.ceil(total / limit),
-    postList: allPosts.slice(startIndex, startIndex + limit),
-  };
 }

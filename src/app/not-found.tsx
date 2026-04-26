@@ -20,7 +20,7 @@ export default function NotFound() {
           <line x1="9" x2="15" y1="15" y2="9" />
         </svg>
         <h2 className="text-lg">404</h2>
-        <h3 className="text-2xl">Not Found</h3>
+        <h3 className="text-base">Not Found</h3>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -30,8 +30,8 @@ export default function NotFound() {
       </div>
 
       <div className="flex flex-col gap-2 select-none">
-        <p className="flex items-baseline font-display text-xl">
-          stylish<span className="text-lg">.log</span>
+        <p className="flex items-baseline font-display text-base">
+          stylish<span className="text-sm">.log</span>
         </p>
       </div>
     </div>
