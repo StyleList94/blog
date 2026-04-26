@@ -1,107 +1,74 @@
 import '@testing-library/jest-dom/vitest';
 
-import * as navigation from 'next/navigation';
-
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 
 import * as postService from '@/lib/services/post';
 
 import MainPage from './page';
 
-const wishList = [
+const postsAcrossYears = [
   {
-    slug: 'buy-dream-car',
-    title: 'MINI Cooper Convertible',
-    description: '진짜 갖고싶다!',
-    date: '2025-07-10T14:50:00.000Z',
+    slug: 'review-2025',
+    title: '2025년 회고',
+    description: '내맘대로 정리하는 2025년',
+    date: '2025-12-27T00:00:00.000Z',
   },
   {
-    slug: 'traveling-in-europe',
-    title: '유럽 여행',
-    description: '유럽일주 하고싶다',
-    date: '2025-07-10T14:50:00.000Z',
+    slug: 'react-19',
+    title: 'React 19 둘러보기',
+    description: 'React 192% 활용하기',
+    date: '2025-08-19T00:00:00.000Z',
   },
   {
-    slug: 'marry',
-    title: '결혼',
-    description: '하려면 여친부터...',
-    date: '2025-07-10T14:50:00.000Z',
-  },
-  {
-    slug: 'create-a-brewery',
-    title: '양조장 만들기',
-    description: '미래 먹거리',
-    date: '2025-07-10T14:50:00.000Z',
-  },
-  {
-    slug: 'band-activity',
-    title: '밴드에서 일렉기타잡기',
-    description: '매일 연습만이 살길이다...',
-    date: '2025-07-10T14:50:00.000Z',
+    slug: 'review-2024',
+    title: '2024년 회고',
+    description: '돌아보는 2024년',
+    date: '2024-12-30T00:00:00.000Z',
   },
 ];
 
-vi.mock('next/navigation', async () => {
-  const originalModule =
-    await vi.importActual<typeof navigation>('next/navigation');
-  return {
-    ...originalModule,
-    redirect: vi.fn<typeof navigation.redirect>(),
-  };
-});
-
 afterEach(() => {
-  vi.spyOn(postService, 'getPostsByPage').mockRestore();
+  vi.spyOn(postService, 'getAllPosts').mockRestore();
 });
 
 describe('<MainPage />', () => {
-  it('should be rendered', async () => {
-    vi.spyOn(postService, 'getPostsByPage').mockResolvedValue({
-      postList: wishList,
-      total: wishList.length,
-      lastPage: 1,
-    });
+  it('should render posts grouped by year with year headings', async () => {
+    vi.spyOn(postService, 'getAllPosts').mockResolvedValue(postsAcrossYears);
 
-    const searchParams = Promise.resolve({});
-    render(await MainPage({ searchParams }));
+    render(await MainPage());
 
-    wishList.forEach((post) => {
+    const yearHeadings = screen.getAllByRole('heading', { level: 2 });
+    expect(yearHeadings).toHaveLength(2);
+    expect(yearHeadings[0]).toHaveTextContent('2025');
+    expect(yearHeadings[1]).toHaveTextContent('2024');
+
+    postsAcrossYears.forEach((post) => {
       expect(screen.getByText(post.title)).toBeInTheDocument();
       expect(screen.getByText(post.description)).toBeInTheDocument();
     });
   });
 
-  test('page query parameter is valid', async () => {
-    vi.spyOn(postService, 'getPostsByPage').mockResolvedValue({
-      postList: wishList,
-      total: wishList.length,
-      lastPage: 1,
-    });
+  it('should preserve post order within each year', async () => {
+    vi.spyOn(postService, 'getAllPosts').mockResolvedValue(postsAcrossYears);
 
-    const searchParams = Promise.resolve({ page: '1' });
-    render(await MainPage({ searchParams }));
+    render(await MainPage());
 
-    wishList.forEach((post) => {
-      expect(screen.getByText(post.title)).toBeInTheDocument();
-      expect(screen.getByText(post.description)).toBeInTheDocument();
-    });
+    const year2025Section = screen
+      .getByRole('heading', { level: 2, name: '2025' })
+      .closest('section');
+    expect(year2025Section).not.toBeNull();
+
+    const titlesIn2025 = within(year2025Section!).getAllByRole('link');
+    expect(titlesIn2025[0]).toHaveTextContent('2025년 회고');
+    expect(titlesIn2025[1]).toHaveTextContent('React 19 둘러보기');
   });
 
-  test('page number is greater than last page', async () => {
-    vi.spyOn(postService, 'getPostsByPage').mockResolvedValue({
-      postList: [],
-      total: wishList.length,
-      lastPage: 1,
-    });
+  it('should render empty state when no posts exist', async () => {
+    vi.spyOn(postService, 'getAllPosts').mockResolvedValue([]);
 
-    const searchParams = Promise.resolve({ page: '2' });
-    render(await MainPage({ searchParams }));
+    render(await MainPage());
 
-    wishList.forEach((post) => {
-      expect(screen.queryByText(post.title)).not.toBeInTheDocument();
-      expect(screen.queryByText(post.description)).not.toBeInTheDocument();
-    });
-
+    expect(screen.queryByRole('heading', { level: 2 })).not.toBeInTheDocument();
     expect(screen.getByLabelText('rocket-icon')).toBeInTheDocument();
     expect(
       screen.getByText('이 페이지가 만들어질 수 있도록'),
@@ -109,7 +76,6 @@ describe('<MainPage />', () => {
     expect(
       screen.getByText('필력을 최대한 끌어 올리겠습니다!'),
     ).toBeInTheDocument();
-
     expect(
       screen.getByRole('link', { name: '첫 페이지로 날아가기' }),
     ).toHaveAttribute('href', '/');
