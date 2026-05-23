@@ -17,7 +17,7 @@
   "dependencies": {
     "@stylelist94/nine-beauty-actress": "2.2.0",
     "clsx": "^2.1.1",
-    "date-fns": "^4.3.0",
+    "date-fns": "^4.2.1",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "lodash-es": "^4.18.1",
@@ -63,10 +63,5 @@
     "vite": "^8.0.14",
     "vitest": "^4.1.7"
   },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.15",
-      "@types/react-dom": "19.2.3"
-    }
-  }
+  "packageManager": "pnpm@11.2.2"
 }
