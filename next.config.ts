@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   typedRoutes: true,
   reactCompiler: true,
   cacheComponents: true,
+  partialPrefetching: true,
   experimental: {
     useTypeScriptCli: true,
     turbopackRustReactCompiler: true,
