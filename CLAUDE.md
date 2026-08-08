@@ -81,3 +81,13 @@ Uses custom shared config `eslint-config-stylish`. Pre-commit runs lint-staged v
 
 - Must use `pnpm` (lockfile: `pnpm-lock.yaml`)
 - `@types/react` is pinned to `19.2.18` via `pnpm-workspace.yaml` `overrides` (and `package.json`) to keep a single copy across the Radix UI tree pulled in by `@stylelist94/nine-beauty-actress`. Bump the version in both places together; don't remove the override.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
