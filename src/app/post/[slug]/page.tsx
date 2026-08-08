@@ -1,12 +1,11 @@
 import type { Metadata, Route } from 'next';
 import type { Post, PostSeriesInfo } from '@/types/post';
 
-import { Suspense } from 'react';
 import { redirect } from 'next/navigation';
 import { BlogPosting, WithContext } from 'schema-dts';
 
 import { metadataContext } from '@/lib/metadata';
-import { getAllPosts, getPostBySlug } from '@/lib/services/post';
+import { getAllPosts, getPostBySlug, getPostSlugs } from '@/lib/services/post';
 import { generateSeries, generateTOC } from '@/lib/post-utils';
 import { calculateReadingTime } from '@/lib/utils';
 
@@ -43,25 +42,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  const slugs = await getPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
-const PostSkeleton = () => (
-  <div className="flex flex-col w-full animate-pulse" aria-hidden>
-    <div className="h-8 w-2/3 rounded bg-neutral-200 dark:bg-neutral-800" />
-    <div className="mt-3 h-4 w-1/2 rounded bg-neutral-200 dark:bg-neutral-800" />
-    <div className="mt-8 flex flex-col gap-3">
-      <div className="h-4 w-full rounded bg-neutral-200 dark:bg-neutral-800" />
-      <div className="h-4 w-11/12 rounded bg-neutral-200 dark:bg-neutral-800" />
-      <div className="h-4 w-4/5 rounded bg-neutral-200 dark:bg-neutral-800" />
-    </div>
-  </div>
-);
-
-async function PostContent({ params }: Props) {
+export default async function PostContentPage({ params }: Props) {
   const { slug } = await params;
   const post: Post = await getPostBySlug(slug);
 
@@ -120,13 +105,5 @@ async function PostContent({ params }: Props) {
         <PostTableOfContents items={tocList} />
       </aside>
     </>
-  );
-}
-
-export default function PostContentPage({ params }: Props) {
-  return (
-    <Suspense fallback={<PostSkeleton />}>
-      <PostContent params={params} />
-    </Suspense>
   );
 }

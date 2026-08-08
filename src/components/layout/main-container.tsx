@@ -10,7 +10,7 @@ type Props = {
 const MainContainer = ({ children }: Props) => (
   <MainContainerBase
     className={cn(
-      'relative flex flex-col w-full max-w-160',
+      'relative flex flex-col grow w-full max-w-160',
       'transition-colors ease-in-out duration-200',
     )}
     backdropClassName="transition-colors ease-in-out duration-200"

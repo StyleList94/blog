@@ -11,19 +11,19 @@ const postFiles = import.meta.glob('./posts/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
-});
+}) as Record<string, string | Uint8Array>;
 
 const decoder = new TextDecoder();
 
 const postsBySlug = new Map(
   Object.entries(postFiles).map(([path, contents]) => [
     path.slice(path.lastIndexOf('/') + 1, -'.md'.length),
-    typeof contents === 'string' ? contents : decoder.decode(contents as never),
+    typeof contents === 'string' ? contents : decoder.decode(contents),
   ]),
 );
 
 export async function getPostSlugs() {
-  return [...postsBySlug.keys()].map((slug) => `${slug}.md`);
+  return [...postsBySlug.keys()];
 }
 
 export async function getPostBySlug(slug: string) {
@@ -44,15 +44,11 @@ export async function getPostBySlug(slug: string) {
 
   const { data, content } = matter(fileContents);
 
-  const { ...rest } = data as Omit<Post, 'slug' | 'content'>;
-
-  const items: Post = {
+  return {
+    ...(data as Omit<Post, 'slug' | 'content'>),
     slug: realSlug,
     content,
-    ...rest,
-  };
-
-  return items;
+  } satisfies Post;
 }
 
 export async function getAllPosts(): Promise<PostList> {
