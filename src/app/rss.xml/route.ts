@@ -1,7 +1,5 @@
 import { getNewPosts } from '@/lib/services/post';
 
-export const dynamic = 'auto';
-
 const LATELY_POST_LIST_COUNT = 5;
 
 export async function GET() {

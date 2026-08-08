@@ -2,6 +2,7 @@ import type { ClassAttributes, HTMLAttributes, JSX } from 'react';
 import type { ExtraProps } from 'react-markdown';
 import type { BundledLanguage } from 'shiki';
 
+import { cacheLife } from 'next/cache';
 import { codeToHtml } from 'shiki';
 import {
   transformerNotationDiff,
@@ -22,6 +23,26 @@ type IconType = 'bash' | 'json' | 'default';
 
 const languageRegExp = /language-(\w+)(:title=(.+))?/;
 const showLineNumberRegExp = /ts(x)?|js(on)?|css/;
+
+// Shiki reads the clock internally, which blocks prerendering unless cached
+const highlight = async (code: string, lang: BundledLanguage) => {
+  'use cache';
+  cacheLife('max');
+
+  return codeToHtml(code, {
+    lang,
+    themes: {
+      light: 'one-light',
+      dark: 'github-dark',
+    },
+    transformers: [
+      transformerNotationDiff(),
+      transformerNotationHighlight(),
+      transformerNotationFocus(),
+      transformerNotationErrorLevel(),
+    ],
+  });
+};
 
 const iconElement: Record<IconType, { className: string; path: JSX.Element }> =
   {
@@ -105,19 +126,7 @@ const CodeBlock = async (props: Props) => {
   const language = match[1] as BundledLanguage;
   const title = match[3];
 
-  const out = await codeToHtml(String(children).replace(/\n$/, ''), {
-    lang: language,
-    themes: {
-      light: 'one-light',
-      dark: 'github-dark',
-    },
-    transformers: [
-      transformerNotationDiff(),
-      transformerNotationHighlight(),
-      transformerNotationFocus(),
-      transformerNotationErrorLevel(),
-    ],
-  });
+  const out = await highlight(String(children).replace(/\n$/, ''), language);
 
   return (
     <div

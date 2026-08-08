@@ -2,8 +2,24 @@ import {
   calculateReadingTime,
   cn,
   getUpdatedDateByPost,
+  isHangulDay,
   sleep,
 } from '../utils';
+
+describe('isHangulDay()', () => {
+  it('returns true on October 9th', () => {
+    expect(isHangulDay(new Date('2024-10-09'))).toBe(true);
+  });
+
+  it('returns false on the surrounding days', () => {
+    expect(isHangulDay(new Date('2024-10-08'))).toBe(false);
+    expect(isHangulDay(new Date('2024-10-10'))).toBe(false);
+  });
+
+  it('returns false on the 9th of other months', () => {
+    expect(isHangulDay(new Date('2024-09-09'))).toBe(false);
+  });
+});
 
 describe('cn()', () => {
   it('merges class names correctly', () => {
