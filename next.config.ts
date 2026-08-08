@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
     useTypeScriptCli: true,
     turbopackRustReactCompiler: true,
   },
+  turbopack: {
+    rules: {
+      '*.md': {
+        type: 'bytes',
+      },
+    },
+  },
   images: {
     remotePatterns: [
       {
