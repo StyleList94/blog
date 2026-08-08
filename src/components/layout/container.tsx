@@ -8,10 +8,10 @@ type Props = {
 };
 
 const LayoutContainer = ({ children }: Props) => (
-  <>
+  <div className="flex flex-col min-h-dvh">
     <MainContainer>{children}</MainContainer>
     <Footer />
-  </>
+  </div>
 );
 
 export default LayoutContainer;

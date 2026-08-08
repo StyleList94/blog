@@ -13,6 +13,9 @@ export const sleep = (ms: number): Promise<void> =>
 export const getUpdatedDateByPost = (post: Omit<Post, 'content'>): string =>
   post.lastModified ?? post.date;
 
+export const isHangulDay = (date: Date): boolean =>
+  date.getMonth() === 9 && date.getDate() === 9;
+
 /**
  * Calculate estimated reading time for blog post content
  * @param content - Markdown content of the post

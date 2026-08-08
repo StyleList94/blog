@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { BlogPosting, WithContext } from 'schema-dts';
 
 import { metadataContext } from '@/lib/metadata';
-import { getAllPosts, getPostBySlug } from '@/lib/services/post';
+import { getAllPosts, getPostBySlug, getPostSlugs } from '@/lib/services/post';
 import { generateSeries, generateTOC } from '@/lib/post-utils';
 import { calculateReadingTime } from '@/lib/utils';
 
@@ -42,10 +42,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.slice(0, 10).map((post) => ({
-    slug: post.slug,
-  }));
+  const slugs = await getPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default async function PostContentPage({ params }: Props) {

@@ -1,37 +1,36 @@
 import type { Post, PostList } from '@/types/post';
 
-import { join } from 'node:path';
-import fs from 'node:fs/promises';
-
 import matter from 'gray-matter';
 
 import { getUpdatedDateByPost } from '@/lib/utils';
 
-const postDirectory = join(process.cwd(), 'posts');
+// Turbopack's glob cannot match '../' patterns, so raise the root via base
+// Contents arrive as a string in Vite ('?raw') and as bytes in Turbopack (type: 'bytes')
+const postFiles = import.meta.glob('./posts/*.md', {
+  base: '../../../',
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string | Uint8Array>;
+
+const decoder = new TextDecoder();
+
+const postsBySlug = new Map(
+  Object.entries(postFiles).map(([path, contents]) => [
+    path.slice(path.lastIndexOf('/') + 1, -'.md'.length),
+    typeof contents === 'string' ? contents : decoder.decode(contents),
+  ]),
+);
 
 export async function getPostSlugs() {
-  const list = await fs.readdir(postDirectory);
-  return list.filter((filename) => filename.endsWith('.md'));
+  return [...postsBySlug.keys()];
 }
 
 export async function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, '');
-  const path = join(postDirectory, `${realSlug}.md`);
-  try {
-    const fileContents = await fs.readFile(path, 'utf8');
+  const fileContents = postsBySlug.get(realSlug);
 
-    const { data, content } = matter(fileContents);
-
-    const { ...rest } = data as Omit<Post, 'slug' | 'content'>;
-
-    const items: Post = {
-      slug: realSlug,
-      content,
-      ...rest,
-    };
-
-    return items;
-  } catch {
+  if (!fileContents) {
     const notFound: Post = {
       slug: '404',
       title: '404',
@@ -42,6 +41,14 @@ export async function getPostBySlug(slug: string) {
 
     return notFound;
   }
+
+  const { data, content } = matter(fileContents);
+
+  return {
+    ...(data as Omit<Post, 'slug' | 'content'>),
+    slug: realSlug,
+    content,
+  } satisfies Post;
 }
 
 export async function getAllPosts(): Promise<PostList> {

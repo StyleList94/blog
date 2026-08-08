@@ -5,9 +5,11 @@ import { render, screen } from '@testing-library/react';
 import Footer from '../footer';
 
 describe('Footer', () => {
-  it('should be rendered', () => {
-    vi.useFakeTimers().setSystemTime(new Date('2024-10-08'));
+  afterEach(() => {
+    vi.useRealTimers();
+  });
 
+  it('should be rendered', () => {
     render(<Footer />);
 
     expect(screen.getByLabelText('라이트 모드')).toBeInTheDocument();

@@ -434,6 +434,12 @@
       }
     },
     {
+      "files": ["src/app/**/route.ts"],
+      "rules": {
+        "import/prefer-default-export": "off"
+      }
+    },
+    {
       "files": [
         "**/__tests__/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)"
