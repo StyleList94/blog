@@ -80,4 +80,4 @@ Uses custom shared config `eslint-config-stylish`. Pre-commit runs lint-staged v
 ## Gotchas
 
 - Must use `pnpm` (lockfile: `pnpm-lock.yaml`)
-- `@types/react` is pinned to `19.2.10` to match peer dependencies
+- `@types/react` is pinned to `19.2.18` via `pnpm-workspace.yaml` `overrides` (and `package.json`) to keep a single copy across the Radix UI tree pulled in by `@stylelist94/nine-beauty-actress`. Bump the version in both places together; don't remove the override.
