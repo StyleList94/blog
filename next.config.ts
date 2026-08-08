@@ -3,8 +3,10 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   typedRoutes: true,
+  reactCompiler: true,
   experimental: {
     useTypeScriptCli: true,
+    turbopackRustReactCompiler: true,
   },
   images: {
     remotePatterns: [
