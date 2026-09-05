@@ -27,7 +27,7 @@ const bodyStyle = 'text-sm/6';
 
 const tableCellStyle = cn(
   'px-4 py-2',
-  'text-sm text-left [[align=center]]:text-center [&[align=right]]:text-right',
+  'text-sm text-left break-keep [[align=center]]:text-center [&[align=right]]:text-right',
   'border border-neutral-200 dark:border-neutral-700/60',
 );
 
