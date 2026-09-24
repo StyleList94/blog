@@ -1,8 +1,8 @@
 allowBuilds:
   sharp: true
 overrides:
-  '@types/react': 19.2.18
-  '@types/react-dom': 19.2.4
+  '@types/react': 19.3.0
+  '@types/react-dom': 19.3.0
   # Transitive advisories with no upstream release: gray-matter is unmaintained,
   # and brace-expansion sits under minimatch in the oxlint JS plugins.
   'js-yaml@^3': ^3.15.1
