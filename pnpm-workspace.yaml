@@ -5,6 +5,6 @@ overrides:
   '@types/react-dom': 19.3.0
   # Transitive advisories with no upstream release: gray-matter is unmaintained,
   # and brace-expansion sits under minimatch in the oxlint JS plugins.
-  'js-yaml@^3': ^3.15.1
+  'js-yaml@^3': ^3.15.2
   'brace-expansion@^1': ^1.1.18
   'brace-expansion@^5': ^5.0.9
