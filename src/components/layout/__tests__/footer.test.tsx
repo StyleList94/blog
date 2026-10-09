@@ -10,6 +10,8 @@ describe('Footer', () => {
   });
 
   it('should be rendered', () => {
+    vi.useFakeTimers().setSystemTime(new Date('2026-01-01'));
+
     render(<Footer />);
 
     expect(screen.getByLabelText('라이트 모드')).toBeInTheDocument();
