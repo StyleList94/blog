@@ -1,15 +1,21 @@
+import { Suspense } from 'react';
+
 import { Footer as FooterContainer } from '@stylelist94/nine-beauty-actress';
 
-import BrandLink from '../brand-link';
+import BrandLink, { DefaultBrandLink } from '../brand-link';
 import ThemeControlSwitch from '../theme-control-switch';
 
 const Footer = () => (
   <FooterContainer className="max-w-160!">
     <div className="flex justify-end items-center h-9">
-      <ThemeControlSwitch />
+      <Suspense fallback={null}>
+        <ThemeControlSwitch />
+      </Suspense>
     </div>
     <div className="flex justify-between items-center gap-4">
-      <BrandLink />
+      <Suspense fallback={<DefaultBrandLink />}>
+        <BrandLink />
+      </Suspense>
       <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400">
         © 2026.{' '}
         <a

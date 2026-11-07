@@ -4,7 +4,6 @@ import type { TableOfContents } from '@/types/post';
 
 import { memo, useEffect, useState } from 'react';
 import throttle from 'lodash-es/throttle';
-import { useMounted } from '@stylelist94/nine-beauty-actress';
 import { clsx } from 'clsx';
 
 type Props = {
@@ -40,12 +39,9 @@ const HEADING_POSITION_OFFSET = HEADER_HEIGHT + 40;
 const BOTTOM_THRESHOLD = 50;
 
 const PostTableOfContents = ({ items }: Props) => {
-  const mounted = useMounted();
   const [activeHeading, setActiveHeading] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!mounted) return () => {};
-
     const allHeadings = items.flatMap((item) => [item, ...item.children]);
 
     const resultHeadingPosition = allHeadings
@@ -87,13 +83,13 @@ const PostTableOfContents = ({ items }: Props) => {
     window.addEventListener('scroll', throttledScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', throttledScroll);
       throttledScroll.cancel();
     };
-  }, [items, mounted]);
+  }, [items]);
 
   return (
-    <div key={`toc-${mounted.toString()}`} className="px-3">
+    <div className="px-3">
       <ul
         aria-label="toc-level-1"
         className="text-sm text-neutral-400 dark:text-neutral-500"

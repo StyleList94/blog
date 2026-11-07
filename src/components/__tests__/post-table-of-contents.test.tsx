@@ -5,6 +5,10 @@ import { render, screen, within } from '@testing-library/react';
 import PostTableOfContents from '../post-table-of-contents';
 
 describe('PostTableOfContents', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   const mockData = [
     {
       content: 'Cocktail',
@@ -80,5 +84,19 @@ describe('PostTableOfContents', () => {
     expect(
       within(childLevelElement[1]).getByText('피나 콜라다'),
     ).toHaveAttribute('href', '#피나-콜라다');
+  });
+
+  it('removes the registered scroll listener when the table of contents unmounts', () => {
+    const addListener = vi.spyOn(window, 'addEventListener');
+    const removeListener = vi.spyOn(window, 'removeEventListener');
+    const { unmount } = render(<PostTableOfContents items={mockData} />);
+    const registration = addListener.mock.calls.find(
+      ([event]) => event === 'scroll',
+    );
+    expect(registration).toBeDefined();
+
+    unmount();
+
+    expect(removeListener).toHaveBeenCalledWith('scroll', registration?.[1]);
   });
 });
