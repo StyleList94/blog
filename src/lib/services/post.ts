@@ -4,21 +4,20 @@ import matter from 'gray-matter';
 
 import { getUpdatedDateByPost } from '@/lib/utils';
 
-// Turbopack's glob cannot match '../' patterns, so raise the root via base
-// Contents arrive as a string in Vite ('?raw') and as bytes in Turbopack (type: 'bytes')
+// Resolve the project-root posts directory consistently in both bundlers.
+// Both Vite's '?raw' and Turbopack's 'text' rule import Markdown as strings.
+// Keep module namespaces: Turbopack 16.4's eager `import: 'default'` selection
+// returns undefined in production even though the module exports its content.
 const postFiles = import.meta.glob('./posts/*.md', {
   base: '../../../',
   query: '?raw',
-  import: 'default',
   eager: true,
-}) as Record<string, string | Uint8Array>;
-
-const decoder = new TextDecoder();
+}) as Record<string, { default: string }>;
 
 const postsBySlug = new Map(
-  Object.entries(postFiles).map(([path, contents]) => [
+  Object.entries(postFiles).map(([path, { default: contents }]) => [
     path.slice(path.lastIndexOf('/') + 1, -'.md'.length),
-    typeof contents === 'string' ? contents : decoder.decode(contents),
+    contents,
   ]),
 );
 
