@@ -35,7 +35,8 @@ export async function getPostBySlug(slug: string) {
       slug: '404',
       title: '404',
       description: '404',
-      date: new Date().toISOString(),
+      // Keep the fallback deterministic, anchored to the first published post.
+      date: '2022-03-01T11:21:00.000Z',
       content: '404',
     };
 
