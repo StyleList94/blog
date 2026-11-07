@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import ReactMarkdown, {
   type Components as MarkdownElement,
 } from 'react-markdown';
@@ -243,7 +245,9 @@ const components: Partial<MarkdownElement> = {
 const PostBody = ({ content }: Props) => (
   <div className="py-4">
     <AnimateProvider>
-      <ScrollLinked />
+      <Suspense fallback={null}>
+        <ScrollLinked />
+      </Suspense>
       <ReactMarkdown
         components={components}
         remarkPlugins={[remarkGfm]}

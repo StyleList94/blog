@@ -55,7 +55,7 @@
     "jsdom": "^30.0.1",
     "lint-staged": "^17.6.0",
     "oxfmt": "^0.76.0",
-    "oxlint": "^1.77.0",
+    "oxlint": "^1.92.0",
     "postcss": "^8.5.32",
     "shiki": "^4.6.0",
     "tailwindcss": "^4.3.4",

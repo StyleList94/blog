@@ -1,27 +1,22 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { use, useState } from 'react';
+import { browser } from 'react-dom';
 import Link from 'next/link';
 
 import { isHangulDay } from '@/lib/utils';
 
-// Read the clock after hydration so pages embedding the footer stay static
+export const DefaultBrandLink = () => (
+  <Link href="/" className="flex items-baseline font-display text-base w-fit">
+    stylish<span className="text-sm">.log</span>
+  </Link>
+);
+
 const BrandLink = () => {
-  const [isSeasonal, setIsSeasonal] = useState(false);
+  use(browser());
+  const [isSeasonal] = useState(() => isHangulDay(new Date()));
 
-  useEffect(() => {
-    setIsSeasonal(isHangulDay(new Date()));
-  }, []);
-
-  if (!isSeasonal)
-    return (
-      <Link
-        href="/"
-        className="flex items-baseline font-display text-base w-fit"
-      >
-        stylish<span className="text-sm">.log</span>
-      </Link>
-    );
+  if (!isSeasonal) return <DefaultBrandLink />;
 
   return (
     <Link

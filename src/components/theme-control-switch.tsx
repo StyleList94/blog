@@ -1,12 +1,9 @@
 'use client';
 
-import type { SVGProps } from 'react';
+import { use, type SVGProps } from 'react';
+import { browser } from 'react-dom';
 
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-  useMounted,
-} from '@stylelist94/nine-beauty-actress';
+import { ToggleGroup, ToggleGroupItem } from '@stylelist94/nine-beauty-actress';
 
 import useThemeControl from '@/hooks/use-theme-control';
 
@@ -23,10 +20,8 @@ const iconBaseProps = {
 } satisfies SVGProps<SVGSVGElement>;
 
 const ThemeControlSwitch = () => {
-  const mounted = useMounted();
+  use(browser());
   const { theme, setTheme } = useThemeControl();
-
-  if (!mounted) return null;
 
   return (
     <ToggleGroup type="single" value={theme} onValueChange={setTheme}>

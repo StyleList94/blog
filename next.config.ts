@@ -12,8 +12,9 @@ const nextConfig: NextConfig = {
   },
   turbopack: {
     rules: {
-      '*.md': {
-        type: 'bytes',
+      '*': {
+        condition: { query: '?raw' },
+        type: 'text',
       },
     },
   },
